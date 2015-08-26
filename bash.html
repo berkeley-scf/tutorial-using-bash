@@ -182,7 +182,7 @@ the &ldquo;Basics of UNIX&rdquo; tutorial and screencast here:
 <a href="http://statistics.berkeley.edu/computing/training/tutorials">http://statistics.berkeley.edu/computing/training/tutorials</a></p>
 </blockquote>
 
-<h2>The Interactive Shell</h2>
+<h2>1) The Interactive Shell</h2>
 
 <p>The shell is an interactive computer programming environment. More
 specifically, it is a read-evaluate-print loop (REPL) environment. R and
@@ -225,7 +225,7 @@ general to UNIX.</p>
 <p>Reference: Newham and Rosenblatt, Learning the bash Shell, 2nd ed.</p>
 </blockquote>
 
-<h3>Getting started</h3>
+<h3>1.1) Getting started</h3>
 
 <p>I assume you already have access to a basic bash shell on a computer
 with network access. You should also have ssh installed. SSH provides an
@@ -319,7 +319,7 @@ the <code>man</code> page for the command <code>sudo</code>, for instance, you w
 </code></pre>
 </blockquote>
 
-<h3>Variables</h3>
+<h3>1.2) Variables</h3>
 
 <p>Much of how bash behaves can be customized through the use of variables,
 which consists of names that have values assigned to them. To access the
@@ -389,7 +389,7 @@ directory in the prompt:</p>
 [user1@local1 ~]$ 
 </code></pre>
 
-<h3>Commands</h3>
+<h3>1.3) Commands</h3>
 
 <p>While each command has its own syntax, there are some rules usually
 followed. Generally, a command line consists of 4 things: a command,
@@ -447,7 +447,7 @@ $ ls -al
 in what the three versions of the command invocation above return as the
 result? What happens if you add a filename to the end of the command?</p>
 
-<h4>Tab completion</h4>
+<h4>1.3.1) Tab completion</h4>
 
 <p>When working in the shell, it is often unnecessary to type out an entire
 command or file name, because of a feature known as tab completion. When
@@ -471,7 +471,7 @@ filenames. While the default Python shell does not perform tab
 completion, the IPython shell does.</p>
 </blockquote>
 
-<h4>Command History and Editing</h4>
+<h4>1.3.2) Command History and Editing</h4>
 
 <p>By using the up and down arrows, you can scroll through commands that
 you have entered previously. So if you want to rerun the same command,
@@ -563,7 +563,7 @@ of characters to search for in the search history. You can hit return to
 submit, <code>Ctrl-c</code> to get out, or <code>ESC</code> to put the result on the regular
 command line for editing.</p>
 
-<h4>Command Substitution</h4>
+<h4>1.3.3) Command Substitution</h4>
 
 <p>You may occasionally need to substitute the results of a command for use
 by another command. For example, if you wanted to use the directory
@@ -590,9 +590,9 @@ $ ls -l $(which tr)
 
 <p>Make sure you understand why each command behaves as it does.</p>
 
-<h3>Shortcuts</h3>
+<h3>1.4) Shortcuts</h3>
 
-<h4>Aliases &ndash; command shortcuts</h4>
+<h4>1.4.1) Aliases &ndash; command shortcuts</h4>
 
 <p>Aliases allow you to use an abbreviation for a command, to create new
 functionality or to insure that certain options are always used when you
@@ -675,7 +675,7 @@ understand what each line does. For instance, use <code>man grep</code> to see w
 the option <code>--color=auto</code> does. Use <code>man which</code> to figure out what the
 various options passed to it do.</p>
 
-<h4>Keyboard shortcuts</h4>
+<h4>1.4.2) Keyboard shortcuts</h4>
 
 <p>Note that you can use emacs-like control sequences (<code>Ctrl-a</code>, <code>Ctrl-e</code>,
 <code>Ctrl-k</code>) to navigate and delete characters.</p>
@@ -721,7 +721,7 @@ various options passed to it do.</p>
 </tbody>
 </table>
 
-<h2>Basic File Management</h2>
+<h2>2) Basic File Management</h2>
 
 <p>In Unix, almost &ldquo;everything is a file.&rdquo; This means that a very wide
 variety of input and output resources (e.g., documents, directories,
@@ -731,7 +731,7 @@ management tools are extremely powerful in Unix. Not only can you use
 these tools to work with files, but you can also use them to monitor and
 control many aspects of your computer.</p>
 
-<h3>Files</h3>
+<h3>2.1) Files</h3>
 
 <p>A file typically consist of these attributes:</p>
 
@@ -781,7 +781,7 @@ control many aspects of your computer.</p>
 and screencast here:
 <a href="http://statistics.berkeley.edu/computing/training/tutorials">http://statistics.berkeley.edu/computing/training/tutorials</a></p>
 
-<h3>Navigation</h3>
+<h3>2.2) Navigation</h3>
 
 <p>Efficient navigation of the filesystem from the shell is an essential
 aspect of mastering Unix. Use <code>pwd</code> to list your current working
@@ -802,7 +802,7 @@ from any other current directory, you could type:</p>
 <p>You can use the pushd, popd, and dirs commands if you would like to keep
 a stack of previous working directories rather than just the last one.</p>
 
-<h3>Filename Globbing</h3>
+<h3>2.3) Filename Globbing</h3>
 
 <p>Shell file globbing will expand certain special characters (called
 wildcards) to match patterns of filenames, before passing those
@@ -907,7 +907,7 @@ $ echo {1..5..2}
 $ echo {z..a..-2}
 </code></pre>
 
-<h3>Quoting</h3>
+<h3>2.4) Quoting</h3>
 
 <p><strong>Table. Quotes</strong></p>
 
@@ -972,7 +972,7 @@ this case, you will need to escape the quote:</p>
 <p>So we&#39;ll generally use double quotes. We can always work with a literal
 double quote by escaping it as seen above.</p>
 
-<h3>Basic utilities</h3>
+<h3>2.5) Basic utilities</h3>
 
 <p>Since files are such an essential aspect of Unix and working from the
 shell is the primary way to work with Unix, there are a large number of
@@ -1105,7 +1105,7 @@ but first let&#39;s discuss streams and redirection.</p>
 and while you are reading the abbreviated man pages consider how you
 might use these commands.</p>
 
-<h3>Streams, Pipes, and Redirects</h3>
+<h3>2.6) Streams, Pipes, and Redirects</h3>
 
 <p>Unix programs that involve input and/or output often operate by reading
 input from a stream known as standard input (<em>stdin</em>), and writing their
@@ -1188,7 +1188,7 @@ shows some examples of redirection.</p>
 <p>Note that <code>cmd</code> may include options and arguments as seen in the
 previous section.</p>
 
-<h4>Standard Redirection</h4>
+<h4>2.6.1) Standard Redirection</h4>
 
 <p>Operations where output from one command is used as input to another
 command (via the <code>|</code> operator) are known as pipes; they are made
@@ -1261,7 +1261,7 @@ together with the backtick operator we can solve the problem using:</p>
 achieve the desired goal, since <code>grep</code> reads its filenames from the
 command line, not standard input.</p>
 
-<h4>The <code>xargs</code> and <code>tee</code> commands</h4>
+<h4>2.6.2) The <code>xargs</code> and <code>tee</code> commands</h4>
 
 <p>You can also redirect output as the arguments to another program using
 the <code>xargs</code> utility. Here&#39;s an example:</p>
@@ -1288,7 +1288,7 @@ use <code>tee</code> command:</p>
 <pre><code>$ cut -d&#39;,&#39; -f2 cpds.csv | sort | uniq | tee countries.txt
 </code></pre>
 
-<h2>Regular Expressions</h2>
+<h2>3) Regular Expressions</h2>
 
 <p>Regular expressions (regex) are a domain-specific language for finding
 patterns and are one of the key functionalities in scripting languages
@@ -1310,7 +1310,7 @@ widely used. While we won&#39;t go into detail, we will see some examples
 of each syntax.</p>
 </blockquote>
 
-<h3>Overview and core syntax</h3>
+<h3>3.1) Overview and core syntax</h3>
 
 <p>The basic idea of regular expressions is that they allow us to find
 matches of strings or patterns in strings, as well as do substitution.
@@ -1362,7 +1362,7 @@ backslashes instead of a single backslash because R uses a single
 backslash to symbolize certain control characters, such as <code>\n</code> for
 newline.</p>
 
-<h3>Character sets and character classes</h3>
+<h3>3.2) Character sets and character classes</h3>
 
 <p><strong>Character sets</strong></p>
 
@@ -1423,7 +1423,7 @@ is one of the following values:</p>
 brackets, e.g. the digit class: <code>[[:digit:]]</code>. Or we can make a combined
 character set such as <code>[[:alnum:]_]</code>.</p>
 
-<h3>Location-specific matches</h3>
+<h3>3.3) Location-specific matches</h3>
 
 <p><strong>Position anchors</strong></p>
 
@@ -1450,7 +1450,7 @@ character set such as <code>[[:alnum:]_]</code>.</p>
 was also used for negation, but in that case occurs only inside square
 brackets) and to find it at the end we use <code>$</code>.</p>
 
-<h3>Repetitions, Grouping, and References</h3>
+<h3>3.4) Repetitions, Grouping, and References</h3>
 
 <p>Now suppose I wanted to be able to detect phone numbers, email
 addresses, etc. I often need to be able to deal with repetitions of
@@ -1518,7 +1518,7 @@ digits when it is preceded by 0 or 1 occurrences of <code>1-</code>.</p>
 <p>Parentheses are also used with a pipe (<code>|</code>) to indicate any one of a set
 of multi-character sequences, such as <code>(http|ftp)</code>.</p>
 
-<h3>Greedy matching</h3>
+<h3>3.5) Greedy matching</h3>
 
 <p>Regular expression pattern matching is <em>greedy</em>&mdash;by default, the
 longest matching string is chosen.</p>
@@ -1569,7 +1569,7 @@ set that we don&#39;t want to be inside the angle brackets?</p>
     precedes it when used in a regular expression).</p>
 </blockquote>
 
-<h3><code>ed</code>, <code>grep</code>, <code>sed</code>, <code>awk</code>, and <code>perl</code></h3>
+<h3>3.6) <code>ed</code>, <code>grep</code>, <code>sed</code>, <code>awk</code>, and <code>perl</code></h3>
 
 <p>Before the text editor, there was the line editor. Rather than
 presenting you with the entire text as a text editor does, a line editor
@@ -1586,7 +1586,7 @@ these commands can be terse. However, it also means that learning the
 syntax for one of these tools will be rewarded when you need to learn
 the syntax of another of these tools.</p>
 
-<h4><code>grep</code></h4>
+<h4>3.6.1) <code>grep</code></h4>
 
 <p>The simplest of these tools is <code>grep</code>. As I mentioned, <code>ed</code> only
 displays lines of text when requested. One common task was to print all
@@ -1661,7 +1661,7 @@ I think he said it was 337.4355
 <pre><code>$ grep &#39;^[^T]*is.*$&#39; file1.txt
 </code></pre>
 
-<h4><code>sed</code> and <code>awk</code></h4>
+<h4>3.6.2) <code>sed</code> and <code>awk</code></h4>
 
 <p>Printing lines of text with <code>sed</code>:</p>
 
@@ -1730,7 +1730,7 @@ them since you can search the internet for awk or sed one-liners. If you
 have some file munging task, it can be helpful to do a quick search
 before writing code to perform the task yourself.</p>
 
-<h4><code>perl</code></h4>
+<h4>3.6.3) <code>perl</code></h4>
 
 <p>Perl is another general-purpose programming language that is particular
 useful for one-liner commands to perform data extraction and
@@ -1756,7 +1756,7 @@ can also substitute the <code>/</code> with another character. For example:</p>
 
 <p>This will sum columns 1 and 2 of <code>file.txt</code>.</p>
 
-<h2>Processes</h2>
+<h2>4) Processes</h2>
 
 <p>A process is a program that is being executed. Processes have the
 following attributes:</p>
@@ -1771,7 +1771,7 @@ following attributes:</p>
 <li>  A current working directory.</li>
 </ul>
 
-<h3>Monitoring</h3>
+<h3>4.1) Monitoring</h3>
 
 <p>Examining subprocesses of your shell with <code>ps</code>:</p>
 
@@ -1834,7 +1834,7 @@ KiB Swap: 7897084 total, 7897084 free,       0 used. 6561548 avail Mem
 
 <p>To quit <code>top</code>, type <code>q</code>.</p>
 
-<h3>Signaling</h3>
+<h3>4.2) Signaling</h3>
 
 <p>Let&#39;s see how to build up a command to kill firefox using some of the
 tools we&#39;ve seen. First let&#39;s pipe the output of <code>ps -e</code> to <code>grep</code> to
@@ -1856,7 +1856,7 @@ process ID corresponding to <code>firefox</code>:</p>
 <pre><code>$ ps -e | grep firefox | awk &#39;{ print $1 }&#39; | xargs kill
 </code></pre>
 
-<h3>Job Control</h3>
+<h3>4.3) Job Control</h3>
 
 <p>When you run a command in a shell by simply typing its name, you are
 said to be running in the foreground. When a job is running in the
@@ -1890,7 +1890,7 @@ the program will interrupt execution, but will still have access to all
 files and other resources. Next, issue the <code>bg</code> command, which will
 start the stopped job running in the background.</p>
 
-<h4>Listing and killing jobs</h4>
+<h4>4.3.1) Listing and killing jobs</h4>
 
 <p>Since only foreground jobs will accept signals through the keyboard, if
 you want to terminate a background job you must first determine the
@@ -1937,7 +1937,7 @@ only apply to the particular computer on which they are executed, not to
 the entire computer network. Thus, if you start a job on one machine,
 you must log back into that same machine in order to manage your job.</p>
 
-<h4>Monitoring jobs and memory use</h4>
+<h4>4.3.2) Monitoring jobs and memory use</h4>
 
 <p>As we saw above, the <code>top</code> command also allows you to monitor the jobs
 on the system and in real-time. In particular, it&#39;s useful for seeing
@@ -1953,7 +1953,7 @@ virtual memory on disk, spending most of its time writing to/from disk,
 sometimes called <em>paging</em> or <em>swapping</em>. If this happens, it can be a
 very long time, if ever, before your job finishes.</p>
 
-<h4>Nicing a job</h4>
+<h4>4.3.3) Nicing a job</h4>
 
 <p>The most important thing to remember when starting a job on a machine
 that is not your personal machine is how to be a good citizen. This
@@ -1972,7 +1972,7 @@ priority by doing:</p>
 
 <p>where <code>11998</code> is the PID of your job.</p>
 
-<h4>Screen</h4>
+<h4>4.3.4) Screen</h4>
 
 <p>Screen allows you to create virtual terminals, which are not connected
 to your actual terminal or shell. This allows you to run multiple
@@ -2074,7 +2074,7 @@ remote machine again and type the following at the bash prompt:</p>
 <pre><code>$ screen -r dbox-study
 </code></pre>
 
-<h2>Shell programming</h2>
+<h2>5) Shell programming</h2>
 
 <p>Shell scripts are files containing shell commands (commonly with the
 extension <code>.sh</code>) To run a shell script called <code>file.sh</code>, you would type
@@ -2096,7 +2096,7 @@ to interpret the script, the first line of the script should be
 you set <code>file.sh</code> to be executable (i.e., to have the &#39;x&#39; flag set) you
 can execute it by just typing <code>./file.sh</code>.</p>
 
-<h3>Functions</h3>
+<h3>5.1) Functions</h3>
 
 <p>You can define your own utilities by creating a shell function. This
 allows you to automate things that are more complicated than you can do
@@ -2122,7 +2122,7 @@ directory <code>~/teaching/243</code> on SCF:</p>
 
 <p>Of course you&#39;d want to put such functions in your <code>.bashrc</code> file.</p>
 
-<h3>If/then/else</h3>
+<h3>5.2) If/then/else</h3>
 
 <p>We can use if-then-else type syntax to control the flow of a shell
 script. For an example, here is a shell function <code>niceR()</code> that can be
@@ -2153,7 +2153,7 @@ fi
 
 <p>For more details, look in Newham&amp;Rosenblatt or search online.</p>
 
-<h3>For loops</h3>
+<h3>5.3) For loops</h3>
 
 <p><em>for</em> loops in shell scripting are primarily designed for iterating
 through a set of files or directories. Here&#39;s an example:</p>
@@ -2200,7 +2200,7 @@ done
 # note that base.R should NOT set either &#39;n&#39; or &#39;it&#39;
 </code></pre>
 
-<h3>How much shell scripting should I learn?</h3>
+<h3>5.4) How much shell scripting should I learn?</h3>
 
 <p>We&#39;ve covered most of what you are likely to need to know about the
 shell. I tend to only use bash scripts for simple tasks that require
@@ -2212,7 +2212,7 @@ you to avoid dealing with a lot of shell programming syntax (but you&#39;ll
 still need to know how to use UNIX utilities, wildcards, and pipes to be
 effective).</p>
 
-<h2>Working with documents</h2>
+<h2>6) Working with documents</h2>
 
 <p>There are many plain text file formats (e.g., markdown,
 reStructuredText, LaTeX). Pandoc is a widely used document converter. To
@@ -2226,7 +2226,7 @@ convert a file written in markdown (<code>report.md</code>) to a PDF
 LaTeX&rdquo; tutorial and screencast here:
 <a href="http://statistics.berkeley.edu/computing/training/tutorials">http://statistics.berkeley.edu/computing/training/tutorials</a></p>
 
-<h2>Exercises</h2>
+<h2>7) Exercises</h2>
 
 <ol>
 <li> Make a variable, called <code>mypython</code> that contains the path to Python
