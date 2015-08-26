@@ -313,15 +313,44 @@ the last command that started with 'gi'.
 
 **Table. Command History Expansion**
 
-  Designator           Description
-  -------------------- ---------------------------------------------
-  `!!`                 Last command
-  `!n`                 Command numbered *n* in the history
-  `!-n`                Command *n* previous
-  `!string`            Last command starting with *string*
-  `!?string`           Last command containing *string*
-  `^string1^string2`   Execute the previous command with *string2*
-                       substituted for *string1*
+<table>
+<thead>
+<tr class="header">
+<th align="left">Designator</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>!!</code></td>
+<td align="left">Last command</td>
+</tr>
+<tr class="even">
+<td align="left"><code>!n</code></td>
+<td align="left">Command numbered <em>n</em> in the history</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>!-n</code></td>
+<td align="left">Command <em>n</em> previous</td>
+</tr>
+<tr class="even">
+<td align="left"><code>!string</code></td>
+<td align="left">Last command starting with <em>string</em></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>!?string</code></td>
+<td align="left">Last command containing <em>string</em></td>
+</tr>
+<tr class="even">
+<td align="left"><code>^string1^string2</code></td>
+<td align="left">Execute the previous command with <em>string2</em></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">substituted for <em>string1</em></td>
+</tr>
+</tbody>
+</table>
 
 If you're not sure what command you're going to recall, you can append
 `:p` at the end of the text you type to do the recall, and the result
