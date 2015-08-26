@@ -343,11 +343,7 @@ the last command that started with 'gi'.
 </tr>
 <tr class="even">
 <td align="left"><code>^string1^string2</code></td>
-<td align="left">Execute the previous command with <em>string2</em></td>
-</tr>
-<tr class="odd">
-<td align="left"></td>
-<td align="left">substituted for <em>string1</em></td>
+<td align="left">Execute the previous command with <em>string2</em> substituted for <em>string1</em></td>
 </tr>
 </tbody>
 </table>
@@ -480,15 +476,44 @@ Note that you can use emacs-like control sequences (`Ctrl-a`, `Ctrl-e`,
 
 **Table. Keyboard Shortcuts**
 
-  Key Strokes   Descriptions
-  ------------- ---------------------------------
-  `Ctrl-a`      Beginning of line
-  `Ctrl-e`      End of file
-  `Ctrl-k`      Delete line from cursor forward
-  `Ctrl-d`      EOF; exit
-  `Ctrl-c`      Interrupt current command
-  `Ctrl-z`      Suspend current command
-  `Ctrl-l`      Clear screen
+<table>
+<thead>
+<tr class="header">
+<th align="left">Key Strokes</th>
+<th align="left">Descriptions</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>Ctrl-a</code></td>
+<td align="left">Beginning of line</td>
+</tr>
+<tr class="even">
+<td align="left"><code>Ctrl-e</code></td>
+<td align="left">End of file</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>Ctrl-k</code></td>
+<td align="left">Delete line from cursor forward</td>
+</tr>
+<tr class="even">
+<td align="left"><code>Ctrl-d</code></td>
+<td align="left">EOF; exit</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>Ctrl-c</code></td>
+<td align="left">Interrupt current command</td>
+</tr>
+<tr class="even">
+<td align="left"><code>Ctrl-z</code></td>
+<td align="left">Suspend current command</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>Ctrl-l</code></td>
+<td align="left">Clear screen</td>
+</tr>
+</tbody>
+</table>
 
 Basic File Management
 ---------------------
@@ -573,19 +598,44 @@ the special characters that the shell uses for expansion.
 
 **Table. Filename wildcards**
 
-  Wildcard              Function
-  --------------------- ------------------------------------------------------
-  `*`                   Match zero or more characters.
-  `?`                   Match exactly one character.
-  `[characters]`        Match any single character from among *characters*
-                        listed between brackets.
-  `[!characters]`       Match any single character other than *characters*
-                        listed between brackets.
-  `[a-z]`               Match any single character from among the range of
-                        characters listed between brackets.
-  `[!a-z]`              Match any single character from among the characters
-                        not in the range listed between brackets
-  `{frag1,frag2,...}`   Brace expansion: create strings frag1, frag2, etc.
+<table>
+<thead>
+<tr class="header">
+<th align="left">Wildcard</th>
+<th align="left">Function</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>*</code></td>
+<td align="left">Match zero or more characters.</td>
+</tr>
+<tr class="even">
+<td align="left"><code>?</code></td>
+<td align="left">Match exactly one character.</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>[characters]</code></td>
+<td align="left">Match any single character from among <em>characters</em> listed between brackets.</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>[!characters]</code></td>
+<td align="left">Match any single character other than <em>characters</em> listed between brackets.</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>[a-z]</code></td>
+<td align="left">Match any single character from among the range of characters listed between brackets.</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>[!a-z]</code></td>
+<td align="left">Match any single character from among the characters not in the range listed between brackets</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>{frag1,frag2,...}</code></td>
+<td align="left">Brace expansion: create strings frag1, frag2, etc.</td>
+</tr>
+</tbody>
+</table>
 
 List all files ending with a digit:
 
@@ -639,10 +689,24 @@ work:
 
 **Table. Quotes**
 
-  Types of Quoting   Description
-  ------------------ --------------------------------------
-  `' '`              hard quote - no substitution allowed
-  `" "`              soft quote - allow substitution
+<table>
+<thead>
+<tr class="header">
+<th align="left">Types of Quoting</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>' '</code></td>
+<td align="left">hard quote - no substitution allowed</td>
+</tr>
+<tr class="even">
+<td align="left"><code>&quot; &quot;</code></td>
+<td align="left">soft quote - allow substitution</td>
+</tr>
+</tbody>
+</table>
 
 Finally, a note about using single vs. double quotes in shell code. In
 general, variables inside double quotes will be evaluated, but variables
@@ -820,22 +884,69 @@ shows some examples of redirection.
 
 **Table. Common Redirection Operators**
 
-  Redirection Syntax          Function
-  --------------------------- --------------------------------------------------
-  `$ cmd > file`              Send *stdout* to *file*
-  `$ cmd 1> file`             Same as above
-  `$ cmd 2> file`             Send *stderr* to *file*
-  `$ cmd > file 2>&1`         Send both *stdout* and *stderr* to *file*
-  `$ cmd < file`              Receive *stdin* from *file*
-  `$ cmd >> file`             Append *stdout* to *file*:
-  `$ cmd 1>> file`            Same as above
-  `$ cmd 2>> file`            Append *stderr* to *file*
-  `$ cmd >> file 2>&1`        Append both *stdout* and *stderr* to *file*
-  `$ cmd1 | cmd2`             Pipe *stdout* from *cmd1* to *cmd2*
-  `$ cmd1 2>&1 | cmd2`        Pipe *stdout* and *stderr* from *cmd1* to *cmd2*
-  `$ cmd1 tee file1 | cmd2`   Pipe *stdout* and *cmd1* to *cmd2* while
-                              simultaneously writing it to *file1*
-                              using *tee*
+<table>
+<thead>
+<tr class="header">
+<th align="left">Redirection Syntax</th>
+<th align="left">Function</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>$ cmd &gt; file</code></td>
+<td align="left">Send <em>stdout</em> to <em>file</em></td>
+</tr>
+<tr class="even">
+<td align="left"><code>$ cmd 1&gt; file</code></td>
+<td align="left">Same as above</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>$ cmd 2&gt; file</code></td>
+<td align="left">Send <em>stderr</em> to <em>file</em></td>
+</tr>
+<tr class="even">
+<td align="left"><code>$ cmd &gt; file 2&gt;&amp;1</code></td>
+<td align="left">Send both <em>stdout</em> and <em>stderr</em> to <em>file</em></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>$ cmd &lt; file</code></td>
+<td align="left">Receive <em>stdin</em> from <em>file</em></td>
+</tr>
+<tr class="even">
+<td align="left"><code>$ cmd &gt;&gt; file</code></td>
+<td align="left">Append <em>stdout</em> to <em>file</em>:</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>$ cmd 1&gt;&gt; file</code></td>
+<td align="left">Same as above</td>
+</tr>
+<tr class="even">
+<td align="left"><code>$ cmd 2&gt;&gt; file</code></td>
+<td align="left">Append <em>stderr</em> to <em>file</em></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>$ cmd &gt;&gt; file 2&gt;&amp;1</code></td>
+<td align="left">Append both <em>stdout</em> and <em>stderr</em> to <em>file</em></td>
+</tr>
+<tr class="even">
+<td align="left"><code>$ cmd1 | cmd2</code></td>
+<td align="left">Pipe <em>stdout</em> from <em>cmd1</em> to <em>cmd2</em></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>$ cmd1 2&gt;&amp;1 | cmd2</code></td>
+<td align="left">Pipe <em>stdout</em> and <em>stderr</em> from <em>cmd1</em> to <em>cmd2</em></td>
+</tr>
+<tr class="even">
+<td align="left"><code>$ cmd1 tee file1 | cmd2</code></td>
+<td align="left">Pipe <em>stdout</em> and <em>cmd1</em> to <em>cmd2</em> while simultaneously writing it to <em>file1</em></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">using <em>tee</em></td>
+</tr>
+</tbody>
+</table>
+
 
 Note that `cmd` may include options and arguments as seen in the
 previous section.
@@ -1002,14 +1113,40 @@ newline.
 
 **Character sets**
 
-  Operators   Description
-  ----------- -----------------------------------------------------------------
-  `[abc]`     Match any single character from from the listed characters
-  `[a-z]`     Match any single character from the range of characters
-  `[^abc]`    Match any single character not among listed characters
-  `[^a-z]`    Match any single character not among listed range of characters
-  `.`         Match any single character except a *newline*
-  `\`         Turn off (escape) the special meaning of a metacharacter
+<table>
+<thead>
+<tr class="header">
+<th align="left">Operators</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>[abc]</code></td>
+<td align="left">Match any single character from from the listed characters</td>
+</tr>
+<tr class="even">
+<td align="left"><code>[a-z]</code></td>
+<td align="left">Match any single character from the range of characters</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>[^abc]</code></td>
+<td align="left">Match any single character not among listed characters</td>
+</tr>
+<tr class="even">
+<td align="left"><code>[^a-z]</code></td>
+<td align="left">Match any single character not among listed range of characters</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>.</code></td>
+<td align="left">Match any single character except a <em>newline</em></td>
+</tr>
+<tr class="even">
+<td align="left"><code>\</code></td>
+<td align="left">Turn off (escape) the special meaning of a metacharacter</td>
+</tr>
+</tbody>
+</table>
 
 If we want to search for any one of a set of characters, we use a
 character set, such as `[13579]` or `[abcd]` or `[0-9]` (where the dash
@@ -1035,10 +1172,24 @@ character set such as `[[:alnum:]_]`.
 
 **Position anchors**
 
-  Operators   Description
-  ----------- --------------------------------
-  `^`         Match the beginning of a line.
-  `$`         Match the end of a line.
+<table>
+<thead>
+<tr class="header">
+<th align="left">Operators</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>^</code></td>
+<td align="left">Match the beginning of a line.</td>
+</tr>
+<tr class="even">
+<td align="left"><code>$</code></td>
+<td align="left">Match the end of a line.</td>
+</tr>
+</tbody>
+</table>
 
 To find a pattern at the beginning of the string, we use `^` (note this
 was also used for negation, but in that case occurs only inside square
@@ -1052,15 +1203,36 @@ character sets.
 
 **Modifiers**
 
-  Operators   Description
-  ----------- -----------------------------------------------------------------
-  `*`         Match zero or more of the character that precedes it.
-  `?`         Match zero or one instance of the preceding *regex*.
-  `+`         Match one or more instances of the preceding *regex*.
-  `{n,m}`     Match a range of occurrences of the single character or *regex*
-              that precedes this construct.
-  `|`         Match the character or expression to the left or right of the
-              vertical bar.
+<table>
+<thead>
+<tr class="header">
+<th align="left">Operators</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>*</code></td>
+<td align="left">Match zero or more of the character that precedes it.</td>
+</tr>
+<tr class="even">
+<td align="left"><code>?</code></td>
+<td align="left">Match zero or one instance of the preceding <em>regex</em>.</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>+</code></td>
+<td align="left">Match one or more instances of the preceding <em>regex</em>.</td>
+</tr>
+<tr class="even">
+<td align="left"><code>{n,m}</code></td>
+<td align="left">Match a range of occurrences of the single character or <em>regex</em> that precedes this construct.</td>
+</tr>
+<tr class="even">
+<td align="left"><code>|</code></td>
+<td align="left">Match the character or expression to the left or right of the vertical bar.</td>
+</tr>
+</tbody>
+</table>
 
 I can indicate repetitions as indicated in these examples:
 
@@ -1134,6 +1306,7 @@ set that we don't want to be inside the angle brackets?
 >     globbing but matches 0 or more repetitions of the character that
 >     precedes it when used in a regular expression).
 >
+
 ### `ed`, `grep`, `sed`, `awk`, and `perl`
 
 Before the text editor, there was the line editor. Rather than
