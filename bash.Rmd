@@ -1213,15 +1213,15 @@ character sets.
 <tbody>
 <tr class="odd">
 <td align="left"><code>*</code></td>
-<td align="left">Match zero or more of the character that precedes it.</td>
+<td align="left">Match zero or more instances of the preceding character or <em>regex</em>.</td>
 </tr>
 <tr class="even">
 <td align="left"><code>?</code></td>
-<td align="left">Match zero or one instance of the preceding <em>regex</em>.</td>
+<td align="left">Match zero or one instance of the preceding character or <em>regex</em>.</td>
 </tr>
 <tr class="odd">
 <td align="left"><code>+</code></td>
-<td align="left">Match one or more instances of the preceding <em>regex</em>.</td>
+<td align="left">Match one or more instances of the preceding character or <em>regex</em>.</td>
 </tr>
 <tr class="even">
 <td align="left"><code>{n,m}</code></td>
