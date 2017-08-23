@@ -20,7 +20,7 @@ window.onload = function() {
 
 
 <!-- MathJax scripts -->
-<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
 
 
@@ -193,7 +193,7 @@ and then <em>loops</em>.</p>
 <blockquote>
 <p><strong>note</strong></p>
 
-<p>I will use a <code>$</code> prompt for bash, a <code>&gt;</code> prompt for R, and a <code>&gt;&gt;&gt;</code> for
+<p>I will use a <code>$</code> prompt for bash, a <code>&gt;</code> prompt for R, a <code>&gt;&gt;&gt;</code> for
 Python, and a <code>In [1]:</code> prompt for IPython. By convention, a regular
 user&#39;s prompt in bash is <code>$</code>, while the root (or administrative)
 user&#39;s prompt is <code>#</code>. However, it is common practice to never log on
@@ -295,7 +295,10 @@ option:</p>
 <p>Regardless of whether you are working on a local computer or a remote
 one, it is occasionally useful to operate as a different user. For
 instance, you may need root (or administrative) access to change file
-permissions or install software.</p>
+permissions or install software. (Note this will only be possible
+on machines that you own or have special privileges on; the BCE virtual
+machine (bce.berkeley.edu) is one way to have a virtual Linux machine
+for which you have root access.)</p>
 
 <p>To upgrade all the software on your BCE machine:</p>
 
@@ -327,12 +330,15 @@ value currently assigned to a variable, you can prepend the name with
 the dollar sign ($). To print the value you can use the <code>echo</code> command.</p>
 
 <ol>
-<li> What is my default shell?\
-<code>$ echo $SHELL</code></li>
-<li> To change to bash on a one-time basis:\
-<code>$ bash</code></li>
-<li> To make it your default:\
-<code>$ chsh /bin/bash</code></li>
+<li><p>What is my default shell?</p>
+
+<p><code>$ echo $SHELL</code></p></li>
+<li><p>To change to bash on a one-time basis:</p>
+
+<p><code>$ bash</code></p></li>
+<li><p>To make it your default:</p>
+
+<p><code>$ chsh /bin/bash</code></p></li>
 </ol>
 
 <p>In the last example, <code>/bin/bash</code> should be whatever the path to the bash
@@ -571,7 +577,7 @@ listing returned by <code>ls</code> as the argument to another command, you woul
 type <code>$(ls)</code> in the location you want the result of <code>ls</code> to appear.</p>
 
 <p>An older notation for command substitution is to use backticks (e.g.,
-<code>`ls</code> versus <code>$(ls)</code>). It is generally preferable to use the new
+<code>`ls`</code> versus <code>$(ls)</code>). It is generally preferable to use the new
 notation, since there are many annoyances with the backtick notation.
 For example, backslashes (<code>\</code>) inside of backticks behave in a
 non-intuitive way, nested quoting is more cumbersome inside backticks,
@@ -909,6 +915,16 @@ $ echo {z..a..-2}
 
 <h3>2.4) Quoting</h3>
 
+<p>Finally, a note about using single vs. double quotes in shell code. In
+general, variables inside double quotes will be evaluated, but variables
+not inside double quotes will not be:</p>
+
+<pre><code>$ echo &quot;$HOME&quot;
+/home/jarrod
+$ echo &#39;$HOME&#39;
+$HOME
+</code></pre>
+
 <p><strong>Table. Quotes</strong></p>
 
 <table>
@@ -930,36 +946,26 @@ $ echo {z..a..-2}
 </tbody>
 </table>
 
-<p>Finally, a note about using single vs. double quotes in shell code. In
-general, variables inside double quotes will be evaluated, but variables
-not inside double quotes will not be:</p>
-
-<pre><code>$ echo &quot;$HOME&quot;
-/home/jarrod
-$ echo &#39;$HOME&#39;
-$HOME
-</code></pre>
-
 <p>This can be useful, for example, when you have a directory with a space
 in its name (of course, it is better to avoid spaces in file and
 directory names). Since bash uses spaces to parse the elements of the
 command line, you might try escaping the spaces with a backslash:</p>
 
 <pre><code>$ ls $HOME/with\ space
-ls: cannot access /home/jarrod/with space: No such file or directory
+file1.txt
 </code></pre>
 
-<p>You could fix this error by using triple backslashes, but a cleaner
+<p>However that can be a pain and may not work in all circumstances. A cleaner
 approach is to use soft (or double) quotes:</p>
 
-<pre><code>$ ls &quot;$HOME/with\ space&quot;
+<pre><code>$ ls &quot;$HOME/with space&quot;
 file1.txt
 </code></pre>
 
 <p>If you used hard quotes, you will get this error:</p>
 
-<pre><code>$ ls &#39;$HOME/with\ space&#39;
-ls: cannot access $HOME/with\ space: No such file or directory
+<pre><code>$ ls &#39;$HOME/with space&#39;
+ls: cannot access $HOME/with space: No such file or directory
 </code></pre>
 
 <p>What if you have double quotes in your file or directory name (again, it
@@ -980,14 +986,14 @@ useful commands and tools to view and manipulate files.</p>
 
 <ul>
 <li>  cat &ndash; concatenate files and print on the standard output</li>
-<li>  cp&ndash; copy files and directories</li>
-<li>  cut &ndash; remove sections from each line of files</li>
+<li>  cp &ndash; copy files and directories</li>
+<li>  cut &ndash;_remove sections from each line of files</li>
 <li>  diff&ndash; find differences between two files</li>
 <li>  grep &ndash; print lines matching a pattern</li>
 <li>  head &ndash; output the first part of files</li>
 <li>  find &ndash;  search for files in a directory hierarchy</li>
-<li>  less &ndash; opposite of more</li>
-<li>  more &ndash;  file perusal filter for crt viewing</li>
+<li>  less &ndash; opposite of more (and better than more)</li>
+<li>  more &ndash; file perusal filter for crt viewing</li>
 <li>  mv &ndash; move (rename) files</li>
 <li>  nl &ndash; number lines of files</li>
 <li>  paste &ndash; merge lines of files</li>
@@ -999,9 +1005,9 @@ useful commands and tools to view and manipulate files.</p>
 <li>  tail &ndash; output the last part of files</li>
 <li>  touch &ndash; change file timestamps</li>
 <li>  tr &ndash; translate or delete characters</li>
-<li>  uniq &ndash;  remove duplicate lines from a sorted file</li>
-<li>  wc &ndash;  print the number of bytes, words, and lines in files</li>
-<li>  wget and <code>curl</code> &ndash; non-interactive network downloader</li>
+<li>  uniq &ndash; remove duplicate lines from a sorted file</li>
+<li>  wc &ndash; print the number of bytes, words, and lines in files</li>
+<li>  wget and curl &ndash; non-interactive network downloader</li>
 </ul>
 
 <p>As we&#39;ve already seen the general syntax for a Unix program is:</p>
@@ -1050,7 +1056,7 @@ $ tail -f cpds.csv      # shows end of file, continually refreshing
 <p>The first line downloads the data from GitHub. The two main tools
 for downloading network accessible data from the commandline are <code>wget</code>
 and <code>curl</code>. I tend to use <code>wget</code> as my commandline downloading tool as
-it is more convenient.</p>
+it is more convenient, but on a Mac, only <code>curl</code> is generally available.</p>
 
 <p>A few more tidbits about <code>grep</code> (we will see more examples of <code>grep</code> in
 the section on regular expressions, but it is so useful that it is worth
@@ -1066,7 +1072,7 @@ $ grep -o 19.0 cpds.csv # returns only the content matching the pattern from the
 <p>Note that the first argument to grep is the pattern you are looking for.
 The syntax is different from that used for wildcards in file names.
 Also, you can use regular expressions in the pattern. We won’t see this
-in detail here, but will discuss this in the section below on regular
+in detail here, but we will discuss this in the section below on regular
 expressions.</p>
 
 <p>It is sometimes helpful to put the pattern inside double quotes, e.g.,
@@ -1175,8 +1181,8 @@ shows some examples of redirection.</p>
 <td align="left">Pipe <em>stdout</em> and <em>stderr</em> from <em>cmd1</em> to <em>cmd2</em></td>
 </tr>
 <tr class="even">
-<td align="left"><code>$ cmd1 tee file1 | cmd2</code></td>
-<td align="left">Pipe <em>stdout</em> and <em>cmd1</em> to <em>cmd2</em> while simultaneously writing it to <em>file1</em></td>
+<td align="left"><code>$ cmd1 | tee file1 | cmd2</code></td>
+<td align="left">Pipe <em>stdout</em> from <em>cmd1</em> to <em>cmd2</em> while simultaneously writing it to <em>file1</em></td>
 </tr>
 <tr class="even">
 <td align="left"></td>
@@ -1244,8 +1250,8 @@ similar to a pipe, but is appropriate when a command reads its arguments
 directly from the command line instead of through standard input. For
 example, suppose we are interested in searching for the text <code>pdf</code> in
 the last 4 R code files (those with suffix <code>.r</code> or <code>.R</code>) that were
-modified in the current directory. We can find the names of the last 4
-files ending in <code>.R</code> or <code>.r</code> which were modified using:</p>
+modified in the current directory. We can find the names of the four most
+recently modified files ending in <code>.R</code> or <code>.r</code> using:</p>
 
 <pre><code>$ ls -t *.{R,r} | head -4
 </code></pre>
@@ -1269,7 +1275,7 @@ the <code>xargs</code> utility. Here&#39;s an example:</p>
 <pre><code>$ ls -t *.{R,r} | head -4 | xargs grep pdf
 </code></pre>
 
-<p>The <code>tee</code> command let&#39;s you create 2 streams from 1. For example,
+<p>The <code>tee</code> command lets you create two streams from one. For example,
 consider the case where you want the results of this command:</p>
 
 <pre><code>$ cut -d&#39;,&#39; -f2 cpds.csv | sort | uniq 
@@ -1304,7 +1310,7 @@ syntax is quite similar.</p>
 <p>POSIX.2 regular expressions come in two flavors: extended regular
 expressions and basic (or obsolete) regular expressions. The extended
 syntax has metacharacters <code>()</code> and <code>{}</code>, while the basic syntax
-requires the metacharacters have to be designated <code>\(\)</code> and <code>\{\}</code>.
+requires the metacharacters to be designated <code>\(\)</code> and <code>\{\}</code>.
 In addition to the POSIX standard, Perl regular expressions are also
 widely used. While we won&#39;t go into detail, we will see some examples
 of each syntax.</p>
@@ -1421,7 +1427,7 @@ is one of the following values:</p>
 
 <p>To make a character set with a character class you need two square
 brackets, e.g. the digit class: <code>[[:digit:]]</code>. Or we can make a combined
-character set such as <code>[[:alnum:]_]</code>.</p>
+character set such as <code>[[:alnum:]_]</code> (to find any alphabetic or numeric characters or an underscore).</p>
 
 <h3>3.3) Location-specific matches</h3>
 
@@ -1506,13 +1512,13 @@ with any number of characters (<code>.*</code>) inside.</p>
 example, if you wanted to match phone numbers whether they start with
 <code>1-</code> or not you could use the following:</p>
 
-<pre><code>(1-)?[[:digit:]]{3}-[[:digit:]]{4}
+<pre><code>(1-)?[[:digit:]]{3}-[[:digit:]]{3}-[[:digit:]]{4}
 </code></pre>
 
 <p>The first part of the pattern <code>(1-)?</code> matches 0 or 1 occurrences of
 <code>1-</code>. Then the pattern <code>[[:digit:]]{3}</code> matches any 3 digits. Similarly,
 the pattern <code>[[:digit:]]{4}</code> matches any 4 digits. So the whole pattern
-matches any three digits followed by <code>-</code> and then followed by four
+matches any three digits followed by <code>-</code>, then another three digits, and then followed by four
 digits when it is preceded by 0 or 1 occurrences of <code>1-</code>.</p>
 
 <p>Parentheses are also used with a pipe (<code>|</code>) to indicate any one of a set
@@ -1559,14 +1565,15 @@ set that we don&#39;t want to be inside the angle brackets?</p>
 
 <p><strong>Globs vs. Regex:</strong></p>
 
-<p>:   Be sure you understand the difference between filename globbing
-    (see the Section called <em>Filename Globbing</em>) and regular
-    expressions. Filename globbing only works for filenames, while
-    regular expressions are used to match patterns in text more
-    generally. While they both use the same set of symbols, they mean
-    different things (e.g., <code>*</code> matches 0 or more characters when
-    globbing but matches 0 or more repetitions of the character that
-    precedes it when used in a regular expression).</p>
+<pre><code>Be sure you understand the difference between filename globbing
+(see the Section called *Filename Globbing*) and regular
+expressions. Filename globbing only works for filenames, while
+regular expressions are used to match patterns in text more
+generally. While they both use the same set of symbols, they mean
+different things (e.g., `*` matches 0 or more characters when
+globbing but matches 0 or more repetitions of the character that
+precedes it when used in a regular expression).
+</code></pre>
 </blockquote>
 
 <h3>3.6) <code>ed</code>, <code>grep</code>, <code>sed</code>, <code>awk</code>, and <code>perl</code></h3>
@@ -1598,7 +1605,7 @@ all lines containing the regular express <code>&lt;re&gt;</code> and print them 
 following content:</p>
 
 <pre><code>This is the first line.
-Followed by a this line.
+Followed by this line.
 And then ...
 </code></pre>
 
@@ -1606,7 +1613,7 @@ And then ...
 
 <pre><code>$ grep is file1.txt 
 This is the first line.
-Followed by a this line.
+Followed by this line.
 </code></pre>
 
 <p>To print all the lines <strong>not</strong> containing <code>is</code>:</p>
@@ -1635,13 +1642,13 @@ the group syntax <code>(1-)</code> and the <code>{}</code> notation are not part
 extended syntax. To have <code>grep</code> use the extended syntax, you can either
 use the <code>-E</code> option:</p>
 
-<pre><code>$ grep -E &#39;(1-)?[[:digit:]]{3}-[[:digit:]]{4}&#39; t.t
+<pre><code>$ grep -E &#39;(1-)?[[:digit:]]{3}-[[:digit:]]{4}&#39; file2.txt
 Here&#39;s my number: 919-543-3300.
 </code></pre>
 
 <p>or use the <code>egrep</code> command:</p>
 
-<pre><code>$ egrep  &#39;(1-)?[[:digit:]]{3}-[[:digit:]]{4}&#39; t.t
+<pre><code>$ egrep  &#39;(1-)?[[:digit:]]{3}-[[:digit:]]{4}&#39; file2.txt
 Here&#39;s my number: 919-543-3300.
 </code></pre>
 
@@ -1681,14 +1688,19 @@ $ sed -e &#39;/^;/d&#39; -e &#39;/^$/d&#39; file.txt
 <p>The first line deletes lines 1-9 of <code>file.txt</code>. What do you think the
 second line does?</p>
 
+<p>Note that the -e flag is only necessary if you want to have more than one expression, so it&#39;s not actually needed in the first line.</p>
+
 <p>Text substitution with <code>sed</code>:</p>
 
 <pre><code>$ sed &#39;s/old_pattern/new_pattern/&#39; file.txt &gt; new_file.txt
 $ sed &#39;s/old_pattern/new_pattern/g&#39; file.txt &gt; new_file.txt
+$ sed -i &#39;s/old_pattern/new_pattern/g&#39; file.txt 
 </code></pre>
 
-<p>The first line replaces only 1st instance in a line, while the second
-line replaces all instances in a line (i.e., globally).</p>
+<p>The first line replaces only the first instance in a line, while the second
+line replaces all instances in a line (i.e., globally). The use of the -i
+flag in the third line replaces
+the pattern in place in the file, thereby altering file.txt.</p>
 
 <p>Awk is a general purpose programming language typically used in data
 extraction tasks and particularly well-suited to one-liners (although it
@@ -1720,7 +1732,7 @@ and then print a blank line:</p>
 root:x:0:0:root:/root:/bin/bash
 </code></pre>
 
-<p>As you can see the entries are separated by colons (<code>:</code>) and the fifth
+<p>As you can see the entries are separated by colons (<code>:</code>) and the sixth
 field contains the root user&#39;s home directory (<code>/root</code>). The option
 <code>-F:</code> specifies that the colon <code>:</code> is the field delimiter and <code>print $6</code>
 prints the 6th field of each line.</p>
@@ -2135,19 +2147,16 @@ used for nicing R jobs:</p>
 
 function niceR(){
     # submits nice&#39;d R jobs
-if [ $# != &quot;2&quot; ]
-then
-   echo &quot;usage: niceR inputRfile outputfile&quot; 
-elif [ -e &quot;$2&quot; ]
-then
-   echo &quot;$2 exists, I won&#39;t overwrite&quot; 
-elif [ ! -e &quot;$1&quot; ]
-then
-   echo &quot;inputRfile $1 does not exist&quot; 
-else
-   echo &quot;running R on $1&quot; 
-   nice -n 19 R --no-save &lt; $1 &amp;&gt; $2
-fi
+    if [ $# != &quot;2&quot; ] then
+         echo &quot;usage: niceR inputRfile outputfile&quot; 
+    elif [ -e &quot;$2&quot; ] then
+         echo &quot;$2 exists, I won&#39;t overwrite&quot; 
+    elif [ ! -e &quot;$1&quot; ] then
+         echo &quot;inputRfile $1 does not exist&quot; 
+    else
+         echo &quot;running R on $1&quot; 
+         nice -n 19 R --no-save &lt; $1 &amp;&gt; $2
+    fi
 }
 </code></pre>
 
@@ -2172,14 +2181,13 @@ done
 # Author: Chris Paciorek
 # Date: July 28, 2011
 
-url=&#39;ftp://ftp3.ncdc.noaa.gov/pub/data/3200&#39;
-IFS=:  # internal field separator
-mths=jan:feb:mar:apr
-for ((yr=1910; yr&lt;=1920; yr++))
+url=&#39;ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/daily/grid/years&#39;
+types=&quot;tmin tmax&quot;
+for ((yr=1950; yr&lt;=2017; yr++))
 do
-    for mth in ${mths}
+    for type in ${types}
     do
-        wget ${url}/${yr}/3200${mth}${yr}
+        wget ${url}/${yr}.${type}
     done
 done
 </code></pre>
@@ -2192,12 +2200,22 @@ done
 # Date: July 28, 2011
 
 n=100 
-for(( it=1; it&lt;=100; it++));
+for(( it=1; it&lt;=100; it++ ))
 do
     echo &quot;n=$n; it=$it; source(&#39;base.R&#39;)&quot; &gt; tmp-$n-$it.R
     R CMD BATCH --no-save tmp-$n-$it.R sim-n$n-it$it.Rout
 done
 # note that base.R should NOT set either &#39;n&#39; or &#39;it&#39;
+</code></pre>
+
+<p>Note by default the separator when you&#39;re looping through elements of a variable will be a space (as above), but you can set it differently, for example:</p>
+
+<pre><code>IFS=:
+types=tmin:tmax:pmin:pmax
+for type in $types
+do
+    echo $type
+done
 </code></pre>
 
 <h3>5.4) How much shell scripting should I learn?</h3>

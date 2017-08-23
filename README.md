@@ -2,8 +2,6 @@
 
 Tutorial on using the bash shell.
 
-The video that accompanies this material is available here [on YouTube [UNDER CONSTRUCTION]]().
-
 This tutorial covers:
 
     The Interactive Shell
@@ -12,3 +10,11 @@ This tutorial covers:
     Processes
     Shell programming
     Working with documents 
+
+You can create the html via Pandoc (see Section 6 of bash.md) or R Markdown processing. The version in this repository was created via
+
+```
+Rscript -e "library(knitr); knit2html('bash.Rmd')"
+```
+
+Note that processing in that way causes bash.md to be overwritten.

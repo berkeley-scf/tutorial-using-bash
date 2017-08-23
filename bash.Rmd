@@ -24,7 +24,7 @@ and then *loops*.
 
 > **note**
 >
-> I will use a `$` prompt for bash, a `>` prompt for R, and a `>>>` for
+> I will use a `$` prompt for bash, a `>` prompt for R, a `>>>` for
 > Python, and a `In [1]:` prompt for IPython. By convention, a regular
 > user's prompt in bash is `$`, while the root (or administrative)
 > user's prompt is `#`. However, it is common practice to never log on
@@ -116,7 +116,10 @@ option:
 Regardless of whether you are working on a local computer or a remote
 one, it is occasionally useful to operate as a different user. For
 instance, you may need root (or administrative) access to change file
-permissions or install software.
+permissions or install software. (Note this will only be possible
+on machines that you own or have special privileges on; the BCE virtual
+machine (bce.berkeley.edu) is one way to have a virtual Linux machine
+for which you have root access.)
 
 To upgrade all the software on your BCE machine:
 
@@ -143,11 +146,14 @@ which consists of names that have values assigned to them. To access the
 value currently assigned to a variable, you can prepend the name with
 the dollar sign (\$). To print the value you can use the `echo` command.
 
-1.  What is my default shell?\
+1.  What is my default shell?
+
     `$ echo $SHELL`
-2.  To change to bash on a one-time basis:\
+2.  To change to bash on a one-time basis:
+
     `$ bash`
-3.  To make it your default:\
+3.  To make it your default:
+
     `$ chsh /bin/bash`
 
 In the last example, `/bin/bash` should be whatever the path to the bash
@@ -370,7 +376,7 @@ listing returned by `ls` as the argument to another command, you would
 type `$(ls)` in the location you want the result of `ls` to appear.
 
 An older notation for command substitution is to use backticks (e.g.,
-`` `ls ``\` versus `$(ls)`). It is generally preferable to use the new
+`` `ls` `` versus `$(ls)`). It is generally preferable to use the new
 notation, since there are many annoyances with the backtick notation.
 For example, backslashes (`\`) inside of backticks behave in a
 non-intuitive way, nested quoting is more cumbersome inside backticks,
@@ -687,6 +693,17 @@ work:
 
 ### 2.4) Quoting
 
+
+Finally, a note about using single vs. double quotes in shell code. In
+general, variables inside double quotes will be evaluated, but variables
+not inside double quotes will not be:
+
+    $ echo "$HOME"
+    /home/jarrod
+    $ echo '$HOME'
+    $HOME
+
+
 **Table. Quotes**
 
 <table>
@@ -708,33 +725,24 @@ work:
 </tbody>
 </table>
 
-Finally, a note about using single vs. double quotes in shell code. In
-general, variables inside double quotes will be evaluated, but variables
-not inside double quotes will not be:
-
-    $ echo "$HOME"
-    /home/jarrod
-    $ echo '$HOME'
-    $HOME
-
 This can be useful, for example, when you have a directory with a space
 in its name (of course, it is better to avoid spaces in file and
 directory names). Since bash uses spaces to parse the elements of the
 command line, you might try escaping the spaces with a backslash:
 
     $ ls $HOME/with\ space
-    ls: cannot access /home/jarrod/with space: No such file or directory
+    file1.txt
 
-You could fix this error by using triple backslashes, but a cleaner
+However that can be a pain and may not work in all circumstances. A cleaner
 approach is to use soft (or double) quotes:
 
-    $ ls "$HOME/with\ space"
+    $ ls "$HOME/with space"
     file1.txt
 
 If you used hard quotes, you will get this error:
 
-    $ ls '$HOME/with\ space'
-    ls: cannot access $HOME/with\ space: No such file or directory
+    $ ls '$HOME/with space'
+    ls: cannot access $HOME/with space: No such file or directory
 
 What if you have double quotes in your file or directory name (again, it
 is better to avoid using double quotes in file and directory names)? In
@@ -752,14 +760,14 @@ shell is the primary way to work with Unix, there are a large number of
 useful commands and tools to view and manipulate files.
 
 -   cat -- concatenate files and print on the standard output
--   cp-- copy files and directories
--   cut -- remove sections from each line of files
+-   cp -- copy files and directories
+-   cut --_remove sections from each line of files
 -   diff-- find differences between two files
 -   grep -- print lines matching a pattern
 -   head -- output the first part of files
 -   find --  search for files in a directory hierarchy
--   less -- opposite of more
--   more --  file perusal filter for crt viewing
+-   less -- opposite of more (and better than more)
+-   more -- file perusal filter for crt viewing
 -   mv -- move (rename) files
 -   nl -- number lines of files
 -   paste -- merge lines of files
@@ -771,9 +779,9 @@ useful commands and tools to view and manipulate files.
 -   tail -- output the last part of files
 -   touch -- change file timestamps
 -   tr -- translate or delete characters
--   uniq --  remove duplicate lines from a sorted file
--   wc --  print the number of bytes, words, and lines in files
--   wget and `curl` -- non-interactive network downloader
+-   uniq -- remove duplicate lines from a sorted file
+-   wc -- print the number of bytes, words, and lines in files
+-   wget and curl -- non-interactive network downloader
 
 As we've already seen the general syntax for a Unix program is:
 
@@ -815,7 +823,7 @@ Here are a couple of examples of using the `tail` command:
 The first line downloads the data from GitHub. The two main tools
 for downloading network accessible data from the commandline are `wget`
 and `curl`. I tend to use `wget` as my commandline downloading tool as
-it is more convenient.
+it is more convenient, but on a Mac, only `curl` is generally available.
 
 A few more tidbits about `grep` (we will see more examples of `grep` in
 the section on regular expressions, but it is so useful that it is worth
@@ -830,7 +838,7 @@ seeing many times):
 Note that the first argument to grep is the pattern you are looking for.
 The syntax is different from that used for wildcards in file names.
 Also, you can use regular expressions in the pattern. We won’t see this
-in detail here, but will discuss this in the section below on regular
+in detail here, but we will discuss this in the section below on regular
 expressions.
 
 It is sometimes helpful to put the pattern inside double quotes, e.g.,
@@ -937,8 +945,8 @@ shows some examples of redirection.
 <td align="left">Pipe <em>stdout</em> and <em>stderr</em> from <em>cmd1</em> to <em>cmd2</em></td>
 </tr>
 <tr class="even">
-<td align="left"><code>$ cmd1 tee file1 | cmd2</code></td>
-<td align="left">Pipe <em>stdout</em> and <em>cmd1</em> to <em>cmd2</em> while simultaneously writing it to <em>file1</em></td>
+<td align="left"><code>$ cmd1 | tee file1 | cmd2</code></td>
+<td align="left">Pipe <em>stdout</em> from <em>cmd1</em> to <em>cmd2</em> while simultaneously writing it to <em>file1</em></td>
 </tr>
 <tr class="even">
 <td align="left"></td>
@@ -1003,8 +1011,8 @@ similar to a pipe, but is appropriate when a command reads its arguments
 directly from the command line instead of through standard input. For
 example, suppose we are interested in searching for the text `pdf` in
 the last 4 R code files (those with suffix `.r` or `.R`) that were
-modified in the current directory. We can find the names of the last 4
-files ending in `.R` or `.r` which were modified using:
+modified in the current directory. We can find the names of the four most
+recently modified files ending in `.R` or `.r` using:
 
     $ ls -t *.{R,r} | head -4
 
@@ -1025,7 +1033,7 @@ the `xargs` utility. Here's an example:
 
     $ ls -t *.{R,r} | head -4 | xargs grep pdf
 
-The `tee` command let's you create 2 streams from 1. For example,
+The `tee` command lets you create two streams from one. For example,
 consider the case where you want the results of this command:
 
     $ cut -d',' -f2 cpds.csv | sort | uniq 
@@ -1057,7 +1065,7 @@ syntax is quite similar.
 > POSIX.2 regular expressions come in two flavors: extended regular
 > expressions and basic (or obsolete) regular expressions. The extended
 > syntax has metacharacters `()` and `{}`, while the basic syntax
-> requires the metacharacters have to be designated `\(\)` and `\{\}`.
+> requires the metacharacters to be designated `\(\)` and `\{\}`.
 > In addition to the POSIX standard, Perl regular expressions are also
 > widely used. While we won't go into detail, we will see some examples
 > of each syntax.
@@ -1166,7 +1174,7 @@ To learn more about regular expressions, you can type:
 
 To make a character set with a character class you need two square
 brackets, e.g. the digit class: `[[:digit:]]`. Or we can make a combined
-character set such as `[[:alnum:]_]`.
+character set such as `[[:alnum:]_]` (to find any alphabetic or numeric characters or an underscore).
 
 ### 3.3) Location-specific matches
 
@@ -1249,12 +1257,12 @@ We often want to be able to look for multi-character patterns. For
 example, if you wanted to match phone numbers whether they start with
 `1-` or not you could use the following:
 
-    (1-)?[[:digit:]]{3}-[[:digit:]]{4}
+    (1-)?[[:digit:]]{3}-[[:digit:]]{3}-[[:digit:]]{4}
 
 The first part of the pattern `(1-)?` matches 0 or 1 occurrences of
 `1-`. Then the pattern `[[:digit:]]{3}` matches any 3 digits. Similarly,
 the pattern `[[:digit:]]{4}` matches any 4 digits. So the whole pattern
-matches any three digits followed by `-` and then followed by four
+matches any three digits followed by `-`, then another three digits, and then followed by four
 digits when it is preceded by 0 or 1 occurrences of `1-`.
 
 Parentheses are also used with a pipe (`|`) to indicate any one of a set
@@ -1297,7 +1305,7 @@ set that we don't want to be inside the angle brackets?
 >
 > **Globs vs. Regex:**
 >
-> :   Be sure you understand the difference between filename globbing
+>     Be sure you understand the difference between filename globbing
 >     (see the Section called *Filename Globbing*) and regular
 >     expressions. Filename globbing only works for filenames, while
 >     regular expressions are used to match patterns in text more
@@ -1336,14 +1344,14 @@ To start you will need to create a file called `file1.txt` with the
 following content:
 
     This is the first line.
-    Followed by a this line.
+    Followed by this line.
     And then ...
 
 To print all the lines containing `is`:
 
     $ grep is file1.txt 
     This is the first line.
-    Followed by a this line.
+    Followed by this line.
 
 To print all the lines **not** containing `is`:
 
@@ -1368,12 +1376,12 @@ the group syntax `(1-)` and the `{}` notation are not part of the
 extended syntax. To have `grep` use the extended syntax, you can either
 use the `-E` option:
 
-    $ grep -E '(1-)?[[:digit:]]{3}-[[:digit:]]{4}' t.t
+    $ grep -E '(1-)?[[:digit:]]{3}-[[:digit:]]{4}' file2.txt
     Here's my number: 919-543-3300.
 
 or use the `egrep` command:
 
-    $ egrep  '(1-)?[[:digit:]]{3}-[[:digit:]]{4}' t.t
+    $ egrep  '(1-)?[[:digit:]]{3}-[[:digit:]]{4}' file2.txt
     Here's my number: 919-543-3300.
 
 If we want to match regardless of whether the phone number is separated
@@ -1408,13 +1416,18 @@ Deleting lines of text with `sed`:
 The first line deletes lines 1-9 of `file.txt`. What do you think the
 second line does?
 
+Note that the -e flag is only necessary if you want to have more than one expression, so it's not actually needed in the first line.
+
 Text substitution with `sed`:
 
     $ sed 's/old_pattern/new_pattern/' file.txt > new_file.txt
     $ sed 's/old_pattern/new_pattern/g' file.txt > new_file.txt
+    $ sed -i 's/old_pattern/new_pattern/g' file.txt 
 
-The first line replaces only 1st instance in a line, while the second
-line replaces all instances in a line (i.e., globally).
+The first line replaces only the first instance in a line, while the second
+line replaces all instances in a line (i.e., globally). The use of the -i
+flag in the third line replaces
+the pattern in place in the file, thereby altering file.txt.
 
 Awk is a general purpose programming language typically used in data
 extraction tasks and particularly well-suited to one-liners (although it
@@ -1442,7 +1455,7 @@ To see what this did, let's look at the first line of `/etc/passwd`:
     $ head -n 1 /etc/passwd
     root:x:0:0:root:/root:/bin/bash
 
-As you can see the entries are separated by colons (`:`) and the fifth
+As you can see the entries are separated by colons (`:`) and the sixth
 field contains the root user's home directory (`/root`). The option
 `-F:` specifies that the colon `:` is the field delimiter and `print $6`
 prints the 6th field of each line.
@@ -1821,19 +1834,16 @@ used for nicing R jobs:
 
     function niceR(){
         # submits nice'd R jobs
-    if [ $# != "2" ]
-    then
-       echo "usage: niceR inputRfile outputfile" 
-    elif [ -e "$2" ]
-    then
-       echo "$2 exists, I won't overwrite" 
-    elif [ ! -e "$1" ]
-    then
-       echo "inputRfile $1 does not exist" 
-    else
-       echo "running R on $1" 
-       nice -n 19 R --no-save < $1 &> $2
-    fi
+        if [ $# != "2" ] then
+             echo "usage: niceR inputRfile outputfile" 
+        elif [ -e "$2" ] then
+             echo "$2 exists, I won't overwrite" 
+        elif [ ! -e "$1" ] then
+             echo "inputRfile $1 does not exist" 
+        else
+             echo "running R on $1" 
+             nice -n 19 R --no-save < $1 &> $2
+        fi
     }
 
 For more details, look in Newham&Rosenblatt or search online.
@@ -1856,14 +1866,13 @@ Another use of *for* loops is automating file downloads:
     # Author: Chris Paciorek
     # Date: July 28, 2011
 
-    url='ftp://ftp3.ncdc.noaa.gov/pub/data/3200'
-    IFS=:  # internal field separator
-    mths=jan:feb:mar:apr
-    for ((yr=1910; yr<=1920; yr++))
+    url='ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/daily/grid/years'
+    types="tmin tmax"
+    for ((yr=1950; yr<=2017; yr++))
     do
-        for mth in ${mths}
+        for type in ${types}
         do
-            wget ${url}/${yr}/3200${mth}${yr}
+            wget ${url}/${yr}.${type}
         done
     done
 
@@ -1875,12 +1884,21 @@ Another use of *for* loops is automating file downloads:
     # Date: July 28, 2011
 
     n=100 
-    for(( it=1; it<=100; it++));
+    for(( it=1; it<=100; it++ ))
     do
         echo "n=$n; it=$it; source('base.R')" > tmp-$n-$it.R
         R CMD BATCH --no-save tmp-$n-$it.R sim-n$n-it$it.Rout
     done
     # note that base.R should NOT set either 'n' or 'it'
+
+Note by default the separator when you're looping through elements of a variable will be a space (as above), but you can set it differently, for example:
+
+    IFS=:
+    types=tmin:tmax:pmin:pmax
+    for type in $types
+    do
+        echo $type
+    done
 
 ### 5.4) How much shell scripting should I learn?
 
