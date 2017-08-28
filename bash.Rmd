@@ -1846,6 +1846,8 @@ used for nicing R jobs:
         fi
     }
 
+If the `then` is on a separate line from the `if`, you won't need the semicolon. 
+
 For more details, look in Newham&Rosenblatt or search online.
 
 ### 5.3) For loops
@@ -1899,6 +1901,8 @@ Note by default the separator when you're looping through elements of a variable
     do
         echo $type
     done
+
+Similarly to the if/then/else, if you have the `do` on the same line as the `for`, you'll need a semicolon before the `do`.
 
 ### 5.4) How much shell scripting should I learn?
 
