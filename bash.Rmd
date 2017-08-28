@@ -1834,11 +1834,11 @@ used for nicing R jobs:
 
     function niceR(){
         # submits nice'd R jobs
-        if [ $# != "2" ] then
+        if [ $# != "2" ]; then
              echo "usage: niceR inputRfile outputfile" 
-        elif [ -e "$2" ] then
+        elif [ -e "$2" ]; then
              echo "$2 exists, I won't overwrite" 
-        elif [ ! -e "$1" ] then
+        elif [ ! -e "$1" ]; then
              echo "inputRfile $1 does not exist" 
         else
              echo "running R on $1" 
