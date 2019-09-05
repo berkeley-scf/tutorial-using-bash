@@ -228,16 +228,16 @@ general to UNIX.</p>
 <h3>1.1) Getting started</h3>
 
 <p>I assume you already have access to a basic bash shell on a computer
-with network access. You should also have ssh installed. SSH provides an
-encrypted mechanism to connect to a remote Unix terminal. To learn more
+with network access (e.g., the Terminal on a Mac, the Ubuntu subsystem on Windows, or a Linux machine). You should also have ssh installed. SSH provides an
+encrypted mechanism to connect to a remote Unix-based (i.e., Linux or Mac) terminal. To learn more
 about using ssh to connect to the SCF machines and general tips about
 using ssh on various operating systems, see:
 <a href="http://statistics.berkeley.edu/computing/ssh">http://statistics.berkeley.edu/computing/ssh</a></p>
 
 <p>To ssh to another machine, you need to know its (host)name. For example,
-to ssh to <code>scf-ug01.berkeley.edu</code>, one of the SCF machines, you would:</p>
+to ssh to <code>arwen.berkeley.edu</code>, one of the SCF machines, you would:</p>
 
-<pre><code>$ ssh scf-ug01.berkeley.edu
+<pre><code>$ ssh arwen.berkeley.edu
 Password:
 </code></pre>
 
@@ -249,63 +249,67 @@ to set this up, see: <a href="http://statistics.berkeley.edu/computing/ssh-keys"
 specify it as well. For example, to specify the username <code>jarrod</code>, you
 would:</p>
 
-<pre><code>$ ssh jarrod@scf-ug01.berkeley.edu
+<pre><code>$ ssh jarrod@arwen.berkeley.edu
 </code></pre>
 
 <p>If you want to view graphical applications on your local computer that
 are running on the remote computer you need to use the <code>-X</code> option:</p>
 
-<pre><code>$ ssh -X jarrod@scf-ug01.berkeley.edu
+<pre><code>$ ssh -X jarrod@arwen.berkeley.edu
 </code></pre>
 
 <p>Alternatively, if you want to copy a file (<code>file1.txt</code>) from your local
-computer to <code>scf-ug01.berkeley.edu</code>, you can use the <code>scp</code> command,
+computer to <code>arwen.berkeley.edu</code>, you can use the <code>scp</code> command,
 which securely copies files between machines:</p>
 
-<pre><code>$ scp file1.txt jarrod@scf-ug01.berkeley.edu:.
+<pre><code>$ scp file1.txt jarrod@arwen.berkeley.edu:.
 </code></pre>
 
 <p>The above command will copy <code>file1.txt</code> from my current working
 directory on my local machine to <code>jarrod</code>&#39;s home directory on
-<code>scf-ug01.berkeley.edu</code>. The <code>.</code> following the <code>:</code> indicates that I want
+<code>arwen.berkeley.edu</code>. The <code>.</code> following the <code>:</code> indicates that I want
 to copy the file to my home directory on the remote machine. I could
 also replace <code>.</code> with any relative path from my home directory on the
 remote machine or I could use an absolute path.</p>
 
-<p>To copy a file (<code>file2.txt</code>) from <code>scf-ug01.berkeley.edu</code> to my local
+<p>To copy a file (<code>file2.txt</code>) from <code>arwen.berkeley.edu</code> to my local
 machine:</p>
 
-<pre><code>$ scp jarrod@scf-ug01.berkeley.edu:file2.txt .
+<pre><code>$ scp jarrod@arwen.berkeley.edu:file2.txt .
 </code></pre>
 
 <p>I can even copy a file (<code>file3.txt</code>) owned by one user (<code>jarrod</code>) on one
-remote machine <code>scf-ug01.berkeley.edu</code> to the account of another user
+remote machine <code>arwen.berkeley.edu</code> to the account of another user
 (<code>jmillman</code>) on another remote machine <code>scf-ug02.berkeley.edu</code>:</p>
 
-<pre><code>$ scp jarrod@scf-ug01.berkeley.edu:file3.txt jmillman@scf-ug01.berkeley.edu:.
+<pre><code>$ scp jarrod@arwen.berkeley.edu:file3.txt jmillman@arwen.berkeley.edu:.
 </code></pre>
 
 <p>If instead of copying a single file, I wanted to copy an entire
 directory (<code>src</code>) from one machine to another, I would use the <code>-r</code>
 option:</p>
 
-<pre><code>$ scp -r src jmillman@scf-ug01.berkeley.edu:.
+<pre><code>$ scp -r src jmillman@arwen.berkeley.edu:.
 </code></pre>
 
 <p>Regardless of whether you are working on a local computer or a remote
 one, it is occasionally useful to operate as a different user. For
 instance, you may need root (or administrative) access to change file
 permissions or install software. (Note this will only be possible
-on machines that you own or have special privileges on; the BCE virtual
-machine (bce.berkeley.edu) is one way to have a virtual Linux machine
+on machines that you own or have special privileges on; the Ubuntu
+subsystem for windows is one way to have a virtual Linux machine
 for which you have root access.)</p>
 
-<p>To upgrade all the software on your BCE machine:</p>
+<p>For example on an Ubuntu Linux machine (including the Ubuntu subsystem for Windows),
+here&#39;s how you can act as the &#39;root&#39; user to update or add software
+on machines where you have administrative access:</p>
+
+<p>To upgrade all the software on the machine:</p>
 
 <pre><code>$ sudo apt-get upgrade
 </code></pre>
 
-<p>To install the text editor vim on a BCE machine:</p>
+<p>To install the text editor vim on the machine:</p>
 
 <pre><code>$ sudo apt-get install vim
 </code></pre>
