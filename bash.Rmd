@@ -35,8 +35,8 @@ and then *loops*.
 When you are working in a terminal window (i.e., a window with the
 command line interface), you're interacting with a shell. There are
 multiple shells (e.g., *sh*, *bash*, *csh*, *tcsh*, *zsh*, *fish*). I'll
-assume you are using *bash*, as this is the default for Mac OS X, the
-BCE VM, the SCF machines and most Linux distributions. However, the
+assume you are using *bash*, as this is the default for Mac OS X,
+the SCF machines, Savio, and most Linux distributions. However, the
 basic ideas are applicable to any Unix shell.
 
 The shell is an amazingly powerful programming environment. From it you
@@ -859,6 +859,7 @@ can "escape" them by preceding with a back-slash. For example to look
 for `"Canada"`, including the quotes:
 
     $ grep "\"Canada\"" cpds.csv
+    $ grep "19\.0" cpds.csv
 
 If you have a big data file and need to subset it by line (e.g., with
 `grep`) or by field (e.g., with `cut`), then you can do it really fast
@@ -1072,7 +1073,8 @@ syntax is quite similar.
 > requires the metacharacters to be designated `\(\)` and `\{\}`.
 > In addition to the POSIX standard, Perl regular expressions are also
 > widely used. While we won't go into detail, we will see some examples
-> of each syntax.
+> of each syntax. In the examples that follow we'll generally use the
+> extended syntax by using the `-E` flag to `grep`.
 
 ### 3.1) Overview and core syntax
 
@@ -1165,12 +1167,16 @@ character set, such as `[13579]` or `[abcd]` or `[0-9]` (where the dash
 indicates a sequence) or `[0-9a-z]`. To indicate any character not in a
 set, we place a `^` just inside the first bracket: `[^abcd]`.
 
+    $ grep -E -o [0-9] test.txt     
+
 There are a bunch of named character classes so that we don't have write
 out common sets of characters. The syntax is `[:CLASS:]` where `CLASS`
 is one of the following values:
 
     "alnum", "alpha", "ascii", "blank", "cntrl", "digit", "graph",
     "lower", "print", "punct", "space", "upper", "word" or "xdigit".
+
+    $ grep -E -o [[:punct:]] test.txt
 
 To learn more about regular expressions, you can type:
 
@@ -1179,6 +1185,8 @@ To learn more about regular expressions, you can type:
 To make a character set with a character class you need two square
 brackets, e.g. the digit class: `[[:digit:]]`. Or we can make a combined
 character set such as `[[:alnum:]_]` (to find any alphabetic or numeric characters or an underscore).
+
+    $ grep -E -o [[:digit:]\.\,] test.txt
 
 ### 3.3) Location-specific matches
 
@@ -1206,6 +1214,9 @@ character set such as `[[:alnum:]_]` (to find any alphabetic or numeric characte
 To find a pattern at the beginning of the string, we use `^` (note this
 was also used for negation, but in that case occurs only inside square
 brackets) and to find it at the end we use `$`.
+
+    $ grep -E -o ^[0-9] test.txt
+    $ grep -E -o [0-9]$ test.txt
 
 ### 3.4) Repetitions, Grouping, and References
 
@@ -1254,6 +1265,9 @@ I can indicate repetitions as indicated in these examples:
 -   `[[:digit:]]{1,3}` – at least one and no more than three digits
 -   `[[:digit:]]{2,}` – two or more digits
 
+    $ grep -E -o [0-9]+ test.txt
+
+
 An example is that `\[.*\]` is the pattern of closed square brackets
 with any number of characters (`.*`) inside.
 
@@ -1270,7 +1284,10 @@ matches any three digits followed by `-`, then another three digits, and then fo
 digits when it is preceded by 0 or 1 occurrences of `1-`.
 
 Parentheses are also used with a pipe (`|`) to indicate any one of a set
-of multi-character sequences, such as `(http|ftp)`.
+of multi-character sequences, such as `(http|ftp)`. Here we need double
+quotes or the shell tries to interpret the `(`.
+
+    $ grep -E -o "(http|ftp)" test.txt
 
 ### 3.5) Greedy matching
 
