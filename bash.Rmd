@@ -547,7 +547,7 @@ A file typically consist of these attributes:
 -   Protection.
 -   Time, date, and user identification.
 
-![Schematic of file attributes.](../figs/file.png)
+![Schematic of file attributes.](file.png)
 
 Listing file attributes with `ls`:
 
@@ -1265,11 +1265,12 @@ I can indicate repetitions as indicated in these examples:
 -   `[[:digit:]]{1,3}` – at least one and no more than three digits
 -   `[[:digit:]]{2,}` – two or more digits
 
-    $ grep -E -o [0-9]+ test.txt
-
-
 An example is that `\[.*\]` is the pattern of closed square brackets
-with any number of characters (`.*`) inside.
+with any number of characters (`.*`) inside:
+
+﻿﻿    $ grep -E -o "\[.*\]" test.txt
+
+Note that the quotations ensured that the backslashes are passed into grep and not simply interpreted by the shell.
 
 We often want to be able to look for multi-character patterns. For
 example, if you wanted to match phone numbers whether they start with
