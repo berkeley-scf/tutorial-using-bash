@@ -54,17 +54,19 @@
       
       </header>
       <section>
+        <div class="menu">
         <nav>
           <a href="{{ "/" | absolute_url }}">Overview</a> |
-          <a href="parallel-python">File Management</a> |
-          <a href="parallel-R">Using Commands</a> |
-          <a href="parallel-matlab">Shell Programming</a> |
-          <a href="parallel-C">Managing Processes</a> |
-          <a href="parallel-C">Regular Expressions</a> |
+          <a href="file-management">File Management</a> |
+          <a href="using-commands">Using Commands</a> |
+          <a href="shell-programming">Shell Programming</a> |
+          <a href="managing-processes">Managing Processes</a> |
+          <a href="regex">Regular Expressions</a> 
         </nav>
-        <p></p>
-
-      {{ content }}
+        </div>
+        <div class="main">
+          {{ content }}
+        </div>
 
       </section>
       <footer>

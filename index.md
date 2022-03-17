@@ -16,16 +16,16 @@ This tutorial by Jarrod Millman and Christopher Paciorek is licensed under a Cre
 
 # 2 The interactive shell
 
-The shell is an interactive computer programming environment. More
-specifically, it is a read-evaluate-print loop (REPL) environment. R and
+The shell is the UNIX program that provides an interactive computer programming environment. You use the shell when in a terminal window to interact with a UNIX-style operating system (e.g., Linux or MacOS). The shell sits between you and the operating system and provides useful commands and functionality. Basically, the shell is a program that serves to run other commands for you and show you the results. 
+
+The shell is a read-evaluate-print loop (REPL) environment. R and
 Python also provide REPL environments. A REPL reads a single
 *expression* or input, parses and *evaluates* it, *prints* the results,
 and then *loops*.
 
-> **note**
+> **Note**
 >
-> I will use a `$` prompt for bash, a `>` prompt for R, a `>>>` for
-> Python, and a `In [1]:` prompt for IPython. By convention, a regular
+> I will use a `$` prompt for bash. By convention, a regular
 > user's prompt in bash is `$`, while the root (or administrative)
 > user's prompt is `#`. However, it is common practice to never log on
 > as the root user. If you need to run a command with root privileges,
@@ -33,11 +33,11 @@ and then *loops*.
 > below for more details).
 
 When you are working in a terminal window (i.e., a window with the
-command line interface), you're interacting with a shell. There are
-multiple shells (e.g., *sh*, *bash*, *csh*, *tcsh*, *zsh*, *fish*). I'll
-assume you are using *bash* or *zsh*, as these are the defaults for Mac OS X and most Linux distributions
-(including the UC Berkeley Statistics Department machines and UC Berkeley Savio campus cluster). However, the
+command line interface), you're interacting with a shell. 
+There are actually different shells that you can use, of which `bash` is very common and is the default on many systems. In recent versions of MacOS, `zsh` is the default shell. There are others as well (e.g., *sh*, *csh*, *tcsh*, *fish*), but this tutorial
+assumes you are using *bash* or *zsh*. However, the
 basic ideas are applicable to any Unix shell.
+
 
 The shell is an amazingly powerful programming environment. From it you
 can interactively monitor and control almost any aspect of the OS and
@@ -45,7 +45,7 @@ more importantly you can automate it. As you will see, **bash** has a
 very extensive set of capabilities intended to make both interactive as
 well as automated control simple, effective, and customizable.
 
-> **note**
+> **Note**
 >
 > It can be difficult to distinguish what is shell-specific and what is
 > just part of UNIX. Some of the material here is not bash-specific but
@@ -58,95 +58,15 @@ well as automated control simple, effective, and customizable.
 > than on Linux (e.g., on a Mac, one can't do `tail -n +5`) because MacOS is based on 
 > BSD, which is not a Linux distribution. The behavior of the commands is distinct from the shell you are using.
 
+I've generated this document based on using the bash shell on a computer running the Ubuntu Linux version 20.04 operating system, but you should be able to replicate most of the steps in this tutorial in other UNIX command line environments, ideally using the bash or zsh shells. 
 
-# 3 Getting started
+# 3 Accessing the shell
+
+[see unix basics]
+
 
 I assume you already have access to a basic bash shell on a computer
-with network access (e.g., the Terminal on a Mac, the Ubuntu subsystem on Windows, or a Linux machine). You should also have ssh installed. SSH provides an
-encrypted mechanism to connect to a remote Unix-based (i.e., Linux or Mac) terminal. To learn more
-about using ssh to connect to the SCF machines and general tips about
-using ssh on various operating systems, see:
-<http://statistics.berkeley.edu/computing/ssh>
-
-To ssh to another machine, you need to know its (host)name. For example,
-to ssh to `arwen.berkeley.edu`, one of the SCF machines, you would:
-
-    $ ssh arwen.berkeley.edu
-    Password:
-
-At this point you have to type your password. Alternatively, you can set
-up ssh so that you can use it without typing your password. To learn how
-to set this up, see: <http://statistics.berkeley.edu/computing/ssh-keys>
-
-If you have a different username on SCF machines, you will need to
-specify it as well. For example, to specify the username `jarrod`, you
-would:
-
-    $ ssh jarrod@arwen.berkeley.edu
-
-If you want to view graphical applications on your local computer that
-are running on the remote computer you need to use the `-X` option:
-
-    $ ssh -X jarrod@arwen.berkeley.edu
-
-Alternatively, if you want to copy a file (`file1.txt`) from your local
-computer to `arwen.berkeley.edu`, you can use the `scp` command,
-which securely copies files between machines:
-
-    $ scp file1.txt jarrod@arwen.berkeley.edu:.
-
-The above command will copy `file1.txt` from my current working
-directory on my local machine to `jarrod`'s home directory on
-`arwen.berkeley.edu`. The `.` following the `:` indicates that I want
-to copy the file to my home directory on the remote machine. I could
-also replace `.` with any relative path from my home directory on the
-remote machine or I could use an absolute path.
-
-To copy a file (`file2.txt`) from `arwen.berkeley.edu` to my local
-machine:
-
-    $ scp jarrod@arwen.berkeley.edu:file2.txt .
-
-I can even copy a file (`file3.txt`) owned by one user (`jarrod`) on one
-remote machine `arwen.berkeley.edu` to the account of another user
-(`jmillman`) on another remote machine `scf-ug02.berkeley.edu`:
-
-    $ scp jarrod@arwen.berkeley.edu:file3.txt jmillman@arwen.berkeley.edu:.
-
-If instead of copying a single file, I wanted to copy an entire
-directory (`src`) from one machine to another, I would use the `-r`
-option:
-
-    $ scp -r src jmillman@arwen.berkeley.edu:.
-
-Regardless of whether you are working on a local computer or a remote
-one, it is occasionally useful to operate as a different user. For
-instance, you may need root (or administrative) access to change file
-permissions or install software. (Note this will only be possible
-on machines that you own or have special privileges on; the Ubuntu
-subsystem for windows is one way to have a virtual Linux machine
-for which you have root access.)
-
-For example on an Ubuntu Linux machine (including the Ubuntu subsystem for Windows),
-here's how you can act as the 'root' user to update or add software
-on machines where you have administrative access:
-
-To upgrade all the software on the machine:
-
-    $ sudo apt-get upgrade
-
-To install the text editor vim on the machine:
-
-    $ sudo apt-get install vim
-
-> **tip**
->
-> Most bash commands have electronic manual pages, which are accessible
-> directly from the commandline. You will be more efficient and
-> effective if you become accustomed to using these `man` pages. To view
-> the `man` page for the command `sudo`, for instance, you would type:
->
->     $ man sudo
+with network access (e.g., the Terminal on a Mac, the Ubuntu subsystem on Windows, or a Linux machine). 
 
 
 # 4 Variables
@@ -215,7 +135,7 @@ directory in the prompt:
     $ export PS1='[\u@\h \W]\$ '
     [user1@local1 ~]$ 
 
-# Introduction to commands
+# 5 Introduction to commands
 
 While each command has its own syntax, there are some rules usually
 followed. Generally, a command line consists of 4 things: a command,
@@ -268,7 +188,9 @@ Use `man ls` to see what the command options do. Is there any difference
 in what the three versions of the command invocation above return as the
 result? What happens if you add a filename to the end of the command?
 
-## 5.1 Tab completion
+# 6 Operating efficiently at the command line 
+
+## 6.1 Tab completion
 
 When working in the shell, it is often unnecessary to type out an entire
 command or file name, because of a feature known as tab completion. When
@@ -284,13 +206,61 @@ and redisplay the partial command line for further editing. Similar
 behavior with regard to filenames occurs when tab completion is used on
 anything other than the first token of a command.
 
-> **note**
+> **Note**
 
 > Note that R does tab completion for objects (including functions) and
 > filenames. While the default Python shell does not perform tab
 > completion, the IPython shell does.
 
-## 5.2 Command History and Editing
+## 6.2 Keyboard shortcuts
+
+TODO: see additional ones in unix tutorial
+
+Note that you can use emacs-like control sequences (`Ctrl-a`, `Ctrl-e`,
+`Ctrl-k`) to navigate and delete characters.
+
+**Table. Keyboard Shortcuts**
+
+<table>
+<thead>
+<tr class="header">
+<th align="left">Key Strokes</th>
+<th align="left">Descriptions</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>Ctrl-a</code></td>
+<td align="left">Beginning of line</td>
+</tr>
+<tr class="even">
+<td align="left"><code>Ctrl-e</code></td>
+<td align="left">End of file</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>Ctrl-k</code></td>
+<td align="left">Delete line from cursor forward</td>
+</tr>
+<tr class="even">
+<td align="left"><code>Ctrl-d</code></td>
+<td align="left">EOF; exit</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>Ctrl-c</code></td>
+<td align="left">Interrupt current command</td>
+</tr>
+<tr class="even">
+<td align="left"><code>Ctrl-z</code></td>
+<td align="left">Suspend current command</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>Ctrl-l</code></td>
+<td align="left">Clear screen</td>
+</tr>
+</tbody>
+</table>
+
+## 6.3 Command History and Editing
 
 By using the up and down arrows, you can scroll through commands that
 you have entered previously. So if you want to rerun the same command,
@@ -378,155 +348,92 @@ of characters to search for in the search history. You can hit return to
 submit, `Ctrl-c` to get out, or `ESC` to put the result on the regular
 command line for editing.
 
-# 5.3 Command Substitution
+# 7 Accessing remote machines
 
-You may occasionally need to substitute the results of a command for use
-by another command. For example, if you wanted to use the directory
-listing returned by `ls` as the argument to another command, you would
-type `$(ls)` in the location you want the result of `ls` to appear.
+You should also have ssh installed. SSH provides an
+encrypted mechanism to connect to a remote Unix-based (i.e., Linux or Mac) terminal. To learn more
+about using ssh to connect to the SCF machines and general tips about
+using ssh on various operating systems, see:
+<http://statistics.berkeley.edu/computing/ssh>
 
-An older notation for command substitution is to use backticks (e.g.,
-`` `ls` `` versus `$(ls)`). It is generally preferable to use the new
-notation, since there are many annoyances with the backtick notation.
-For example, backslashes (`\`) inside of backticks behave in a
-non-intuitive way, nested quoting is more cumbersome inside backticks,
-nested substitution is more difficult inside of backticks, and it is
-easy to visually mistake backticks for a single quote.
+To ssh to another machine, you need to know its (host)name. For example,
+to ssh to `arwen.berkeley.edu`, one of the SCF machines, you would:
 
-**Exercise**
+    $ ssh arwen.berkeley.edu
+    Password:
 
-Try the following commands:
+At this point you have to type your password. Alternatively, you can set
+up ssh so that you can use it without typing your password. To learn how
+to set this up, see: <http://statistics.berkeley.edu/computing/ssh-keys>
 
-    $ ls -l tr
-    $ which tr
-    $ ls -l which tr
-    $ ls -l $(which tr)
+If you have a different username on SCF machines, you will need to
+specify it as well. For example, to specify the username `jarrod`, you
+would:
 
-Make sure you understand why each command behaves as it does.
+    $ ssh jarrod@arwen.berkeley.edu
 
-# 6 Shortcuts
+If you want to view graphical applications on your local computer that
+are running on the remote computer you need to use the `-X` option:
 
-## 6.1 Aliases -- command shortcuts
+    $ ssh -X jarrod@arwen.berkeley.edu
 
-Aliases allow you to use an abbreviation for a command, to create new
-functionality or to insure that certain options are always used when you
-call an existing command. For example, I'm lazy and would rather type
-`q` instead of `exit` to terminate a shell window. You could create the
-alias as follow:
+Alternatively, if you want to copy a file (`file1.txt`) from your local
+computer to `arwen.berkeley.edu`, you can use the `scp` command,
+which securely copies files between machines:
 
-    $ alias q=exit
+    $ scp file1.txt jarrod@arwen.berkeley.edu:.
 
-As another example, suppose you find the `-F` option of `ls` (which
-displays `/` after directories, `\` after executable files and `@` after
-links) to be very useful. The command :
+The above command will copy `file1.txt` from my current working
+directory on my local machine to `jarrod`'s home directory on
+`arwen.berkeley.edu`. The `.` following the `:` indicates that I want
+to copy the file to my home directory on the remote machine. I could
+also replace `.` with any relative path from my home directory on the
+remote machine or I could use an absolute path.
 
-    $ alias ls="ls -F"
+To copy a file (`file2.txt`) from `arwen.berkeley.edu` to my local
+machine:
 
-will insure that the `-F` option will be used whenever you use `ls`. If
-you need to use the unaliased version of something for which you've
-created an alias, precede the name with a backslash (`\`). For example,
-to use the normal version of `ls` after you've created the alias
-described above:
+    $ scp jarrod@arwen.berkeley.edu:file2.txt .
 
-    $ \ls
+I can even copy a file (`file3.txt`) owned by one user (`jarrod`) on one
+remote machine `arwen.berkeley.edu` to the account of another user
+(`jmillman`) on another remote machine `scf-ug02.berkeley.edu`:
 
-The real power of aliases is only achieved when they are automatically
-set up whenever you log in to the computer or open a new shell window.
-To achieve that goal with aliases (or any other bash shell commands),
-simply insert the commands in the file `.bashrc` in your home directory.
-For example, here is an excerpt from my `.bashrc`:
+    $ scp jarrod@arwen.berkeley.edu:file3.txt jmillman@arwen.berkeley.edu:.
 
-    # .bashrc
+If instead of copying a single file, I wanted to copy an entire
+directory (`src`) from one machine to another, I would use the `-r`
+option:
 
-    # Source global definitions
-    if [ -f /etc/bashrc ]; then
-            . /etc/bashrc
-    fi
+    $ scp -r src jmillman@arwen.berkeley.edu:.
 
-    # User specific aliases and functions
-    pushdp () {
-     pushd "$(python -c "import os.path as _, ${1}; \
-       print _.dirname(_.realpath(${1}.__file__[:-1]))"
-     )"
-    }
+Regardless of whether you are working on a local computer or a remote
+one, it is occasionally useful to operate as a different user. For
+instance, you may need root (or administrative) access to change file
+permissions or install software. (Note this will only be possible
+on machines that you own or have special privileges on; the Ubuntu
+subsystem for windows is one way to have a virtual Linux machine
+for which you have root access.)
 
-    export EDITOR=vim
-    source /usr/share/git-core/contrib/completion/git-prompt.sh
-    export PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
+For example on an Ubuntu Linux machine (including the Ubuntu subsystem for Windows),
+here's how you can act as the 'root' user to update or add software
+on machines where you have administrative access:
 
-    # history settings
-    export HISTCONTROL=ignoredups   # no duplicate entries
-    shopt -s histappend             # append, don't overwrite
+To upgrade all the software on the machine:
 
-    # R settings
-    export R_LIBS=$HOME/usr/lib64/R/library
-    alias R="/usr/bin/R --quiet --no-save"
+    $ sudo apt-get upgrade
 
-    # Set path
-    mybin=$HOME/usr/bin
-    export PATH=$mybin:$HOME/.local/bin:$HOME/usr/local/bin:$PATH:
-    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/usr/local/lib
+To install the text editor vim on the machine:
 
-    # Additional aliases  
-    alias grep='grep --color=auto'
-    alias hgrep='history | grep'
-    alias l.='ls -d .* --color=auto'
-    alias ll='ls -l --color=auto'
-    alias ls='ls --color=auto'
-    alias more=less
-    alias vi=vim
-    alias which='(alias; declare -f) | /usr/bin/which --tty-only \
-             --read-alias --read-functions --show-tilde --show-dot'
+    $ sudo apt-get install vim
 
-**Exercise**
+> **tip**
+>
+> Most bash commands have electronic manual pages, which are accessible
+> directly from the commandline. You will be more efficient and
+> effective if you become accustomed to using these `man` pages. To view
+> the `man` page for the command `sudo`, for instance, you would type:
+>
+>     $ man sudo
 
-Look over the content of the example `.bashrc` and make sure you
-understand what each line does. For instance, use `man grep` to see what
-the option `--color=auto` does. Use `man which` to figure out what the
-various options passed to it do.
-
-## 6.2 Keyboard shortcuts
-
-Note that you can use emacs-like control sequences (`Ctrl-a`, `Ctrl-e`,
-`Ctrl-k`) to navigate and delete characters.
-
-**Table. Keyboard Shortcuts**
-
-<table>
-<thead>
-<tr class="header">
-<th align="left">Key Strokes</th>
-<th align="left">Descriptions</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left"><code>Ctrl-a</code></td>
-<td align="left">Beginning of line</td>
-</tr>
-<tr class="even">
-<td align="left"><code>Ctrl-e</code></td>
-<td align="left">End of file</td>
-</tr>
-<tr class="odd">
-<td align="left"><code>Ctrl-k</code></td>
-<td align="left">Delete line from cursor forward</td>
-</tr>
-<tr class="even">
-<td align="left"><code>Ctrl-d</code></td>
-<td align="left">EOF; exit</td>
-</tr>
-<tr class="odd">
-<td align="left"><code>Ctrl-c</code></td>
-<td align="left">Interrupt current command</td>
-</tr>
-<tr class="even">
-<td align="left"><code>Ctrl-z</code></td>
-<td align="left">Suspend current command</td>
-</tr>
-<tr class="odd">
-<td align="left"><code>Ctrl-l</code></td>
-<td align="left">Clear screen</td>
-</tr>
-</tbody>
-</table>
+TODO: see UNIX tutorial section 4.4 for other help info
