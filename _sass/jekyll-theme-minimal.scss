@@ -223,7 +223,8 @@ footer {
     top:0px;
     font-size:20px;
     background-color:white;
-    width:100%;
+    // Doesn't wrap if leave this in:
+    //width:100%;
     padding-top:20px;
     padding-bottom:20px;
 }
