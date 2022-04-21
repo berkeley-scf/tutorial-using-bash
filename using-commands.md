@@ -5,7 +5,7 @@ layout: default
 
 ```
 {
-{{a..b}
+{{a..b}{b..c}}
 ```
 
 # 5.3 Command Substitution
