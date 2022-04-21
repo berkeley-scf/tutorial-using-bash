@@ -11,7 +11,7 @@ layout: default
 3.  Figure out how to use the `mkdir` command to create the following
     directory structure in one short command:
 
-        ```
+
         temp
         ├── proj1
         │   ├── code
@@ -22,7 +22,7 @@ layout: default
         └── proj3
             ├── code
             └── data
-        ```
+
 
 4.  How would you count the number of lines in an input file, say a data
     file.
@@ -51,17 +51,14 @@ layout: default
 12. Create a shell function that will run a Python job in the background
     such that I can run the job by typing:
 
-        ```bash
+
         $ bpy file.py file.out
-        ```
 
     You can create a test jobs with: `echo -e 'a=5\nprint(a)' > file.py`
 
 13. Modify the function so that you can simply type :
 
-        ```bash
         $ bpy file.py
-        ```
 
     and it will use `file.pyout` as the output file
 
