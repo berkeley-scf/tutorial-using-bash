@@ -5,6 +5,7 @@ layout: default
 
 ```
 {
+{{a..b}
 ```
 
 # 5.3 Command Substitution
