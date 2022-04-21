@@ -1,3 +1,9 @@
+---
+title: Using UNIX commands
+layout: default
+---
+
+
 # 5.3 Command Substitution
 
 You may occasionally need to substitute the results of a command for use
@@ -29,21 +35,48 @@ Make sure you understand why each command behaves as it does.
 
 ## 6.1 Brace expansion
 
+We saw brace expansion when discussing file wildcards. For example, we can
+rename a long file easily like this:
+
+```bash
+$ mv my_long_filename.{txt,csv}
+$ mv my_long_filename.csv{,-old}
+$ ls my_long_filename*
+```
+
+```
+my_long_filename.csv-old
+```
+
+This works because the shell expands the braces before passing the result on to the command. So with the `mv` calls above, the shell expands the braces to produce
+
+```bash
+mv my_long_filename.txt my_long_filename.csv
+mv my_long_filename.csv my_long_filename.csv-old
+```
+
 Brace expansion is quite useful and more flexible than I've indicated.
 Above we saw how to use brace expansion using a comma comma separated
-list of items inside the curly braces (e.g., `{r,q,R}`), but they can
+list of items inside the curly braces (e.g., `{txt,csv}`), but they can
 also be used with a sequence specification. A sequence is indicated with
 a start and end item separated by two periods (`..`). Try typing the
 following examples at the command line and try to figure out how they
 work:
 
-    $ echo {1..15}
-    $ echo {a{1..3},b{1..5},c{c..e}}
-    $ echo {{d..a},{a..d}}
-    $ echo {{d..b},a,{b..d}}
-    $ echo {1..5..2}
-    $ echo {z..a..-2}
+```bash
+$ echo {1..15}
+$ echo {a{1..3},b{1..5},c{c..e}}
+$ echo {{d..a},{a..d}}
+$ echo {{d..b},a,{b..d}}
+$ echo {1..5..2}
+$ echo {z..a..-2}
+```
 
+This can be used for filename wildcards but also anywhere else it would be useful. For example to kill a bunch of sequentially-numbered processes:
+
+```bash
+$ kill 1397{62..81}
+```
 
 ## 6.1 Aliases -- command shortcuts
 

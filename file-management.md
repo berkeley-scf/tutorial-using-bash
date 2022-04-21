@@ -41,13 +41,27 @@ The `.` argument here indicates to find the file(s) in the current working direc
 As usual for UNIX commands, you can get more information about the `find` command with:
 
 ```bash
-man find
-find --help
+$ man find
+$ find --help
 ```
 
 In addition to use of `cd -` to go back to the previous working directory, you can use the `pushd`, `popd`, and `dirs` commands if you would like to keep a stack of previous working directories rather than just the last one.
 
-## 1.3 Filename Globbing
+In each directory there are two special directories, `.` and `..`, which refer to the current directory and the parent of the current directory, respectively. One only sees these with `ls` if we use the `-a` flag to reveal hidden files.
+
+```bash
+$ ls -al
+```
+
+```
+total 1489
+drwxr-sr-x  7 paciorek scfstaff     31 Apr 21 16:39  ./
+drwxr-sr-x 19 paciorek scfstaff     30 Feb 28 15:07  ../
+```
+
+We saw the use of `.` above with `find`.
+
+## 1.3 Filename globbing
 
 Shell file globbing will expand certain special characters (called
 wildcards) to match patterns of filenames, before passing those
