@@ -3,6 +3,9 @@ title: Using UNIX commands
 layout: default
 ---
 
+```
+{
+```
 
 # 5.3 Command Substitution
 
@@ -63,7 +66,7 @@ a start and end item separated by two periods (`..`). Try typing the
 following examples at the command line and try to figure out how they
 work:
 
-```bash
+```
 $ echo {1..15}
 $ echo {a{1..3},b{1..5},c{c..e}}
 $ echo {{d..a},{a..d}}
