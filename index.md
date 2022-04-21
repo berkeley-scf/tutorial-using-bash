@@ -8,13 +8,13 @@ author: Christopher Paciorek
 
 > **Prerequisite**
 >
-> Before reading this, if you're not already comfortable with basic commands for working with files (e.g. `cd`, `ls`, `cp` and the structure of the filesystem on a UNIX-like machine, you will want to be familiar with the introductory material in our [Basics of UNIX tutorial](https://berkeley-scf.github.io/tutorial-unix-basics).
+> Before reading this, if you're not already comfortable with basic commands for working with files (e.g. `cd`, `ls`, `cp` and the structure of the filesystem on a UNIX-like machine), you will want to be familiar with the introductory material in our [Basics of UNIX tutorial](https://berkeley-scf.github.io/tutorial-unix-basics).
 
 Materials for this tutorial, including the Markdown file that was used to create this document are [available on GitHub](https://github.com/berkeley-scf/tutorial-bash-shell).
 
 Software Carpentry has a very nice introductory lesson on the [basics of the shell](https://swcarpentry.github.io/shell-novice/). It also has an accompanying [YouTube video](https://www.youtube.com/watch?v=8c1BL5b47kg) that covers some, but not all, of the topics of this tutorial.
 
-This tutorial by Jarrod Millman and Christopher Paciorek is licensed under a Creative Commons Attribution 3.0 Unported License.
+This tutorial by Christopher Paciorek (with major contributions from Jarrod Millman) is licensed under a Creative Commons Attribution 3.0 Unported License.
 
 # 2 The interactive shell
 
@@ -50,7 +50,7 @@ well as automated control simple, effective, and customizable.
 > **Note**
 >
 > It can be difficult to distinguish what is shell-specific and what is
-> just part of UNIX. Some of the material here is not bash-specific but
+> just part of UNIX. Some of the material in this tutorial is not bash-specific but is
 > general to UNIX.
 >
 > Reference: Newham and Rosenblatt, Learning the bash Shell, 2nd ed.
@@ -60,16 +60,13 @@ well as automated control simple, effective, and customizable.
 > than on Linux (e.g., on a Mac, one can't do `tail -n +5`) because MacOS is based on 
 > BSD, which is not a Linux distribution. The behavior of the commands is distinct from the shell you are using.
 
-I've generated this document based on using the bash shell on a computer running the Ubuntu Linux version 20.04 operating system, but you should be able to replicate most of the steps in this tutorial in other UNIX command line environments, ideally using the bash or zsh shells. 
+I've generated this document based on using the bash shell on a computer running the Ubuntu Linux version 20.04 operating system, but you should be able to replicate most of the steps in this tutorial in other UNIX command line environments, ideally using the bash or zsh shells. zsh is an extension of bash, so you should be able to use zsh based on this tutorial.
+
 
 # 3 Accessing the shell
 
-[see unix basics]
-
-
 I assume you already have access to a basic bash shell on a computer
-with network access (e.g., the Terminal on a Mac, the Ubuntu subsystem on Windows, or a Linux machine). 
-
+with network access (e.g., the Terminal on a Mac, the Ubuntu subsystem on Windows, or a Linux machine), as discussed in our [Basics of UNIX tutorial](https://berkeley-scf.github.io/tutorial-unix-basics#1.3-accessing-a-unix-command-line-interface). 
 
 # 4 Variables
 
@@ -438,4 +435,3 @@ To install the text editor vim on the machine:
 >
 >     $ man sudo
 
-TODO: see UNIX tutorial section 4.4 for other help info
