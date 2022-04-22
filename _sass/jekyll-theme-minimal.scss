@@ -233,9 +233,7 @@ footer {
     margin-top: 80px;
 }
 
-//https://support.knowledgeowl.com/help/fix-anchor-links-hidden-by-top-navigation
-// doesn't work
-
+// Prevent anchor link from disappearing behind top nav.
 // https://markus.oberlehner.net/blog/simple-solution-for-anchor-links-behind-sticky-headers/
 html {
   @media (min-height: 32em) {

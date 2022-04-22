@@ -307,3 +307,16 @@ There's lots more details that are important when making files accessible to oth
 UNIX commands are designed as powerful tools to manipulate text files. This means that it's helpful to store information in information in text files when possible (of course there are very good reasons to store large datasets in binary files as well, in particular speed of access to portions of the data and efficient storage formats). 
 
 Furthermore, the basic UNIX commands that operate on files operate on a line by line basis (e.g., `grep`, `sed`, `cut`, etc.). So using formats where each line contains a distinct set of information (such as CSVs) is advantageous even compared to other text formats where related information is stored on multiple lines (such as XML and JSON).
+
+# 6 Document formats and conversion
+
+There are many plain text file formats (e.g., Markdown,
+reStructuredText, LaTeX). Pandoc is a widely used document converter. To
+convert a file written in markdown (`report.md`) to a PDF
+(`report.pdf`), you would do something like:
+
+    $ pandoc -o report.pdf report.md
+
+For a quick introduction to LaTeX, please see the "Introduction to
+LaTeX" tutorial and screencast here:
+<http://statistics.berkeley.edu/computing/training/tutorials>

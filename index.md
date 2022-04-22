@@ -14,7 +14,7 @@ Materials for this tutorial, including the Markdown file that was used to create
 
 Software Carpentry has a very nice introductory lesson on the [basics of the shell](https://swcarpentry.github.io/shell-novice/). It also has an accompanying [YouTube video](https://www.youtube.com/watch?v=8c1BL5b47kg) that covers some, but not all, of the topics of this tutorial.
 
-This tutorial by Christopher Paciorek (with major contributions from Jarrod Millman) is licensed under a Creative Commons Attribution 3.0 Unported License.
+This tutorial by Christopher Paciorek and Jarrod Millman is licensed under a Creative Commons Attribution 3.0 Unported License.
 
 # 2 The interactive shell
 
@@ -43,7 +43,7 @@ basic ideas are applicable to any Unix shell.
 
 The shell is an amazingly powerful programming environment. From it you
 can interactively monitor and control almost any aspect of the OS and
-more importantly you can automate it. As you will see, **bash** has a
+more importantly you can automate it. As you will see, *bash* has a
 very extensive set of capabilities intended to make both interactive as
 well as automated control simple, effective, and customizable.
 
@@ -54,6 +54,8 @@ well as automated control simple, effective, and customizable.
 > general to UNIX.
 >
 > Reference: Newham and Rosenblatt, Learning the bash Shell, 2nd ed.
+>
+> **Warning**
 >
 > Unfortunately, the behavior of shell commands on a Mac can be
 > [somewhat different](https://ponderthebits.com/2017/01/know-your-tools-linux-gnu-vs-mac-bsd-command-line-utilities-grep-strings-sed-and-find)
@@ -68,12 +70,7 @@ I've generated this document based on using the bash shell on a computer running
 I assume you already have access to a basic bash shell on a computer
 with network access (e.g., the Terminal on a Mac, the Ubuntu subsystem on Windows, or a Linux machine), as discussed in our [Basics of UNIX tutorial](https://berkeley-scf.github.io/tutorial-unix-basics#1.3-accessing-a-unix-command-line-interface). 
 
-# 4 Variables
-
-Much of how bash behaves can be customized through the use of variables,
-which consists of names that have values assigned to them. To access the
-value currently assigned to a variable, you can prepend the name with
-the dollar sign (\$). To print the value you can use the `echo` command.
+Here's how you can see your default shell and change it if you like.
 
 1.  What is my default shell?
 
@@ -88,6 +85,28 @@ the dollar sign (\$). To print the value you can use the `echo` command.
 In the last example, `/bin/bash` should be whatever the path to the bash
 shell is, which you can figure out using `which bash`.
 
+
+
+# 4 Variables
+
+## 4.1 Using variables
+
+Just like programming languages, you can use variables in the shell.
+Variables are names that have values assigned to them. 
+
+To access the value currently assigned to a variable, you can prepend the name with
+the dollar sign (\$). To print the value you can use the `echo` command.
+
+For example, I can find the username of the current user in the `USER` variable:
+
+```bash
+echo $USER
+```
+
+```
+paciorek
+```
+
 To declare a variable, just assign a value to its reference. For
 example, if you want to make a new variable with the name `counter` with
 the value `1`:
@@ -99,7 +118,7 @@ is important to note the lack of spaces around the equal sign. Try
 typing the command with and without spaces and note what happens.
 
 You can also enclose the variable name in curly brackets, which comes in
-handy when you're embedding a variable within a line of code to make
+handy when you're embedding a variable within a line of code, to make
 sure the shell knows where the variable name ends:
 
     $ base=/home/jarrod/
@@ -108,6 +127,8 @@ sure the shell knows where the variable name ends:
 
 Make sure you understand the difference in behavior in the last two
 lines.
+
+## 4.2 Environment variables
 
 There are also special shell variables called environment variables that
 help to control the shell's behavior. These are generally named in all
