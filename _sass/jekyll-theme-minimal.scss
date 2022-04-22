@@ -222,7 +222,7 @@ footer {
     position:fixed;
     top:0px;
     font-size:20px;
-    //background-color:white;
+    background-color:white;
     // Doesn't wrap if leave this in:
     //width:100%;
     padding-top:20px;
@@ -231,6 +231,7 @@ footer {
 
 .main {
     margin-top: 80px;
+    position: static;
 }
 
 
