@@ -234,11 +234,13 @@ footer {
 }
 
 //https://support.knowledgeowl.com/help/fix-anchor-links-hidden-by-top-navigation
-.hg-article-body a:not([href]) {
-  display: block;
-  position: relative;
-  top: -140px; 
-  visibility: hidden;
+// doesn't work
+
+// https://markus.oberlehner.net/blog/simple-solution-for-anchor-links-behind-sticky-headers/
+html {
+  @media (min-height: 32em) {
+    scroll-padding-top: 100px; // 1
+  }
 }
 
 // This causes weird behavior of toc within header appearing at top of page
