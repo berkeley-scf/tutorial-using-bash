@@ -70,7 +70,6 @@ $ echo c{c..e}
 $ echo {d..a}
 $ echo {1..5..2}
 $ echo {z..a..-2}
-$ echo {{d..b},a,{b..d}}
 ```
 
 This can be used for filename wildcards but also anywhere else it would be useful. For example to kill a bunch of sequentially-numbered processes:

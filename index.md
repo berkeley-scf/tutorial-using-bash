@@ -136,6 +136,8 @@ directory in the prompt:
 
 # 5 Introduction to commands
 
+## 5.1 Elements of a command
+
 While each command has its own syntax, there are some rules usually
 followed. Generally, a command line consists of 4 things: a command,
 command options, arguments, and line acceptance. Consider the following
@@ -174,6 +176,22 @@ out where bash would find it:
 
     $ which grep
     /bin/grep
+
+## 5.2 Getting help with commands
+
+Most bash commands have electronic manual pages, which are accessible
+directly from the commandline. You will be more efficient and
+effective if you become accustomed to using these `man` pages. To view
+the `man` page for the command `sudo`, for instance, you would type:
+```bash
+$ man sudo
+```
+
+Alternatively, for many commands you can use the `--help` flag:
+
+```bash
+$ sudo --help
+```
 
 **Exercise**
 
@@ -234,11 +252,15 @@ Note that you can use emacs-like control sequences (`Ctrl-a`, `Ctrl-e`,
 </tr>
 <tr class="even">
 <td align="left"><code>Ctrl-e</code></td>
-<td align="left">End of file</td>
+<td align="left">End of line</td>
 </tr>
 <tr class="odd">
 <td align="left"><code>Ctrl-k</code></td>
 <td align="left">Delete line from cursor forward</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>Ctrl-y</code></td>
+<td align="left">pastes in whatever was deleted previously with <code>Ctrl-k</code></td>
 </tr>
 <tr class="even">
 <td align="left"><code>Ctrl-d</code></td>
@@ -255,6 +277,10 @@ Note that you can use emacs-like control sequences (`Ctrl-a`, `Ctrl-e`,
 <tr class="odd">
 <td align="left"><code>Ctrl-l</code></td>
 <td align="left">Clear screen</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>Ctrl-r</code></td>
+<td align="left">Enables an [interactive history search](http://www.techrepublic.com/article/keyboard-shortcuts-in-bash-and-zsh/)</td>
 </tr>
 </tbody>
 </table>
@@ -425,13 +451,4 @@ To upgrade all the software on the machine:
 To install the text editor vim on the machine:
 
     $ sudo apt-get install vim
-
-> **tip**
->
-> Most bash commands have electronic manual pages, which are accessible
-> directly from the commandline. You will be more efficient and
-> effective if you become accustomed to using these `man` pages. To view
-> the `man` page for the command `sudo`, for instance, you would type:
->
->     $ man sudo
 
