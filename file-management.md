@@ -4,7 +4,7 @@ layout: default
 ---
 
 
-## 1.1 Overview 
+# 1 Overview 
 
 In Unix, almost "everything is a file". This means that a very wide
 variety of input and output resources (e.g., documents, directories,
@@ -23,21 +23,25 @@ A file typically consist of these attributes:
   - Protection (i.e., permissions on what can be done with the file)
   - Time, date, and user identification
   
-These attributes are discussed further as part of [our consideration of file permissions](file-management#1.3-file-permissions).
+These attributes are discussed further as part of [our consideration of file permissions](file-management#14-file-permissions).
 
 > **Prerequisite**
 >
 > If you're not familiar with moving between directories, listing files, or the structure of the filesystem, please see our [Basics of UNIX tutorial](https://berkeley-scf.github.io/tutorial-unix-basics#3-files-and-directories).
 
-## 1.2 Finding files and navigating the filesystem
+# 2 Finding files and navigating the filesystem
 
 You can find files by name, modification time, and type:
 
-    $ find . -name '*.txt'  # find files named *.txt
-    $ find . -mtime -2      # find files modified less than 2 days ago
-    $ find . -type l        # find links
+```bash
+$ find . -name '*.txt'  # find files named *.txt
+$ find . -mtime -2      # find files modified less than 2 days ago
+$ find . -type l        # find links
+```
 
 The `.` argument here indicates to find the file(s) in the current working directory and any subdirectories.
+
+
 As usual for UNIX commands, you can get more information about the `find` command with:
 
 ```bash
@@ -61,7 +65,7 @@ drwxr-sr-x 19 paciorek scfstaff     30 Feb 28 15:07  ../
 
 We saw the use of `.` above with `find`.
 
-## 1.3 Filename globbing
+# 3 Filename globbing
 
 Shell file globbing will expand certain special characters (called
 wildcards) to match patterns of filenames, before passing those
@@ -113,25 +117,38 @@ the special characters that the shell uses for expansion.
 
 List all files ending with a digit:
 
-    $ ls *[0-9]
+```bash
+$ ls *[0-9]
+```
 
 Make a copy of `filename` as `filename.old`:
 
-    $ cp filename{,.old}
+```{bash}
+$ cp filename{,.old}
+```
 
 Remove all files beginning with *a* or *z*:
 
-    $ rm [az]*
+```bash
+$ rm [az]*
+```
 
 List all the R code files with a variety of suffixes:
 
-    $ ls *.{r,q,R}
+```bash
+$ ls *.{r,R}
+```
 
 The `echo` command can be used to verify that a wildcard expansion will
 do what you think it will:
 
-    $ echo cp filename{,.old}
-    cp filename filename.old
+```bash
+$ echo cp filename{,.old}
+```
+
+```
+cp filename filename.old
+```
 
 If you want to suppress the special meaning of a wildcard in a shell
 command, precede it with a backslash (`\`). Note that this is a general
@@ -140,10 +157,11 @@ meaning but you just want to treat it as a character.
 
 To read more about standard globbing patterns, see the man page:
 
-    $ man 7 glob
+```
+$ man 7 glob
+```
 
-
-## 1.4 File permissions
+# 4 File permissions
 
 UNIX allows you to control who has access to a given file (or directory) and how the user can interact with the file (or directory). We can see what permissions are set using the `-l` flag to `ls`.
 
@@ -284,7 +302,7 @@ There's lots more details that are important when making files accessible to oth
   - [how to make files in a particular directory available to other users on the system](https://docs-research-it.berkeley.edu/services/high-performance-computing/user-guide/data/transferring-data/making-files-accessible/#making-files-accessible-to-all-other-savio-users) and 
   - [how to set up a directory for use by a UNIX group](https://docs-research-it.berkeley.edu/services/high-performance-computing/user-guide/data/transferring-data/making-files-accessible/#making-files-accessible-to-your-group-members), using the so-called "sticky bit" so that files created in the directory in the future belong to the group so that group members will readily have access to them by default.
 
-## 1.5 Use simple text files when possible
+# 5 Use simple text files when possible
 
 UNIX commands are designed as powerful tools to manipulate text files. This means that it's helpful to store information in information in text files when possible (of course there are very good reasons to store large datasets in binary files as well, in particular speed of access to portions of the data and efficient storage formats). 
 
