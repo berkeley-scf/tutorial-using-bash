@@ -23,7 +23,7 @@ A file typically consist of these attributes:
   - Protection (i.e., permissions on what can be done with the file)
   - Time, date, and user identification
   
-These attributes are discussed further as part of [our consideration of file permissions](file-management#14-file-permissions).
+These attributes are discussed further as part of [our consideration of file permissions](#4-file-permissions).
 
 > **Prerequisite**
 >
