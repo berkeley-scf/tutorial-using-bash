@@ -3,14 +3,11 @@ title: Using UNIX commands
 layout: default
 ---
 
-```
-{
-"{{a..b}{b..c}}"
-```
+
 
 # 5.3 Command Substitution
 
-You may occasionally need to substitute the results of a command for use
+You may sometimes need to substitute the results of a command for use
 by another command. For example, if you wanted to use the directory
 listing returned by `ls` as the argument to another command, you would
 type `$(ls)` in the location you want the result of `ls` to appear.
@@ -69,11 +66,11 @@ work:
 
 ```
 $ echo {1..15}
-$ echo {a{1..3},b{1..5},c{c..e}}
-$ echo {{d..a},{a..d}}
-$ echo {{d..b},a,{b..d}}
+$ echo c{c..e}
+$ echo {d..a}
 $ echo {1..5..2}
 $ echo {z..a..-2}
+$ echo {{d..b},a,{b..d}}
 ```
 
 This can be used for filename wildcards but also anywhere else it would be useful. For example to kill a bunch of sequentially-numbered processes:
