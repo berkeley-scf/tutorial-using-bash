@@ -270,7 +270,6 @@ anything other than the first token of a command.
 
 ## 6.2 Keyboard shortcuts
 
-TODO: see additional ones in unix tutorial
 
 Note that you can use emacs-like control sequences (`Ctrl-a`, `Ctrl-e`,
 `Ctrl-k`) to navigate and delete characters.
@@ -297,7 +296,7 @@ Note that you can use emacs-like control sequences (`Ctrl-a`, `Ctrl-e`,
 <td align="left"><code>Ctrl-k</code></td>
 <td align="left">Delete line from cursor forward</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><code>Ctrl-w</code></td>
 <td align="left">Delete word before cursor/td>
 </tr>
@@ -309,7 +308,7 @@ Note that you can use emacs-like control sequences (`Ctrl-a`, `Ctrl-e`,
 <td align="left"><code>ESC-F</code></td>
 <td align="left">Forward one word</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><code>ESC-B</code></td>
 <td align="left">Backwards one word</td>
 </tr>
@@ -329,7 +328,7 @@ Note that you can use emacs-like control sequences (`Ctrl-a`, `Ctrl-e`,
 <td align="left"><code>Ctrl-l</code></td>
 <td align="left">Clear screen</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><code>Ctrl-r</code></td>
 <td align="left">Enables an <a href="http://www.techrepublic.com/article/keyboard-shortcuts-in-bash-and-zsh/">interactive search history</a></td>
 </tr>
