@@ -298,7 +298,7 @@ Note that you can use emacs-like control sequences (`Ctrl-a`, `Ctrl-e`,
 </tr>
 <tr class="even">
 <td align="left"><code>Ctrl-w</code></td>
-<td align="left">Delete word before cursor/td>
+<td align="left">Delete word before cursor</td>
 </tr>
 <tr class="odd">
 <td align="left"><code>Ctrl-y</code></td>
