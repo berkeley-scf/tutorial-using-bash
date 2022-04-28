@@ -34,10 +34,13 @@ and then *loops* (i.e., returns control to you to continue your work).
 > user's prompt is `#`. However, it is common practice to never log on
 > as the root user, even if you have root access. If you need to run a command with root privileges,
 > you should use the `sudo` command.
+>
+> `$ echo "The current user is $USER."`
+> `paciorek`
 
 When you are working in a terminal window (i.e., a window with the
 command line interface), you're interacting with a shell. 
-There are actually different shells that you can use, of which `bash` is very common and is the default on many systems. In recent versions of MacOS, `zsh` is the default shell. There are others as well (e.g., *sh*, *csh*, *tcsh*, *fish*), but I've generated this document based on using the bash shell on a computer running the Ubuntu Linux version 20.04 operating system, and this tutorial assumes you are using *bash* or *zsh*. That said, the basic ideas and the use of various commands are applicable to any UNIX shell, and you should be able to replicate most of the steps in this tutorial in other UNIX command line environments, with various substitutions of shell syntax specific to the shell you are using,
+There are actually different shells that you can use, of which `bash` is very common and is the default on many systems. In recent versions of MacOS, `zsh` is the default shell. There are others as well (e.g., *sh*, *csh*, *tcsh*, *fish*). I've generated this document based on using the bash shell on a computer running the Ubuntu Linux version 20.04 operating system, and this tutorial assumes you are using *bash* or *zsh*. That said, the basic ideas and the use of various commands are applicable to any UNIX shell, and you should be able to replicate most of the steps in this tutorial in other UNIX command line environments, with various substitutions of shell syntax specific to the shell you are using,
 
 The shell is an amazingly powerful programming environment. From it you
 can interactively monitor and control almost any aspect of the OS and
@@ -72,16 +75,22 @@ Here's how you can see your default shell and change it if you like.
 1.  What is my default shell?
 
     `$ echo $SHELL`
+    `/bin/bash`
+    
 2.  To change to bash on a one-time basis:
 
     `$ bash`
+    
 3.  To make it your default:
 
     `$ chsh /bin/bash`
 
 In the last example, `/bin/bash` should be whatever the path to the bash
-shell is, which you can figure out using `which bash`.
+shell is, which you can figure out using:
 
+```
+which bash`
+```
 
 
 # 4 Variables
@@ -104,7 +113,7 @@ $ echo $USER
 paciorek
 ```
 
-To declare a variable, just assign a value to its reference. For
+To declare a variable, just assign a value to the name, without using `$`. For
 example, if you want to make a new variable with the name `counter` with
 the value `1`:
 
@@ -119,8 +128,8 @@ handy when you're embedding a variable within a line of code, to make
 sure the shell knows where the variable name ends:
 
     $ base=/home/jarrod/
-    $ echo $basesrc
     $ echo ${base}src
+    $ echo $basesrc
 
 Make sure you understand the difference in behavior in the last two
 lines.
@@ -194,6 +203,18 @@ out where bash would find it:
 
     $ which grep
     /bin/grep
+    
+Also note that the shell substitutes in the values of variables and 
+does other manipulations before calling the command. For example in the following
+example,
+
+```
+$ myfile=file.txt
+$ grep pdf $myfile
+```
+
+the value of $myfile is substituted in before `grep` is called, so the command
+that is executed is `grep pdf myfile.txt`.
 
 ## 5.2 Getting help with commands
 
@@ -202,13 +223,13 @@ directly from the commandline. You will be more efficient and
 effective if you become accustomed to using these `man` pages. To view
 the `man` page for the command `sudo`, for instance, you would type:
 ```bash
-$ man sudo
+$ man ls
 ```
 
 Alternatively, for many commands you can use the `--help` flag:
 
 ```bash
-$ sudo --help
+$ ls --help
 ```
 
 **Exercise**
@@ -232,7 +253,7 @@ command or file name, because of a feature known as tab completion. When
 you are entering a command or filename in the shell, you can, at any
 time, hit the tab key, and the shell will try to figure out how to
 complete the name of the command or filename you are typing. If there is
-only one command in the search path and you're using tab completion with
+only one such command found in the search path and you're using tab completion with
 the first token of a line, then the shell will display its value and the
 cursor will be one space past the completed name. If there are multiple
 commands that match the partial name, the shell will display as much as
@@ -277,8 +298,20 @@ Note that you can use emacs-like control sequences (`Ctrl-a`, `Ctrl-e`,
 <td align="left">Delete line from cursor forward</td>
 </tr>
 <tr class="odd">
+<td align="left"><code>Ctrl-w</code></td>
+<td align="left">Delete word before cursor/td>
+</tr>
+<tr class="odd">
 <td align="left"><code>Ctrl-y</code></td>
-<td align="left">pastes in whatever was deleted previously with <code>Ctrl-k</code></td>
+<td align="left">pastes in whatever was deleted previously with <code>Ctrl-k</code> or <code>Ctrl-w</code></td>
+</tr>
+<tr class="even">
+<td align="left"><code>ESC-F</code></td>
+<td align="left">Forward one word</td>
+</tr>
+<tr class="even">
+<td align="left"><code>ESC-B</code></td>
+<td align="left">Backwards one word</td>
 </tr>
 <tr class="even">
 <td align="left"><code>Ctrl-d</code></td>
@@ -298,7 +331,7 @@ Note that you can use emacs-like control sequences (`Ctrl-a`, `Ctrl-e`,
 </tr>
 <tr class="odd">
 <td align="left"><code>Ctrl-r</code></td>
-<td align="left">Enables an [interactive history search](http://www.techrepublic.com/article/keyboard-shortcuts-in-bash-and-zsh/)</td>
+<td align="left">Enables an <a href="http://www.techrepublic.com/article/keyboard-shortcuts-in-bash-and-zsh/">interactive search history</a></td>
 </tr>
 </tbody>
 </table>
@@ -393,11 +426,9 @@ command line for editing.
 
 # 7 Accessing remote machines
 
-You should also have ssh installed. SSH provides an
-encrypted mechanism to connect to a remote Unix-based (i.e., Linux or Mac) terminal. To learn more
-about using ssh to connect to the SCF machines and general tips about
-using ssh on various operating systems, see:
-<http://statistics.berkeley.edu/computing/ssh>
+You likely already have `ssh` installed. SSH provides an
+encrypted mechanism to connect to a remote Unix-based (i.e., Linux or Mac) terminal. You can [learn more
+about using ssh on various operating systems](https://statistics.berkeley.edu/computing/ssh).
 
 To ssh to another machine, you need to know its (host)name. For example,
 to ssh to `arwen.berkeley.edu`, one of the SCF machines, you would:
@@ -405,11 +436,10 @@ to ssh to `arwen.berkeley.edu`, one of the SCF machines, you would:
     $ ssh arwen.berkeley.edu
     Password:
 
-At this point you have to type your password. Alternatively, you can set
-up ssh so that you can use it without typing your password. To learn how
-to set this up, see: <http://statistics.berkeley.edu/computing/ssh-keys>
+At this point you have to type your password. Alternatively, you can [set
+up ssh so that you can use it without typing your password](https://statistics.berkeley.edu/computing/ssh-keys).
 
-If you have a different username on SCF machines, you will need to
+If you have a different username on the remote machine than on the machine you are on, you will need to
 specify it as well. For example, to specify the username `jarrod`, you
 would:
 
@@ -429,8 +459,8 @@ which securely copies files between machines:
 The above command will copy `file1.txt` from my current working
 directory on my local machine to `jarrod`'s home directory on
 `arwen.berkeley.edu`. The `.` following the `:` indicates that I want
-to copy the file to my home directory on the remote machine. I could
-also replace `.` with any relative path from my home directory on the
+to copy the file to jarrod's home directory on the remote machine. I could
+also replace `.` with any relative path from jarrod's home directory on the
 remote machine or I could use an absolute path.
 
 To copy a file (`file2.txt`) from `arwen.berkeley.edu` to my local
@@ -454,11 +484,11 @@ Regardless of whether you are working on a local computer or a remote
 one, it is occasionally useful to operate as a different user. For
 instance, you may need root (or administrative) access to change file
 permissions or install software. (Note this will only be possible
-on machines that you own or have special privileges on; the Ubuntu
-subsystem for windows is one way to have a virtual Linux machine
+on machines that you own or have special privileges on. The Ubuntu
+Subsystem on Windows is one way to have a virtual Linux machine
 for which you have root access.)
 
-For example on an Ubuntu Linux machine (including the Ubuntu subsystem for Windows),
+For example on an Ubuntu Linux machine (including the Ubuntu Subsystem on Windows),
 here's how you can act as the 'root' user to update or add software
 on machines where you have administrative access:
 
