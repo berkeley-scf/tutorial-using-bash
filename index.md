@@ -10,6 +10,8 @@ author: Christopher Paciorek
 >
 > Before reading this, if you're not already comfortable with basic commands for working with files (e.g. `cd`, `ls`, `cp` and the structure of the filesystem on a UNIX-like machine), you will want to be familiar with the introductory material in our [Basics of UNIX tutorial](https://berkeley-scf.github.io/tutorial-unix-basics).
 
+Please see the top menu bar for the various sections of this tutorial, of which this document is the introduction.
+
 Materials for this tutorial, including the Markdown file that was used to create this document are [available on GitHub](https://github.com/berkeley-scf/tutorial-bash-shell).
 
 Software Carpentry has a very nice introductory lesson on the [basics of the shell](https://swcarpentry.github.io/shell-novice/). It also has an accompanying [YouTube video](https://www.youtube.com/watch?v=8c1BL5b47kg) that covers some, but not all, of the topics of this tutorial.
@@ -23,23 +25,19 @@ The shell is the UNIX program that provides an interactive computer programming 
 The shell is a read-evaluate-print loop (REPL) environment. R and
 Python also provide REPL environments. A REPL reads a single
 *expression* or input, parses and *evaluates* it, *prints* the results,
-and then *loops*.
+and then *loops* (i.e., returns control to you to continue your work).
 
 > **Note**
 >
 > I will use a `$` prompt for bash. By convention, a regular
 > user's prompt in bash is `$`, while the root (or administrative)
 > user's prompt is `#`. However, it is common practice to never log on
-> as the root user. If you need to run a command with root privileges,
-> you should use the `sudo` command (see the *Getting started* section
-> below for more details).
+> as the root user, even if you have root access. If you need to run a command with root privileges,
+> you should use the `sudo` command.
 
 When you are working in a terminal window (i.e., a window with the
 command line interface), you're interacting with a shell. 
-There are actually different shells that you can use, of which `bash` is very common and is the default on many systems. In recent versions of MacOS, `zsh` is the default shell. There are others as well (e.g., *sh*, *csh*, *tcsh*, *fish*), but this tutorial
-assumes you are using *bash* or *zsh*. However, the
-basic ideas are applicable to any Unix shell.
-
+There are actually different shells that you can use, of which `bash` is very common and is the default on many systems. In recent versions of MacOS, `zsh` is the default shell. There are others as well (e.g., *sh*, *csh*, *tcsh*, *fish*), but I've generated this document based on using the bash shell on a computer running the Ubuntu Linux version 20.04 operating system, and this tutorial assumes you are using *bash* or *zsh*. That said, the basic ideas and the use of various commands are applicable to any UNIX shell, and you should be able to replicate most of the steps in this tutorial in other UNIX command line environments, with various substitutions of shell syntax specific to the shell you are using,
 
 The shell is an amazingly powerful programming environment. From it you
 can interactively monitor and control almost any aspect of the OS and
@@ -62,13 +60,12 @@ well as automated control simple, effective, and customizable.
 > than on Linux (e.g., on a Mac, one can't do `tail -n +5`) because MacOS is based on 
 > BSD, which is not a Linux distribution. The behavior of the commands is distinct from the shell you are using.
 
-I've generated this document based on using the bash shell on a computer running the Ubuntu Linux version 20.04 operating system, but you should be able to replicate most of the steps in this tutorial in other UNIX command line environments, ideally using the bash or zsh shells. zsh is an extension of bash, so you should be able to use zsh based on this tutorial.
 
 
 # 3 Accessing the shell
 
-I assume you already have access to a basic bash shell on a computer
-with network access (e.g., the Terminal on a Mac, the Ubuntu subsystem on Windows, or a Linux machine), as discussed in our [Basics of UNIX tutorial](https://berkeley-scf.github.io/tutorial-unix-basics#1.3-accessing-a-unix-command-line-interface). 
+This tutorial assumes you already have access to a basic bash shell on a computer
+with network access (e.g., the Terminal on a Mac, the Ubuntu subsystem on Windows, or a terminal window on a Linux machine), as discussed in our [Basics of UNIX tutorial](https://berkeley-scf.github.io/tutorial-unix-basics#1.3-accessing-a-unix-command-line-interface). 
 
 Here's how you can see your default shell and change it if you like.
 
@@ -100,7 +97,7 @@ the dollar sign (\$). To print the value you can use the `echo` command.
 For example, I can find the username of the current user in the `USER` variable:
 
 ```bash
-echo $USER
+$ echo $USER
 ```
 
 ```

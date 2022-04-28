@@ -3,13 +3,10 @@ title: Using UNIX commands
 layout: default
 ---
 
-# 1 Introduction
+# 1 Basic utilities / commands
 
 [Earlier](index#5-introduction-to-commands) we introduced the basics of entering commands in the shell.
 
-Recall that a command consists of the command, optionally one or more flags, and optionally one or more arguments. When there is an argument, it is often the name of a file that the command should operate on.
-
-# 2 Basic utilities / commands
 
 Since files are such an essential aspect of Unix and working from the
 shell is the primary way to work with Unix, there are a large number of
@@ -39,7 +36,9 @@ useful commands and tools to view and manipulate files.
 -   wc -- print the number of bytes, words, and lines in files
 -   wget and curl -- non-interactive network downloader
 
-As we've already seen the general syntax for a Unix program is:
+Recall that a command consists of the command, optionally one or more flags, and optionally one or more arguments. When there is an argument, it is often the name of a file that the command should operate on.
+
+Thus the general syntax for a Unix program/command/utility is:
 
     $ command -options argument1 argument2 ...
 
