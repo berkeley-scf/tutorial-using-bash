@@ -74,8 +74,10 @@ Here's how you can see your default shell and change it if you like.
 
 1.  What is my default shell?
 
-    `$ echo $SHELL`
-    `/bin/bash`
+    ```bash
+    $ echo $SHELL
+    /bin/bash
+    ```
     
 2.  To change to bash on a one-time basis:
 
@@ -88,8 +90,8 @@ Here's how you can see your default shell and change it if you like.
 In the last example, `/bin/bash` should be whatever the path to the bash
 shell is, which you can figure out using:
 
-```
-which bash`
+```bash
+which bash
 ```
 
 
@@ -117,7 +119,9 @@ To declare a variable, just assign a value to the name, without using `$`. For
 example, if you want to make a new variable with the name `counter` with
 the value `1`:
 
-    $ counter=1
+```bash
+$ counter=1
+```
 
 Since bash uses spaces to parse the expression you give it as input, it
 is important to note the lack of spaces around the equal sign. Try
@@ -127,9 +131,11 @@ You can also enclose the variable name in curly brackets, which comes in
 handy when you're embedding a variable within a line of code, to make
 sure the shell knows where the variable name ends:
 
-    $ base=/home/jarrod/
-    $ echo ${base}src
-    $ echo $basesrc
+```bash
+$ base=/home/jarrod/
+$ echo ${base}src
+$ echo $basesrc
+```
 
 Make sure you understand the difference in behavior in the last two
 lines.
