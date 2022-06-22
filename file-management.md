@@ -8,13 +8,13 @@ layout: default
 
 In Unix, almost "everything is a file". This means that a very wide
 variety of input and output resources (e.g., documents, directories,
-keyboards, harddrives, network devices) are streams of bytes available
+keyboards, hard drives, network devices) are streams of bytes available
 through the filesystem interface. This means that the basic file
 management tools are extremely powerful in Unix. Not only can you use
 these tools to work with files, but you can also use them to monitor and
 control many aspects of your computer.
 
-A file typically consist of these attributes:
+A file typically has these attributes:
 
   - Name
   - Type
@@ -49,7 +49,9 @@ $ man find
 $ find --help
 ```
 
-In addition to use of `cd -` to go back to the previous working directory, you can use the `pushd`, `popd`, and `dirs` commands if you would like to keep a stack of previous working directories rather than just the last one.
+As discussed in our
+[Basics of UNIX tutorial](https://berkeley-scf.github.io/tutorial-unix-basics#3-files-and-directories),
+one uses `cd` to change directories. In addition to use of "cd -" to go back to the previous working directory, you can use the `pushd`, `popd`, and `dirs` commands if you would like to keep a stack of previous working directories rather than just the last one.
 
 In each directory there are two special directories, `.` and `..`, which refer to the current directory and the parent of the current directory, respectively. One only sees these with `ls` if we use the `-a` flag to reveal hidden files.
 
@@ -144,16 +146,20 @@ do what you think it will:
 
 ```bash
 $ echo cp filename{,.old}
-```
-
-```
 cp filename filename.old
 ```
 
 If you want to suppress the special meaning of a wildcard in a shell
-command, precede it with a backslash (`\`). Note that this is a general
+command, precede it with a backslash (`\`). (Note that this is a general
 rule of thumb in many similar situations when a character has a special
-meaning but you just want to treat it as a character.
+meaning but you just want to treat it as a character.) For example to
+list files whose name starts with the `*` character:
+
+```bash
+$ touch \*test    # create a file called *test
+$ ls \**
+*test
+```
 
 To read more about standard globbing patterns, see the man page:
 
