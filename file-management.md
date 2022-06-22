@@ -198,7 +198,8 @@ When using the `-l` flag to `ls`, you'll see extensive information about each fi
   - (column 6-8) the last time the file was modified
   - (column 9) name of the file
   
-Here's a graphical summary of the information for a file named "file.txt", whose owner is "root" and group is "users" (which also indicates that the commands `chmod`, `chown`, and `chgrp` can be used to change aspects of the file permissions and ownership).
+Here's a graphical summary of the information for a file named
+"file.txt", whose owner is "root" and group is "users". (The graphic also indicates that the commands `chmod`, `chown`, and `chgrp` can be used to change aspects of the file permissions and ownership.)
 
 ![Schematic of file attributes.](assets/img/ls_format.png)
 
@@ -206,7 +207,6 @@ Here's a graphical summary of the information for a file named "file.txt", whose
 Let's look in detail at the information in the first column returned by `ls -l`. 
 
 ```bash
-$ echo "first line" > tmp.txt  # create a text file we can play with that contains "first line"
 $ ls -l
 ```
 
@@ -220,15 +220,14 @@ drwxrwxr-x  2 scflocal scflocal  4096 Dec 28 13:15 ps
 drwxrwxr-x 13 scflocal scflocal  4096 Dec 28 13:15 sections
 -rw-rw-r--  1 scflocal scflocal 37923 Dec 28 13:15 syllabus.lyx
 -rw-rw-r--  1 scflocal scflocal 77105 Dec 28 13:15 syllabus.pdf
--rw-rw-r--  1 scflocal scflocal    11 Dec 28 13:39 tmp.txt
 drwxrwxr-x  2 scflocal scflocal  4096 Dec 28 13:37 units
 ```
 
-The first column actually contains 10 individual single-character columns. Items marked with a `d` as the first character are directories. Here `data` is a directory while `tmp.txt` is not.
+The first column actually contains 10 individual single-character columns. Items marked with a `d` as the first character are directories. Here `data` is a directory while `syllabus.pdf` is not.
 
 Following that first character are three triplets of file permission information. Each triplet contains read ('r'), write ('w') and execute ('x') information. The first `rwx` triplet (the second through fourth characters) indicates if the owner of the file can read, write, and execute a file (or directory). The second `rwx` triplet (the fifth through seventh characters) indicates if anyone in the group that the file belongs to can read, write and execute a file (or directory). The third triplet (the eighth through tenth characters) pertains to any other user. Dashes mean that a given user does not have that kind of access to the given file.
 
-For example, for the *syllabus.pdf* file, the owner of the file can read it and can modify the file by writing to it (the first triplet is 'rw-'), as can users in the group the file belongs to. But for other users, they can only read it (the third triplet is 'r--').
+For example, for the *syllabus.pdf* file, the owner of the file can read it and can modify the file by writing to it (the first triplet is `'rw-'`), as can users in the group the file belongs to. But for other users, they can only read it (the third triplet is `'r--'`).
 
 We can change the permissions by indicating the type of user and the kind of access we want to add or remove. The type of user is one of:
 
@@ -238,14 +237,14 @@ We can change the permissions by indicating the type of user and the kind of acc
 
 Thus we specify one of 'u', 'g', or 'o', followed by a '+' to add permission or a '-' to remove permission and finally by the kind of permission: 'r' for read access, 'w' for write access, and 'x' for execution access. 
 
-As a simple example, let's prevent anyone from reading the `tmp.txt` file. We then try to print the contents of the file to the screen with the command `cat`, but we are denied.
+As a simple example, let's prevent anyone from reading the `tmp.txt`
+file (which we'll create first). We then try to print the contents of the file to the screen with the command `cat`, but we are denied.
 
 First recall the current permissions:
 
 ```bash
+$ echo "first line" > tmp.txt  # create a test text file that contains "first line"
 $ ls -l tmp.txt
-```
-```
 -rw-rw-r--  1 scflocal scflocal    11 Dec 28 13:39 tmp.txt
 ```
 Now we remove the read permissions:
