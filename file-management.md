@@ -283,8 +283,7 @@ $ chmod ugo-rw tmp.txt # prevent all three
 ```
 
 Now if we try to add a line to the file, using the `>>`
-[redirection operator](using-commands#32-overview-of-redirection)
-operator, we are denied:
+[redirection operator](using-commands#32-overview-of-redirection), we are denied:
 
 ```bash
 $ echo "added line" >> tmp.txt  

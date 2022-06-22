@@ -12,10 +12,10 @@ Since files are such an essential aspect of Unix and working from the
 shell is the primary way to work with Unix, there are a large number of
 useful commands and tools to view and manipulate files.
 
--   cat -- concatenate files and print on the standard output
+-   cat -- concatenate files and print to standard output
 -   cp -- copy files and directories
 -   cut --_remove sections from each line of files
--   diff-- find differences between two files
+-   diff -- find differences between two files
 -   grep -- print lines matching a pattern
 -   head -- output the first part of files
 -   find --  search for files in a directory hierarchy
@@ -34,49 +34,52 @@ useful commands and tools to view and manipulate files.
 -   tr -- translate or delete characters
 -   uniq -- remove duplicate lines from a sorted file
 -   wc -- print the number of bytes, words, and lines in files
--   wget and curl -- non-interactive network downloader
+-   wget and curl -- non-interactive internet downloading
 
 Recall that a command consists of the command, optionally one or more flags, and optionally one or more arguments. When there is an argument, it is often the name of a file that the command should operate on.
 
 Thus the general syntax for a Unix program/command/utility is:
 
-    $ command -options argument1 argument2 ...
+```
+$ command -options argument1 argument2 ...
+```
 
 For example, :
 
-    $ grep -i graphics file.txt
+```bash
+$ grep -i graphics file.txt
+```
 
 looks for the literal string `graphics` (argument 1) in `file.txt`
 (argument2) with the option `-i`, which says to ignore the case of the
-letters. While :
+letters. A simpler invocation is:While :
 
-    $ less file.txt
+```bash
+$ less file.txt
+```
 
-simply pages through a text file (you can navigate up and down) so you
+which simply pages through a text file (you can navigate up and down
+with the space bar and the up/down arrows) so you
 can get a feel for what's in it. To exit `less` type `q`.
 
-To find files by name, modification time, and type:
 
-    $ find . -name '*.txt'  # find files named *.txt
-    $ find . -mtime -2      # find files modified less than 2 days ago
-    $ find . -type l        # find links
-
-Unix programs often take options that are identified with a minus
-followed by a letter, followed by the specific option (adding a space
+Unix programs often take flags (options) that are identified with a minus
+followed by a letter and then (possibly) followed by the specific option (adding a space
 before the specific option is fine). Options may also involve two
 dashes, e.g., `R --no-save`. A standard two dash option for many
 commands is `--help`. For example, try:
 
     $ tail --help
 
-Here are a couple of examples of using the `tail` command:
+Here are a couple of examples of flags when using the `tail` command
+(`-n 10` and `-f`):
 
     $ wget https://raw.githubusercontent.com/berkeley-scf/tutorial-using-bash/master/cpds.csv
     $ tail -n 10 cpds.csv   # last 10 lines of cpds.csv
     $ tail -f cpds.csv      # shows end of file, continually refreshing
 
 The first line downloads the data from GitHub. The two main tools
-for downloading network accessible data from the commandline are `wget`
+for downloading network-accessible data from the commandline are `wget`
 and `curl`. I tend to use `wget` as my commandline downloading tool as
 it is more convenient, but on a Mac, only `curl` is generally available.
 
