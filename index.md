@@ -81,11 +81,15 @@ Here's how you can see your default shell and change it if you like.
     
 2.  To change to bash on a one-time basis:
 
-    `$ bash`
+    ```bash
+    $ bash
+    ```
     
 3.  To make it your default:
 
-    `$ chsh /bin/bash`
+    ```bash
+    $ chsh /bin/bash
+    ```
 
 In the last example, `/bin/bash` should be whatever the path to the bash
 shell is, which you can figure out using:
@@ -147,7 +151,9 @@ help to control the shell's behavior. These are generally named in all
 caps. Type `printenv` to see them. You can create your own environment
 variable as follows:
 
-    $ export base=/home/jarrod/
+```bash
+$ export base=/home/jarrod/
+```
 
 The `export` command ensures that other shells created by the current
 shell (for example, to run a program) will inherit the variable. Without
@@ -159,13 +165,17 @@ the variable with an `export` command in your `.bashrc` file.
 You can control the appearance of the bash prompt using the `PS1`
 variable:
 
-    $ echo $PS1
+```bash
+$ echo $PS1
+```
 
 To modify it so that it puts the username, hostname, and current working
 directory in the prompt:
 
-    $ export PS1='[\u@\h \W]\$ '
-    [user1@local1 ~]$ 
+```bash
+$ export PS1='[\u@\h \W]\$ '
+[user1@local1 ~]$ 
+```
 
 # 5 Introduction to commands
 
@@ -176,8 +186,9 @@ followed. Generally, a command line consists of 4 things: a command,
 command options, arguments, and line acceptance. Consider the following
 example:
 
-    $ ls -l file.txt
-
+```bash
+$ ls -l file.txt
+```
 In the above example, `ls` is the command, `-l` is a command option
 specifying to use the long format, `file.txt` is the argument, and the
 line acceptance is indicated by hitting the `Enter` key at the end of
@@ -191,12 +202,18 @@ not, it checks to see whether it is a builtin. Finally, if the command
 is not a shell function nor a builtin, bash uses the `PATH` variable.
 The `PATH` variable is a list of directories:
 
-    $ echo $PATH
-    /home/jarrod/usr/bin:/usr/local/bin:/bin:/usr/bin:
+```bash
+$ echo $PATH
+```
+```
+/home/jarrod/usr/bin:/usr/local/bin:/bin:/usr/bin:
+```
 
 For example, consider the following command:
 
-    $ grep pdf file.txt
+```bash
+$ grep pdf file.txt
+```
 
 We will discuss `grep` later. For now, let's ignore what `grep` actually
 does and focus on what bash would do when you press enter after typing
@@ -207,14 +224,18 @@ nor a builtin, it will look for an executable file named `grep` first in
 finds a match or runs out of places to look. You can use `which` to find
 out where bash would find it:
 
-    $ which grep
-    /bin/grep
-    
+```bash
+$ which grep
+```
+```
+/bin/grep
+```
+
 Also note that the shell substitutes in the values of variables and 
 does other manipulations before calling the command. For example in the following
 example,
 
-```
+```bash
 $ myfile=file.txt
 $ grep pdf $myfile
 ```
@@ -228,6 +249,7 @@ Most bash commands have electronic manual pages, which are accessible
 directly from the commandline. You will be more efficient and
 effective if you become accustomed to using these `man` pages. To view
 the `man` page for the command `sudo`, for instance, you would type:
+
 ```bash
 $ man ls
 ```
@@ -242,9 +264,11 @@ $ ls --help
 
 Consider the following examples using the `ls` command:
 
-    $ ls --all -l
-    $ ls -a -l
-    $ ls -al
+```bash
+$ ls --all -l
+$ ls -a -l
+$ ls -al
+```
 
 Use `man ls` to see what the command options do. Is there any difference
 in what the three versions of the command invocation above return as the
@@ -351,7 +375,10 @@ enter to run it or edit the line and then hit enter.
 To list the history of the commands you entered, use the `history`
 command:
 
-    $ history
+```bash
+$ history
+```
+```
       1    echo $PS1
       2    PS1=$
       3    bash
@@ -363,17 +390,21 @@ command:
       9    ls -a -l
       10   ls -al
       11   ls -al manual.xml
+```
 
 The behavior of the `history` command is controlled by a shell
 variables:
 
-    $ echo $HISTFILE
-    $ echo $HISTSIZE
-
+```bash
+$ echo $HISTFILE
+$ echo $HISTSIZE
+```
 You can also rerun previous commands as follows:
 
-    $ !-n 
-    $ !gi
+```bash
+$ !-n 
+$ !gi
+```
 
 The first example runs the nth previous command and the second one runs
 the last command that started with 'gi'.
@@ -419,7 +450,9 @@ If you're not sure what command you're going to recall, you can append
 `:p` at the end of the text you type to do the recall, and the result
 will be printed, but not executed. For example:
 
-    $ !gi:p
+```bash
+$ !gi:p
+```
 
 You can then use the up arrow key to bring back that statement for
 editing or execution.
@@ -438,8 +471,10 @@ about using ssh on various operating systems](https://statistics.berkeley.edu/co
 To ssh to another machine, you need to know its (host)name. For example,
 to ssh to `arwen.berkeley.edu`, one of the SCF machines, you would:
 
-    $ ssh arwen.berkeley.edu
-    Password:
+```bash
+$ ssh arwen.berkeley.edu
+Password:
+```
 
 At this point you have to type your password. Alternatively, you can [set
 up ssh so that you can use it without typing your password](https://statistics.berkeley.edu/computing/ssh-keys).
@@ -448,19 +483,24 @@ If you have a different username on the remote machine than on the machine you a
 specify it as well. For example, to specify the username `jarrod`, you
 would:
 
-    $ ssh jarrod@arwen.berkeley.edu
+```bash
+$ ssh jarrod@arwen.berkeley.edu
+```
 
 If you want to view graphical applications on your local computer that
 are running on the remote computer you need to use the `-X` option:
 
-    $ ssh -X jarrod@arwen.berkeley.edu
+```bash
+$ ssh -X jarrod@arwen.berkeley.edu
+```
 
 Alternatively, if you want to copy a file (`file1.txt`) from your local
 computer to `arwen.berkeley.edu`, you can use the `scp` command,
 which securely copies files between machines:
 
-    $ scp file1.txt jarrod@arwen.berkeley.edu:.
-
+```bash
+$ scp file1.txt jarrod@arwen.berkeley.edu:.
+```
 The above command will copy `file1.txt` from my current working
 directory on my local machine to `jarrod`'s home directory on
 `arwen.berkeley.edu`. The `.` following the `:` indicates that I want
@@ -471,19 +511,24 @@ remote machine or I could use an absolute path.
 To copy a file (`file2.txt`) from `arwen.berkeley.edu` to my local
 machine:
 
-    $ scp jarrod@arwen.berkeley.edu:file2.txt .
+```bash
+$ scp jarrod@arwen.berkeley.edu:file2.txt .
+```
 
 I can even copy a file (`file3.txt`) owned by one user (`jarrod`) on one
 remote machine `arwen.berkeley.edu` to the account of another user
 (`jmillman`) on another remote machine `scf-ug02.berkeley.edu`:
 
-    $ scp jarrod@arwen.berkeley.edu:file3.txt jmillman@arwen.berkeley.edu:.
-
+```bash
+$ scp jarrod@arwen.berkeley.edu:file3.txt jmillman@arwen.berkeley.edu:.
+```
 If instead of copying a single file, I wanted to copy an entire
 directory (`src`) from one machine to another, I would use the `-r`
 option:
 
-    $ scp -r src jmillman@arwen.berkeley.edu:.
+```bash
+$ scp -r src jmillman@arwen.berkeley.edu:.
+```
 
 Regardless of whether you are working on a local computer or a remote
 one, it is occasionally useful to operate as a different user. For
@@ -499,9 +544,12 @@ on machines where you have administrative access:
 
 To upgrade all the software on the machine:
 
-    $ sudo apt-get upgrade
+```bash
+$ sudo apt-get upgrade
+```
 
 To install the text editor vim on the machine:
 
-    $ sudo apt-get install vim
-
+```bash
+$ sudo apt-get install vim
+```
