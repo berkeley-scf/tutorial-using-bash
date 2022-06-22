@@ -69,14 +69,18 @@ before the specific option is fine). Options may also involve two
 dashes, e.g., `R --no-save`. A standard two dash option for many
 commands is `--help`. For example, try:
 
-    $ tail --help
+```bash
+$ tail --help
+```
 
 Here are a couple of examples of flags when using the `tail` command
 (`-n 10` and `-f`):
 
-    $ wget https://raw.githubusercontent.com/berkeley-scf/tutorial-using-bash/master/cpds.csv
-    $ tail -n 10 cpds.csv   # last 10 lines of cpds.csv
-    $ tail -f cpds.csv      # shows end of file, continually refreshing
+```bash
+$ wget https://raw.githubusercontent.com/berkeley-scf/tutorial-using-bash/master/cpds.csv
+$ tail -n 10 cpds.csv   # last 10 lines of cpds.csv
+$ tail -f cpds.csv      # shows end of file, continually refreshing
+```
 
 The first line downloads the data from GitHub. The two main tools
 for downloading network-accessible data from the commandline are `wget`
@@ -84,37 +88,42 @@ and `curl`. I tend to use `wget` as my commandline downloading tool as
 it is more convenient, but on a Mac, only `curl` is generally available.
 
 A few more tidbits about `grep` (we will see more examples of `grep` in
-the section on regular expressions, but it is so useful that it is worth
+the [section on regular expressions](regex), but it is so useful that it is worth
 seeing many times):
 
-    $ grep ^2001 cpds.csv   # returns lines that start with '2001'
-    $ grep 0$ cpds.csv      # returns lines that end with '0'
-    $ grep 19.0 cpds.csv    # returns lines with '19' separated from '0' by a single character
-    $ grep 19.*0 cpds.csv   # now separated by any number of characters
-    $ grep -o 19.0 cpds.csv # returns only the content matching the pattern from the relevant lines
+```bash
+$ grep ^2001 cpds.csv   # returns lines that start with '2001'
+$ grep 0$ cpds.csv      # returns lines that end with '0'
+$ grep 19.0 cpds.csv    # returns lines with '19' separated from '0' by a single character
+$ grep 19.*0 cpds.csv   # now separated by any number of characters
+$ grep -o 19.0 cpds.csv # returns only the content matching the pattern, not entire lines
+```
 
 Note that the first argument to grep is the pattern you are looking for.
-The syntax is different from that used for wildcards in file names.
-Also, you can use regular expressions in the pattern. We won’t see this
-in detail here, but we will discuss this in the section below on regular
-expressions.
+The syntax is different from that [used for wildcards](file-management#3-filename-globbing) in file names.
+Also, you can use regular expressions in the pattern, but we defer
+details until [later](regex).
 
 It is sometimes helpful to put the pattern inside double quotes, e.g.,
 if you want spaces in your pattern:
 
-    $ grep "George .* Bush" cpds.csv
+```bash
+$ grep "George .* Bush" cpds.csv
+```
 
 More generally in Unix, enclosing a string in quotes is often useful to
 indicate that it is a single argument/value.
 
 If you want to explicitly look for one of the special characters used in
-creating patterns (such as double quote (`"`), period (`.`), etc., you
+creating patterns (such as double quote (`"`), period (`.`), etc.), you
 can "escape" them by preceding with a back-slash. For example to look
 for `"Canada"`, including the quotes:
 
-    $ grep "\"Canada\"" cpds.csv
-    $ grep "19\.0" cpds.csv
-
+```bash
+$ grep "\"Canada\"" cpds.csv     # look for "Canada" (including quotes)
+$ grep "19\.0" cpds.csv              # look for 19.0
+```
+	
 If you have a big data file and need to subset it by line (e.g., with
 `grep`) or by field (e.g., with `cut`), then you can do it really fast
 from the Unix command line, rather than reading it with R, SAS, Python,
@@ -125,13 +134,13 @@ the next section) and using wildcards (see the section on Globbing) to
 operate on groups of files. The utilities can also be used in shell
 scripts to do more complicated things.
 
-We will look at several examples of how to use these utilities below,
-but first let's discuss streams and redirection.
+We'll see further examples of how to use these utilities later.
 
 **Exercise**
 
-You've already seen some of the above commands. Follow the links above
-and while you are reading the abbreviated man pages consider how you
+You've already seen some of the above commands. Use the `--help`
+syntax to view the abbreviated  man pages for some commands you're not
+familiar with and consider how you
 might use these commands.
 
 # 3 Streams, pipes, and redirects
