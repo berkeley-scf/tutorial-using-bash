@@ -276,16 +276,18 @@ $ ls -l tmp.txt
 ```
 
 
-Or if we wanted to remove read and write permission:
+Or if we wanted to remove read and write permission, we can do this:
 
 ```bash
 $ chmod ugo-rw tmp.txt # prevent all three
-$ # The next command would usually add a line to the file, 
-$ # but we don't have permission to write to it
-$ echo "added line" >> tmp.txt  
 ```
 
-```
+Now if we try to add a line to the file, using the `>>`
+[redirection operator](using-commands#32-overview-of-redirection)
+operator, we are denied:
+
+```bash
+$ echo "added line" >> tmp.txt  
 -bash: tmp.txt: Permission denied
 ```
 
@@ -322,6 +324,5 @@ convert a file written in markdown (`report.md`) to a PDF
 
     $ pandoc -o report.pdf report.md
 
-For a quick introduction to LaTeX, please see the "Introduction to
-LaTeX" tutorial and screencast here:
-<http://statistics.berkeley.edu/computing/training/tutorials>
+For a quick introduction to LaTeX, please see our [Introduction to
+LaTeX tutorial and screencast](https://github.com/berkeley-scf/tutorial-latex-intro). 
