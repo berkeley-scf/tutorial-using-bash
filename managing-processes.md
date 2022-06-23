@@ -102,44 +102,9 @@ been running.
 
 To quit `top`, type `q`.
 
-# 2 Signaling
+# 2 Job Control
 
-We can kill a process if we know its PID (based on using `ps` or
-`top`, e.g.):
-
-```bash
-kill 16517
-```
-
-Let's see how to build up a command to kill firefox using some of the
-tools we've seen. First let's pipe the output of `ps -e` to `grep` to
-select the line corresponding to `firefox`:
-
-```bash
-$ ps -e | grep firefox
-16517 ?        00:10:03 firefox
-```
-
-We can now use `awk` to select the first column, which contains the
-process ID corresponding to `firefox`:
-
-```bash
-$ ps -e | grep firefox | awk '{ print $1 }'
-16517
-```
-	
-Finally, we can pipe this to the `kill` command using `xargs` or
-command substitution:
-
-```bash
-$ ps -e | grep firefox | awk '{ print $1 }' | xargs kill
-$ kill $(ps -e | grep firefox | awk '{ print $1 }')
-```
-
-As mentioned before, we can't pipe the PID directly to `kill` because
-`kill` takes the PID(s) as argument(s) rather than reading them from stdin.
-
-# 3 Job Control
+## 2.1 Foreground and background jobs
 
 When you run a command in a shell by simply typing its name, you are
 said to be running in the foreground. When a job is running in the
@@ -160,8 +125,7 @@ results, since *stdout* is not preserved when you log off from the
 computer. Thus, redirection (including redirection of *stderr*) is
 essential when running jobs in the background. As a simple example,
 suppose that you wish to run a Python script, and you don't want it to
-terminate when you log off. (Note that this can also be done using
-`R CMD BATCH`, so this is primarily an illustration.)
+terminate when you log off.
 
 ```bash
 $ python code.py > code.pyout 2>&1 &
@@ -177,7 +141,7 @@ the program will interrupt execution, but it will still have access to all
 files and other resources. Next, issue the `bg` command, which will
 start the stopped job running in the background.
 
-## 3.1 Listing and killing jobs
+## 2.2 Listing and killing jobs
 
 Since only foreground jobs will accept signals through the keyboard, if
 you want to terminate a background job you must first determine the
@@ -219,7 +183,36 @@ only apply to the particular computer on which they are executed, not to
 the entire computer network. Thus, if you start a job on one machine,
 you must log back into that same machine in order to manage your job.
 
-## 3.2 Monitoring jobs and memory use
+Let's see how to build up a command to kill firefox using some of the
+tools we've seen. First let's pipe the output of `ps -e` to `grep` to
+select the line corresponding to `firefox`:
+
+```bash
+$ ps -e | grep firefox
+16517 ?        00:10:03 firefox
+```
+
+We can now use `awk` to select the first column, which contains the
+process ID corresponding to `firefox`:
+
+```bash
+$ ps -e | grep firefox | awk '{ print $1 }'
+16517
+```
+	
+Finally, we can pipe this to the `kill` command using `xargs` or
+command substitution:
+
+```bash
+$ ps -e | grep firefox | awk '{ print $1 }' | xargs kill
+$ kill $(ps -e | grep firefox | awk '{ print $1 }')
+```
+
+As mentioned before, we can't pipe the PID directly to `kill` because
+`kill` takes the PID(s) as argument(s) rather than reading them from stdin.
+
+
+## 2.3 Monitoring jobs and memory use
 
 As we saw above, the `top` command also allows you to monitor the jobs
 on the system and in real-time. In particular, it's useful for seeing
@@ -253,7 +246,7 @@ You'll generally be interested in the `Memory` row and in the `total`, `used` an
 The `free` column can be confusing and does not actually indicate how much memory is still available
 to be used, as discused [here](https://berkeley-scf.github.io/tutorial-databases/db-management#52-memory).
 
-## 3.3 Nicing a job
+## 2.4 Nicing a job
 
 The most important thing to remember when starting a job on a machine
 that is not your personal machine is how to be a good citizen. This
@@ -270,7 +263,7 @@ priority by doing:
 
 where `11998` is the PID of your job.
 
-## 3.4 Screen
+# 3 Screen
 
 Screen allows you to create virtual terminals, which are not connected
 to your actual terminal or shell. This allows you to run multiple
@@ -279,7 +272,7 @@ their own virtual terminal. Screen provides facilities for managing
 several virtual terminals including listing them, switching between
 them, disconnecting from one machine and then reconnecting from another.
 While we will only discuss its basic operation, we will cover enough to
-be of regular use.
+be of regular use. `tmux` is an alternative to `screen`.
 
 Calling screen :
 
