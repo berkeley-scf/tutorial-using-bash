@@ -15,6 +15,9 @@ following attributes:
 -   An environment.
 -   A current working directory.
 
+Anytime you do something on the computer, one or more processes will
+start up to carry out the activity.
+
 # 1 Monitoring
 
 ## 1.1 `ps`
@@ -23,7 +26,7 @@ Examining subprocesses of your shell with `ps`:
 
 ```bash
 $ ps
-     PID TTY             TIME CMD
+PID   TTY           TIME CMD
 19370 pts/3    00:00:00 bash
 22846 pts/3    00:00:00 ps
 ```
