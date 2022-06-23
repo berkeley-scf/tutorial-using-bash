@@ -86,7 +86,7 @@ KiB Swap: 7897084 total, 7897084 free,       0 used. 6561548 avail Mem
 PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
 1607 jarrod   20   0 2333568 974888 212944 S  12.5 12.4  11:10.67 firefox
 3366 jarrod   20   0  159828   4312   3624 R   6.2  0.1   0:00.01 top
-    1 root     20   0  193892   8484   5636 S   0.0  0.1   0:01.78 systemd
+  1 root     20   0  193892   8484   5636 S   0.0  0.1   0:01.78 systemd
 <snip>
 ```
 
@@ -159,19 +159,21 @@ a job in the background, you should consider how you will access its
 results, since *stdout* is not preserved when you log off from the
 computer. Thus, redirection (including redirection of *stderr*) is
 essential when running jobs in the background. As a simple example,
-suppose that you wish to run an R script, and you don't want it to
+suppose that you wish to run a Python script, and you don't want it to
 terminate when you log off. (Note that this can also be done using
 `R CMD BATCH`, so this is primarily an illustration.)
 
-    $ R --no-save < code.R > code.Rout 2>&1 &
-    
+```bash
+$ python code.py > code.pyout 2>&1 &
+```
+
 What does the inscrutable `2>&1` do? It says to send *stderr* to the same
-place as *stdout*, which in this case has been redirected to `code.Rout`.
+place as *stdout*, which in this case has been redirected to `code.pyout`.
 
 If you forget to put a job in the background when you first execute it,
 you can do it while it's running in the foreground in two steps. First,
 suspend the job using the `Ctrl-z` signal. After receiving the signal,
-the program will interrupt execution, but will still have access to all
+the program will interrupt execution, but it will still have access to all
 files and other resources. Next, issue the `bg` command, which will
 start the stopped job running in the background.
 
