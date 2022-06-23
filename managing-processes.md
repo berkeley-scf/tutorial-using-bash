@@ -134,7 +134,8 @@ Swap:          7.6G        210M        7.4G
 
 You'll generally be interested in the `Memory` row and in the `total`, `used` and `available` columns.
 The `free` column can be confusing and [does not actually indicate how much memory is still available
-to be used](https://berkeley-scf.github.io/tutorial-databases/db-management#52-memory).
+to be used](https://berkeley-scf.github.io/tutorial-databases/db-management#52-memory),
+so you'll want to focus on the `available` column.
 
 
 # 2 Job Control
@@ -216,7 +217,7 @@ $ kill -9 16116
 
 to terminate the job. Another useful command in this regard is
 `killall`, which accepts a program name instead of a process id, and
-will kill all instances of the named program:
+will kill all instances of the named program (in this case, R):
 
 ```bash
 $ killall R
@@ -257,41 +258,26 @@ As mentioned before, we can't pipe the PID directly to `kill` because
 `kill` takes the PID(s) as argument(s) rather than reading them from stdin.
 
 
-## 2.3 Nicing a job
-
-The most important thing to remember when starting a job on a machine
-that is not your personal machine is how to be a good citizen. This
-often involves 'nicing' your jobs. Nicing a job puts it at a lower
-priority so that a user working at the keyboard has higher priority in
-using the CPU. Here's how to do it, giving the job a low priority of 19:
-
-```bash
-$ nice -19 R CMD BATCH --no-save code.R code.Rout &
-```
-
-If you forget and just submit the job without nicing, you can reduce the
-priority by doing:
-
-```bash
-$ renice +19 11998
-```
-
-where `11998` is the PID of your job.
-
 # 3 Screen
 
 Screen allows you to create virtual terminals, which are not connected
 to your actual terminal or shell. This allows you to run multiple
 programs from the commandline and leave them all in the foreground in
 their own virtual terminal. Screen provides facilities for managing
-several virtual terminals including listing them, switching between
-them, disconnecting from one machine and then reconnecting from another.
+several virtual terminals including:
+
+ - listing them,
+ -switching between them, and
+ - disconnecting from one machine and then reconnecting to an existing virtual terminal from another.
+
 While we will only discuss its basic operation, we will cover enough to
 be of regular use. `tmux` is an alternative to `screen`.
 
-Calling screen :
+Calling screen:
 
-    $ screen
+```bash
+$ screen
+```
 
 will open a single window and you will see a new bash prompt. You just
 work at this prompt as you normally would. The difference is that you
