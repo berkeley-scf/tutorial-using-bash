@@ -579,34 +579,47 @@ One could also use `--color` so that the matches are highlighed in color.
 
 ## 7.2 `sed`
 
+Here are some useful things you can do with `sed`. Note that as with
+other UNIX tools, `sed` will not generally directly alter a file
+(unless you use the `-i` flag), instead it will print the modified
+version of the file to stdout.
+
 Printing lines of text with `sed`:
 
-    $ sed -n '1,9p' file.txt       # prints out lines 1-9 of file.txt 
-    $ sed -n '/^#/p' file.txt       # prints out lines starting with # of file.txt 
+```bash
+$ sed -n '1,9p' file.txt       # prints out lines 1-9 from file.txt
+$ sed -n '/^#/p' file.txt     # prints out lines starting with # from file.txt 
+```
 
-The first command prints out lines 1-9 of `file.txt`, while the second
-one prints out lines starting with `#` of `file.txt`.
+The first command prints out lines 1-9, while the second
+one prints out lines starting with `#`.
 
 Deleting lines of text with `sed`:
 
-    $ sed -e '1,9d' file.txt
-    $ sed -e '/^;/d' -e '/^$/d' file.txt
+```bash
+$ sed -e '1,9d' file.txt
+$ sed -e '/^;/d' -e '/^$/d' file.txt
+```
 
-The first line deletes lines 1-9 of `file.txt`. What do you think the
+The first line deletes lines 1-9 of `file.txt`, printing the remaining
+lines to stdout. What do you think the
 second line does?
 
 Note that the -e flag is only necessary if you want to have more than one expression, so it's not actually needed in the first line.
 
 Text substitution with `sed`:
 
-    $ sed 's/old_pattern/new_pattern/' file.txt > new_file.txt
-    $ sed 's/old_pattern/new_pattern/g' file.txt > new_file.txt
-    $ sed -i 's/old_pattern/new_pattern/g' file.txt 
+```bash
+$ sed 's/old_pattern/new_pattern/' file.txt > new_file.txt
+$ sed 's/old_pattern/new_pattern/g' file.txt > new_file.txt
+$ sed -i 's/old_pattern/new_pattern/g' file.txt 
+```
 
 The first line replaces only the first instance in a line, while the second
 line replaces all instances in a line (i.e., globally). The use of the -i
 flag in the third line replaces
-the pattern in place in the file, thereby altering file.txt.
+the pattern **in place** in the file, thereby altering file.txt. Use
+the `-i` flag carefully as there is no way to easily restore the original version of the file.
 
 ## 7.3 `awk`
  
