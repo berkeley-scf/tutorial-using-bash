@@ -63,7 +63,7 @@ user-defined format; for example, :
 
 ```bash
 $ ps -o pid,ni,pcpu,pmem,user,comm
-PID     NI %CPU %MEM USER     COMMAND
+PID    NI %CPU %MEM USER     COMMAND
 18124   0  0.0  0.0 jarrod   bash
 22963   0  0.0  0.0 jarrod   ps
 ```
