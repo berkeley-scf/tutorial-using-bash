@@ -510,7 +510,7 @@ So we'll generally use double quotes. We can always work with a literal
 double quote by escaping it as seen above.
 
 
-# 7 Powerful tools for text manipulation: `grep`, `sed`, `awk`, and `perl`
+# 7 Powerful tools for text manipulation: `grep`, `sed`, and `awk`
 
 Before the text editor, there was the line editor. Rather than
 presenting you with the entire text as a text editor does, a line editor
@@ -688,7 +688,7 @@ $ awk '{print $1 + $2}' file.txt
 This will sum columns 1 and 2 of `file.txt`.
 
 
-# 8 Aliases (command shortcuts)
+# 8 Aliases (command shortcuts) and .bashrc
 
 Aliases allow you to use an abbreviation for a command, to create new
 functionality or to insure that certain options are always used when you
@@ -696,21 +696,27 @@ call an existing command. For example, I'm lazy and would rather type
 `q` instead of `exit` to terminate a shell window. You could create the
 alias as follow:
 
-    $ alias q=exit
+```bash
+$ alias q=exit
+```
 
 As another example, suppose you find the `-F` option of `ls` (which
 displays `/` after directories, `\` after executable files and `@` after
 links) to be very useful. The command :
 
-    $ alias ls="ls -F"
+```bash
+$ alias ls="ls -F"
+```
 
-will insure that the `-F` option will be used whenever you use `ls`. If
+will ensure that the `-F` option will be used whenever you use `ls`. If
 you need to use the unaliased version of something for which you've
 created an alias, precede the name with a backslash (`\`). For example,
 to use the normal version of `ls` after you've created the alias
 described above:
 
-    $ \ls
+```bash
+$ \ls
+```
 
 The real power of aliases is only achieved when they are automatically
 set up whenever you log in to the computer or open a new shell window.
@@ -718,6 +724,7 @@ To achieve that goal with aliases (or any other bash shell commands),
 simply insert the commands in the file `.bashrc` in your home directory.
 For example, here is an excerpt from my `.bashrc`:
 
+```bash
     # .bashrc
 
     # Source global definitions
@@ -758,7 +765,8 @@ For example, here is an excerpt from my `.bashrc`:
     alias more=less
     alias vi=vim
     alias which='(alias; declare -f) | /usr/bin/which --tty-only \
-             --read-alias --read-functions --show-tilde --show-dot'
+    --read-alias --read-functions --show-tilde --show-dot'
+```
 
 **Exercise**
 
