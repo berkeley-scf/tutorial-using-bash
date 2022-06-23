@@ -230,6 +230,47 @@ the pattern `[[:digit:]]{4}` matches any 4 digits. So the whole pattern
 matches any three digits followed by `-`, then another three digits, and then followed by four
 digits when it is preceded by 0 or 1 occurrences of `1-`.
 
+Now let's consider a file named `file2.txt` with the following content:
+
+    Here's my number: 919-543-3300.
+    hi John, good to meet you
+    They bought 731 bananas
+    Please call 1.919.554.3800
+    I think he said it was 337.4355
+
+Let's use a regular expression pattern to print all lines
+containing phone numbers:
+
+    $ grep  '(1-)?[[:digit:]]{3}-[[:digit:]]{4}' file2.txt
+
+You will notice that this doesn't match any lines. The reason is that
+the group syntax `(1-)` and the `{}` notation are not part of the
+extended syntax. To have `grep` use the extended syntax, you can either
+use the `-E` option:
+
+    $ grep -E '(1-)?[[:digit:]]{3}-[[:digit:]]{4}' file2.txt
+    Here's my number: 919-543-3300.
+
+or use the `egrep` command:
+
+    $ egrep  '(1-)?[[:digit:]]{3}-[[:digit:]]{4}' file2.txt
+    Here's my number: 919-543-3300.
+
+If we want to match regardless of whether the phone number is separated
+by a minus `-` or a period `.`, we could use the pattern `[-.]`:
+
+    $ egrep  '(1[-.])?[[:digit:]]{3}[-.][[:digit:]]{4}' file2.txt
+    Here's my number: 919-543-3300.
+    Please call 1.919.554.3800
+    I think he said it was 337.4355
+
+**Exercise**
+
+Explain what the following regular expression matches:
+
+    $ grep '^[^T]*is.*$' file1.txt
+
+
 Parentheses are also used with a pipe (`|`) to indicate any one of a set
 of multi-character sequences, such as `(http|ftp)`. Here we need double
 quotes or the shell tries to interpret the `(`.

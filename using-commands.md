@@ -535,66 +535,47 @@ the lines in a file matching a specific regular expression. The command
 in `ed` that does this is `g/<re>/p`, which stands for globally match
 all lines containing the regular express `<re>` and print them out.
 
-One often uses `grep` with regular expressions, discussed [here in this
-tutorial](regex).
+One often uses `grep` with [regular expressions](regex), covered
+later, so we'll just show some basic usage here.
 
-To start you will need to create a file called `file1.txt` with the
+To start you will need to create a file called `testfile.txt` with the
 following content:
 
-    This is the first line.
-    Followed by this line.
-    And then ...
+```
+This is the first line.
+Followed by this line.
+And then ...
+```
 
 To print all the lines containing `is`:
 
-    $ grep is file1.txt 
-    This is the first line.
-    Followed by this line.
+```bash
+$ grep is testfile.txt
+This is the first line.
+Followed by this line.
+```
 
 To print all the lines **not** containing `is`:
 
-    $ grep -v is file1.txt 
-    And then ...
+```bash
+$ grep -v is testfile.txt 
+And then ...
+```
 
-Now let's consider a file named `file2.txt` with the following content:
+To print only the matches, one can use the `-o` flag, though this
+would generally only be interesting when used with a regular
+expression pattern since in this case, we know "is" is what will be
+returned:
 
-    Here's my number: 919-543-3300.
-    hi John, good to meet you
-    They bought 731 bananas
-    Please call 1.919.554.3800
-    I think he said it was 337.4355
+```bash
+$ grep -o is testfile.txt
+is
+is
+is
+```
 
-Let's use a regular expression pattern to print all lines
-containing phone numbers:
+One could also use `--color` so that the matches are highlighed in color.
 
-    $ grep  '(1-)?[[:digit:]]{3}-[[:digit:]]{4}' file2.txt
-
-You will notice that this doesn't match any lines. The reason is that
-the group syntax `(1-)` and the `{}` notation are not part of the
-extended syntax. To have `grep` use the extended syntax, you can either
-use the `-E` option:
-
-    $ grep -E '(1-)?[[:digit:]]{3}-[[:digit:]]{4}' file2.txt
-    Here's my number: 919-543-3300.
-
-or use the `egrep` command:
-
-    $ egrep  '(1-)?[[:digit:]]{3}-[[:digit:]]{4}' file2.txt
-    Here's my number: 919-543-3300.
-
-If we want to match regardless of whether the phone number is separated
-by a minus `-` or a period `.`, we could use the pattern `[-.]`:
-
-    $ egrep  '(1[-.])?[[:digit:]]{3}[-.][[:digit:]]{4}' file2.txt
-    Here's my number: 919-543-3300.
-    Please call 1.919.554.3800
-    I think he said it was 337.4355
-
-**Exercise**
-
-Explain what the following regular expression matches:
-
-    $ grep '^[^T]*is.*$' file1.txt
 
 ## 7.2 `sed`
 
