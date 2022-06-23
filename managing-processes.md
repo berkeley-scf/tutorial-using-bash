@@ -92,15 +92,50 @@ PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
 
 The first few lines show general information about the machine, while
 the remaining lines show information for each process.
-The `RES` column indicates the amount of memory that a process is
-using (in bytes, if not otherwise indicated), while the `%MEM` shows
-that memory use relative to the physical memory available on the
-computer. The `%CPU` column shows the proportion of a CPU core that
+
+ - The `RES` column indicates the amount of memory that a process is
+ using (in bytes, if not otherwise indicated).
+ - The `%MEM` shows that memory use relative to the physical memory available on the
+ computer.
+ - The `%CPU` column shows the proportion of a CPU core that
 the process is using (which can exceed 100% if a process is
-threaded). The `TIME+` column shows the amount of time the process has
+threaded).
+ - The `TIME+` column shows the amount of time the process has
 been running.
 
 To quit `top`, type `q`.
+
+You can also renice and kill jobs (see below for further details on
+both these operations) from within top: just type `r` or `k`,
+respectively, and proceed from there.
+
+## 1.3 Monitoring memory use
+
+One of the main things to watch out for is a job that is using close to
+100% of memory and much less than 100% of CPU. What is generally
+happening is that your program has run out of memory and is using
+virtual memory on disk, spending most of its time writing to/from disk,
+sometimes called *paging* or *swapping*. If this happens, it can be a
+very long time, if ever, before your job finishes.
+
+Note that the per-process memory use reported by `top` and `ps` may "double count"
+memory that is being used simultaneously by multiple processes. To see the total
+amount of memory actually available on a machine:
+
+```bash
+free -h
+```
+
+```
+              total        used        free      shared  buff/cache   available
+Mem:           251G        998M        221G        2.6G         29G        247G
+Swap:          7.6G        210M        7.4G
+```
+
+You'll generally be interested in the `Memory` row and in the `total`, `used` and `available` columns.
+The `free` column can be confusing and [does not actually indicate how much memory is still available
+to be used](https://berkeley-scf.github.io/tutorial-databases/db-management#52-memory).
+
 
 # 2 Job Control
 
@@ -146,36 +181,46 @@ start the stopped job running in the background.
 Since only foreground jobs will accept signals through the keyboard, if
 you want to terminate a background job you must first determine the
 unique process id (PID) for the process you wish to terminate through
-the use of the `ps` command.
+either `ps` or `top`. Here we'll illustrate use of `ps` again.
 
 To see all processes owned by a specific user (e.g., `jarrod`), I can
 use the `-U jarrod` option:
 
-    $ ps -U jarrod
+```bash
+$ ps -U jarrod
+```
 
 If I want to get more information (e.g., `%CPU` and `%MEM`), I can use
 add the `-u` option:
 
-    $ ps -U jarrod -u
-    USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START    TIME COMMAND
-    jarrod   16116 12.0  6.0 118804  5080 tty1     Ss   16:25  133:01 python
+```bash
+$ ps -U jarrod -u
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START    TIME COMMAND
+jarrod   16116 12.0  6.0 118804  5080 tty1     Ss   16:25  133:01 python
+```
 
 In this example, the `ps` output tells us that this python job has a PID
 of `16116`, that it has been running for 133 minutes, is using 12% of
 CPU and 6% of memory, and that it started at 16:25. You could then issue
 the command:
 
-    $ kill 11998
+```bash
+$ kill 16116
+```
 
 or, if that doesn't work:
 
-    $ kill -9 11998
+```bash
+$ kill -9 16116
+```
 
 to terminate the job. Another useful command in this regard is
 `killall`, which accepts a program name instead of a process id, and
 will kill all instances of the named program:
 
-    $ killall R
+```bash
+$ killall R
+```
 
 Of course, it will only kill the jobs that belong to you, so it will not
 affect the jobs of other users. Note that the `ps` and `kill` commands
@@ -183,7 +228,7 @@ only apply to the particular computer on which they are executed, not to
 the entire computer network. Thus, if you start a job on one machine,
 you must log back into that same machine in order to manage your job.
 
-Let's see how to build up a command to kill firefox using some of the
+Finally, let's see how to build up a command to kill firefox using some of the
 tools we've seen. First let's pipe the output of `ps -e` to `grep` to
 select the line corresponding to `firefox`:
 
@@ -212,41 +257,7 @@ As mentioned before, we can't pipe the PID directly to `kill` because
 `kill` takes the PID(s) as argument(s) rather than reading them from stdin.
 
 
-## 2.3 Monitoring jobs and memory use
-
-As we saw above, the `top` command also allows you to monitor the jobs
-on the system and in real-time. In particular, it's useful for seeing
-how much of the CPU and how much memory is being used, as well as
-figuring out a PID as an alternative to `ps`. You can also renice jobs
-(see below) and kill jobs from within top: just type `r` or `k`,
-respectively, and proceed from there.
-
-One of the main things to watch out for is a job that is using close to
-100% of memory and much less than 100% of CPU. What is generally
-happening is that your program has run out of memory and is using
-virtual memory on disk, spending most of its time writing to/from disk,
-sometimes called *paging* or *swapping*. If this happens, it can be a
-very long time, if ever, before your job finishes.
-
-Note that the per-process memory use reported by `top` and `ps` may "double count"
-memory that is being used simultaneously by multiple processes. To see the total
-amount of memory actually available on a machine:
-
-```
-free -h
-```
-
-```
-              total        used        free      shared  buff/cache   available
-Mem:           251G        998M        221G        2.6G         29G        247G
-Swap:          7.6G        210M        7.4G
-```
-
-You'll generally be interested in the `Memory` row and in the `total`, `used` and `available` columns.
-The `free` column can be confusing and does not actually indicate how much memory is still available
-to be used, as discused [here](https://berkeley-scf.github.io/tutorial-databases/db-management#52-memory).
-
-## 2.4 Nicing a job
+## 2.3 Nicing a job
 
 The most important thing to remember when starting a job on a machine
 that is not your personal machine is how to be a good citizen. This
@@ -254,12 +265,16 @@ often involves 'nicing' your jobs. Nicing a job puts it at a lower
 priority so that a user working at the keyboard has higher priority in
 using the CPU. Here's how to do it, giving the job a low priority of 19:
 
-    $ nice -19 R CMD BATCH --no-save code.R code.Rout &
+```bash
+$ nice -19 R CMD BATCH --no-save code.R code.Rout &
+```
 
 If you forget and just submit the job without nicing, you can reduce the
 priority by doing:
 
-    $ renice +19 11998
+```bash
+$ renice +19 11998
+```
 
 where `11998` is the PID of your job.
 
