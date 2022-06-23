@@ -83,36 +83,61 @@ Tasks: 160 total,   1 running, 158 sleeping,   1 stopped,   0 zombie
 KiB Mem : 7893644 total, 5951552 free, 1085584 used,  856508 buff/cache
 KiB Swap: 7897084 total, 7897084 free,       0 used. 6561548 avail Mem
 
-PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+
-COMMAND
+PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
 1607 jarrod   20   0 2333568 974888 212944 S  12.5 12.4  11:10.67 firefox
 3366 jarrod   20   0  159828   4312   3624 R   6.2  0.1   0:00.01 top
-1 root         20   0  193892   8484   5636 S   0.0  0.1   0:01.78 systemd
+     1 root     20   0  193892   8484   5636 S   0.0  0.1   0:01.78 systemd
 <snip>
 ```
 
-The `RES` column indicates the amount of memory that a process is using (in bytes, if not otherwise indicated), while the `%MEM` shows that memory use relative to the physical memory available on the computer.
+The first few lines show general information about the machine, while
+the remaining lines show information for each process.
+The `RES` column indicates the amount of memory that a process is
+using (in bytes, if not otherwise indicated), while the `%MEM` shows
+that memory use relative to the physical memory available on the
+computer. The `%CPU` column shows the proportion of a CPU core that
+the process is using (which can exceed 100% if a process is
+threaded). The `TIME+` column shows the amount of time the process has
+been running.
 
 To quit `top`, type `q`.
 
 # 2 Signaling
 
+We can kill a process if we know its PID (based on using `ps` or
+`top`, e.g.):
+
+```bash
+kill 16517
+```
+
 Let's see how to build up a command to kill firefox using some of the
 tools we've seen. First let's pipe the output of `ps -e` to `grep` to
 select the line corresponding to `firefox`:
 
-    $ ps -e | grep firefox
-    16517 ?        00:10:03 firefox
+```bash
+$ ps -e | grep firefox
+16517 ?        00:10:03 firefox
+```
 
 We can now use `awk` to select the first column, which contains the
 process ID corresponding to `firefox`:
 
-    $ ps -e | grep firefox | awk '{ print $1 }'
-    16517
+```bash
+$ ps -e | grep firefox | awk '{ print $1 }'
+16517
+```
+	
+Finally, we can pipe this to the `kill` command using `xargs` or
+command substitution:
 
-Finally, we can pipe this to the `kill` command using `xargs`:
+```bash
+$ ps -e | grep firefox | awk '{ print $1 }' | xargs kill
+$ kill $(ps -e | grep firefox | awk '{ print $1 }')
+```
 
-    $ ps -e | grep firefox | awk '{ print $1 }' | xargs kill
+As mentioned before, we can't pipe the PID directly to `kill` because
+`kill` takes the PID(s) as argument(s) rather than reading them from stdin.
 
 # 3 Job Control
 
