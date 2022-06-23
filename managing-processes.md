@@ -79,18 +79,16 @@ Examining processes with `top`:
 $ top
 top - 13:49:07 up  1:49,  3 users,  load average: 0.10, 0.15, 0.18
 Tasks: 160 total,   1 running, 158 sleeping,   1 stopped,   0 zombie
-%Cpu(s):  2.5 us, 0.5 sy, 0.0 ni, 96.9 id, 0.0 wa, 0.0 hi, 0.0 si, 0.0
-st
-KiB Mem : 7893644 total, 5951552 free, 1085584 used,  856508
-buff/cache
+%Cpu(s):  2.5 us, 0.5 sy, 0.0 ni, 96.9 id, 0.0 wa, 0.0 hi, 0.0 si, 0.0 st
+KiB Mem : 7893644 total, 5951552 free, 1085584 used,  856508 buff/cache
 KiB Swap: 7897084 total, 7897084 free,       0 used. 6561548 avail Mem
 
-PID USER     PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+
+PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+
 COMMAND
-1607 jarrod   20   0 2333568 974888 212944 S  12.5 12.4  11:10.67
-firefox
+1607 jarrod   20   0 2333568 974888 212944 S  12.5 12.4  11:10.67 firefox
 3366 jarrod   20   0  159828   4312   3624 R   6.2  0.1   0:00.01 top
-1 root     20   0  193892   8484   5636 S   0.0  0.1   0:01.78 systemd 
+1 root         20   0  193892   8484   5636 S   0.0  0.1   0:01.78 systemd
+<snip>
 ```
 
 The `RES` column indicates the amount of memory that a process is using (in bytes, if not otherwise indicated), while the `%MEM` shows that memory use relative to the physical memory available on the computer.
