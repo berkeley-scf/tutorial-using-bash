@@ -26,7 +26,7 @@ Examining subprocesses of your shell with `ps`:
 
 ```bash
 $ ps
-PID   TTY           TIME CMD
+PID   TTY          TIME CMD
 19370 pts/3    00:00:00 bash
 22846 pts/3    00:00:00 ps
 ```
@@ -63,7 +63,7 @@ user-defined format; for example, :
 
 ```bash
 $ ps -o pid,ni,pcpu,pmem,user,comm
-PID  NI %CPU %MEM USER     COMMAND
+PID     NI %CPU %MEM USER     COMMAND
 18124   0  0.0  0.0 jarrod   bash
 22963   0  0.0  0.0 jarrod   ps
 ```
