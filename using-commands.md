@@ -148,7 +148,7 @@ might use these commands.
 ## 3.1 Streams (stdin/stdout/stderr)
 
 Unix programs that involve input and/or output often operate by reading
-input from a stream known as standard input (*stdin*), and writing their
+input from a *stream* known as standard input (*stdin*), and writing their
 results to a stream known as standard output (*stdout*). In addition, a
 third stream known as standard error (*stderr*) receives error messages
 and other information that's not part of the program's results. In the
@@ -194,7 +194,7 @@ shows some examples of redirection.
 </tr>
 <tr class="even">
 <td align="left"><code>$ cmd &gt;&gt; file</code></td>
-<td align="left">Append <em>stdout</em> to <em>file</em>:</td>
+<td align="left">Append <em>stdout</em> to <em>file</em></td>
 </tr>
 <tr class="odd">
 <td align="left"><code>$ cmd 1&gt;&gt; file</code></td>
@@ -227,9 +227,10 @@ shows some examples of redirection.
 </tbody>
 </table>
 
-
 Note that `cmd` may include options and arguments as seen in the
 previous section.
+
+
 
 ## 3.3 Standard redirection (pipes)
 
@@ -241,39 +242,52 @@ provided to them.
 
 A simple pipe to `wc` to count the number of words in a string:
 
-    $ echo "hey there" | wc -w
-    2
+```bash
+$ echo "hey there" | wc -w
+2
+```
 
 Translating lowercase to UPPERCASE with `tr`:
 
-    $ echo 'user1'  | tr 'a-z' 'A-Z'
-    USER1
+```bash
+$ echo 'user1'  | tr 'a-z' 'A-Z'
+USER1
+```
 
 Here's an example of finding out how many unique entries there are in
 the 2nd column of a data file whose fields are separated by commas:
 
-    $ cut -d',' -f2 cpds.csv | sort | uniq | wc
-    $ cut -d',' -f2 cpds.csv | sort | uniq > countries.txt
+```bash
+$ cut -d',' -f2 cpds.csv | sort | uniq | wc
+$ cut -d',' -f2 cpds.csv | sort | uniq > countries.txt
+```
 
-Above we use the `cut` utility to extract the second field (`-f2`) or
+Here are the piecies of what is going on in the commands above:
+ -We use the `cut` utility to extract the second field (`-f2`) or
 column of the file `cpds.csv` where the fields (or columns) are split or
-delimited by a comma (`-d','`). The standard output of the `cut` command
-is then piped (via `|`) to the standard input of the `sort` command.
-Then the output of `sort` is sent to the input of `uniq` to remove
-duplicate entries in the sorted list provided by `sort`. Rather than
-using `sort | uniq`, you could also use `sort -u`. Finally, the first of
-the `cut` commands prints a word count summary using `wc`; while the
+delimited by a comma (`-d','`).
+ - The standard output of the `cut` command is then piped (via `|`) to the standard input of the `sort` command.
+ - Then the output of `sort` is sent to the input of `uniq` to remove
+duplicate entries in the sorted list provided by `sort`. (Rather than
+using `sort | uniq`, you could also use `sort -u`.)
+ - Finally, the first of the `cut` commands prints a word count summary using `wc`; while the
 second saving the sorted information with duplicates removed in the file
 `countries.txt`.
 
-To see if there are any "S" values in certain fields (fixed width) of a
-set of files (note I did this on 22,000 files (5 Gb or so) in about 5
-minutes on my desktop; it would have taken much more time to read the
-data into R):
+As another example of checking for anomalies in a set of files, with
+the following syntax, I can see if there are any "S" values in certain fields (based on fixed
+width using  `-b`) of a
+set of files (`USC*dly`), one can do this: 
 
-    $ cut -b29,37,45,53,61,69,77,85,93,101,109,117,125,133,141,149, \ 
+```bash
+$ cut -b29,37,45,53,61,69,77,85,93,101,109,117,125,133,141,149, \ 
             157,165,173,181,189,197,205,213,221,229,237,245,253, \
             261,269 USC*.dly | grep S | less
+```
+
+ (Note I did that on 22,000 files (5 Gb or so) in about 5
+minutes on my desktop; it would have taken much more time to read the
+data into a program like R or Python.)
 
 A closely related, but subtly different, capability that we saw above is
 command substitution. Recall that when the shell encounters a command
