@@ -130,7 +130,7 @@ from the Unix command line, rather than reading it with R, SAS, Python,
 etc.
 
 Much of the power of these utilities comes in piping between them (see
-the next section) and using wildcards (see the section on Globbing) to
+the next section) and [using wildcards](file-management#3-filename-globbing) to
 operate on groups of files. The utilities can also be used in shell
 scripts to do more complicated things.
 
@@ -263,10 +263,11 @@ $ cut -d',' -f2 cpds.csv | sort | uniq > countries.txt
 ```
 
 Here are the piecies of what is going on in the commands above:
- -We use the `cut` utility to extract the second field (`-f2`) or
+
+ - We use the `cut` utility to extract the second field (`-f2`) or
 column of the file `cpds.csv` where the fields (or columns) are split or
 delimited by a comma (`-d','`).
- - The standard output of the `cut` command is then piped (via `|`) to the standard input of the `sort` command.
+ - The standard output of the `cut` command [is then piped (via `|`) to the standard input of the `sort` command.
  - Then the output of `sort` is sent to the input of `uniq` to remove
 duplicate entries in the sorted list provided by `sort`. (Rather than
 using `sort | uniq`, you could also use `sort -u`.)
@@ -275,7 +276,7 @@ second saving the sorted information with duplicates removed in the file
 `countries.txt`.
 
 As another example of checking for anomalies in a set of files, with
-the following syntax, I can see if there are any "S" values in certain fields (based on fixed
+the , to see if there are any "S" values in certain fields (based on fixed
 width using  `-b`) of a
 set of files (`USC*dly`), one can do this: 
 
@@ -289,77 +290,109 @@ $ cut -b29,37,45,53,61,69,77,85,93,101,109,117,125,133,141,149, \ 
 minutes on my desktop; it would have taken much more time to read the
 data into a program like R or Python.)
 
-A closely related, but subtly different, capability that we saw above is
-command substitution. Recall that when the shell encounters a command
-surrounded by `$()` (or backticks), it runs the command and replaces the
-expression with the output from the command; this allows something
-similar to a pipe, but is appropriate when a command reads its arguments
-directly from the command line instead of through standard input. For
+## 3.4 The `tee` command
+
+The `tee` command lets you create two streams from one. For example,
+consider the case where you want the results of this command:
+
+```bash
+$ cut -d',' -f2 cpds.csv | sort | uniq 
+```
+
+to both be output to the terminal screen you are working in as well as
+being saved to a file. You could issue the command twice:
+
+```bash
+$ cut -d',' -f2 cpds.csv | sort | uniq
+$ cut -d',' -f2 cpds.csv | sort | uniq > countries.txt
+```
+
+Instead of repeating the command and wasting computing time, you could
+use `tee` command:
+
+```bash
+$ cut -d',' -f2 cpds.csv | sort | uniq | tee countries.txt
+```
+
+# 4 Command substitution and the `xargs` command
+
+## 4.1 Command substitution
+
+A closely related, but subtly different, capability to piping is
+command substitution. You may sometimes need to substitute the results of a command for use
+by another command. For example, if you wanted to use the directory
+listing returned by `ls` as the argument to another command, you would
+type `$(ls)` in the location you want the result of `ls` to appear.
+
+When the shell encounters a command
+surrounded by `$()`, it runs the command and replaces the
+expression with the output from the command. This allows something
+similar to a pipe, but it is appropriate when a command reads its arguments
+directly from the command line instead of through standard input.
+
+For
 example, suppose we are interested in searching for the text `pdf` in
 the last 4 R code files (those with suffix `.r` or `.R`) that were
 modified in the current directory. We can find the names of the four most
 recently modified files ending in `.R` or `.r` using:
 
-    $ ls -t *.{R,r} | head -4
+```bash
+$ ls -t *.{R,r} | head -4
+```
 
-and we can search for the required pattern using `grep` (we will discuss
-`grep` again in the section on regular expressions). Putting these
-together with the backtick operator we can solve the problem using:
+and we can search for the required pattern using `grep` . Putting these
+together with command substitution, we can solve the problem using:
 
-    $ grep pdf $(ls -t *.{R,r} | head -4)
+```bash
+$ grep pdf $(ls -t *.{R,r} | head -4)
+```
+
+Suppose that the four R code file names produced by the `ls` command were:
+`test.R`, `run.R`, `analysis.R` , and `process.R`. Then the result of the command substitution is to run the following command:
+
+```bash
+$ grep pdf test.R run.R analysis.R process.R
+```
+
+
+> **Note**
+>
+> An older notation for command substitution is to use backticks (e.g.,
+> `` `ls` `` versus `$(ls)`). It is generally preferable to use the new
+> notation, since there are many annoyances with the backtick notation.
+> For example, backslashes (`\`) inside of backticks behave in a
+> non-intuitive way, nested quoting is more cumbersome inside backticks,
+>nested substitution is more difficult inside of backticks, and it is
+> easy to visually mistake backticks for a single quote.
 
 Note that piping the output of the `ls` command into `grep` would not
-achieve the desired goal, since `grep` reads its filenames from the
+achieve the desired goal, since `grep` reads its filenames as arguments from the
 command line, not standard input.
 
-## 3.4 The `xargs` and `tee` commands
+## 4.2 The `xargs`  command
 
-You can also redirect output as the arguments to another program using
+While it doesn't work to directly use pipes to redirect output from one program
+as arguments to another program, you  can redirect output as the arguments to another program using
 the `xargs` utility. Here's an example:
 
-    $ ls -t *.{R,r} | head -4 | xargs grep pdf
+```bash
+$ ls -t *.{R,r} | head -4 | xargs grep pdf
+```
 
-The `tee` command lets you create two streams from one. For example,
-consider the case where you want the results of this command:
+where the result is equivalent to the use of command substitution we saw in the previous section.
 
-    $ cut -d',' -f2 cpds.csv | sort | uniq 
-
-to both be output to the terminal screen you are working in as well as
-being saved to a file. You could issue the command twice:
-
-    $ cut -d',' -f2 cpds.csv | sort | uniq 
-    $ cut -d',' -f2 cpds.csv | sort | uniq > countries.txt
-
-Instead of repeating the command and wasting computing time, you could
-use `tee` command:
-
-    $ cut -d',' -f2 cpds.csv | sort | uniq | tee countries.txt
-
-
-# 4 Command Substitution
-
-You may sometimes need to substitute the results of a command for use
-by another command. For example, if you wanted to use the directory
-listing returned by `ls` as the argument to another command, you would
-type `$(ls)` in the location you want the result of `ls` to appear.
-
-An older notation for command substitution is to use backticks (e.g.,
-`` `ls` `` versus `$(ls)`). It is generally preferable to use the new
-notation, since there are many annoyances with the backtick notation.
-For example, backslashes (`\`) inside of backticks behave in a
-non-intuitive way, nested quoting is more cumbersome inside backticks,
-nested substitution is more difficult inside of backticks, and it is
-easy to visually mistake backticks for a single quote.
 
 **Exercise**
 
 Try the following commands:
 
-    $ ls -l tr
-    $ which tr
-    $ ls -l which tr
-    $ ls -l $(which tr)
-
+```bash
+$ ls -l tr
+$ which tr
+$ ls -l which tr
+$ ls -l $(which tr)
+```
+	
 Make sure you understand why each command behaves as it does.
 
 
