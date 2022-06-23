@@ -105,6 +105,9 @@ $ for FILE in $(ls *.txt); do
 > done
 ```
 
+Note that the `>` prompt above occurs when the shell is expecting
+further input.
+
 Another use of *for* loops is automating file downloads:
 
 ```bash
@@ -167,10 +170,10 @@ pmax
 
 We've covered most of what you are likely to need to know about the
 shell. I tend to only use bash scripts for simple tasks that require
-only a few lines of bash commands and very little control flow (i.e.,
+only a few lines of bash commands and limited control flow (i.e.,
 conditional statements, loops). For more complicated OS tasks, it is
-often preferable to use Python. You can also do a fair amount of what
-you need from within R using the `system()` function. This will enable
-you to avoid dealing with a lot of shell programming syntax (but you'll
+often preferable to use Python. (You can also do a fair amount of what
+you need from within R using the `system()` function.) This will enable
+you to avoid dealing with a lot of shell programming syntax. But you'll
 still need to know how to use standard UNIX commands/utilities, wildcards, and pipes to be
-effective).
+effective.

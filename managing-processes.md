@@ -11,67 +11,86 @@ following attributes:
 -   A process ID (PID).
 -   A user ID (UID).
 -   A group ID (GID).
--   A parent process.
+-   A parent process with its own ID (PPID).
 -   An environment.
 -   A current working directory.
 
 # 1 Monitoring
 
+## 1.1 `ps`
+
 Examining subprocesses of your shell with `ps`:
 
-    $ ps
-    PID TTY          TIME CMD
-    19370 pts/3    00:00:00 bash
-    22846 pts/3    00:00:00 ps
+```bash
+$ ps
+     PID TTY             TIME CMD
+19370 pts/3    00:00:00 bash
+22846 pts/3    00:00:00 ps
+```
 
 Examining in more detail subprocesses of your shell with `ps`:
 
-    $ ps -f
-    UID        PID  PPID  C STIME TTY          TIME CMD
-    jarrod   19370 19368  0 10:51 pts/3    00:00:00 bash
-    jarrod   22850 19370  0 14:57 pts/3    00:00:00 ps -f
+```bash
+$ ps -f
+UID        PID  PPID  C STIME TTY          TIME CMD
+jarrod   19370 19368  0 10:51 pts/3    00:00:00 bash
+jarrod   22850 19370  0 14:57 pts/3    00:00:00 ps -f
+```
 
 Examining in more detail all processes on your computer:
 
-    $ ps -ef
-    UID        PID  PPID  C STIME TTY          TIME CMD
-    root         1     0  0 Aug21 ?        00:00:05 /usr/lib/systemd
-    root         2     0  0 Aug21 ?        00:00:00 [kthreadd]
-    root         3     2  0 Aug21 ?        00:00:07 [ksoftirqd/0]
-    root         5     2  0 Aug21 ?        00:00:00 [kworker/0:0H]
-       <snip>
-    root     16210     1  0 07:19 ?        00:00:00 login -- jarrod
-    jarrod   16219 16210  0 07:19 tty1     00:00:00 -bash
-    jarrod   16361 16219  0 07:19 tty1     00:00:00 /bin/sh /bin/startx
-       <snip>
+```bash
+$ ps -ef
+UID        PID  PPID  C STIME TTY          TIME CMD
+root         1     0  0 Aug21 ?        00:00:05 /usr/lib/systemd
+root         2     0  0 Aug21 ?        00:00:00 [kthreadd]
+root         3     2  0 Aug21 ?        00:00:07 [ksoftirqd/0]
+root         5     2  0 Aug21 ?        00:00:00 [kworker/0:0H]
+<snip>
+root     16210     1  0 07:19 ?        00:00:00 login -- jarrod
+jarrod   16219 16210  0 07:19 tty1     00:00:00 -bash
+jarrod   16361 16219  0 07:19 tty1     00:00:00 /bin/sh /bin/startx
+<snip>
+```
 
 You can use the `-u` option to see percent CPU and percent memory used
 by each process. You can use the `-o` option to provide your own
 user-defined format; for example, :
 
-    $ ps -o pid,ni,pcpu,pmem,user,comm
-      PID  NI %CPU %MEM USER     COMMAND
-    18124   0  0.0  0.0 jarrod   bash
-    22963   0  0.0  0.0 jarrod   ps
+
+```bash
+$ ps -o pid,ni,pcpu,pmem,user,comm
+PID  NI %CPU %MEM USER     COMMAND
+18124   0  0.0  0.0 jarrod   bash
+22963   0  0.0  0.0 jarrod   ps
+```
 
 To see the hierarchical process structure (i.e., which processes started which other processes), you can use the `pstree`
 command.
 
+## 1.2 `top`
+
 Examining processes with `top`:
 
-    $ top
-    top - 13:49:07 up  1:49,  3 users,  load average: 0.10, 0.15, 0.18
-    Tasks: 160 total,   1 running, 158 sleeping,   1 stopped,   0 zombie
-    %Cpu(s):  2.5 us, 0.5 sy, 0.0 ni, 96.9 id, 0.0 wa, 0.0 hi, 0.0 si, 0.0 st
-    KiB Mem : 7893644 total, 5951552 free, 1085584 used,  856508 buff/cache
-    KiB Swap: 7897084 total, 7897084 free,       0 used. 6561548 avail Mem 
+```bash
+$ top
+top - 13:49:07 up  1:49,  3 users,  load average: 0.10, 0.15, 0.18
+Tasks: 160 total,   1 running, 158 sleeping,   1 stopped,   0 zombie
+%Cpu(s):  2.5 us, 0.5 sy, 0.0 ni, 96.9 id, 0.0 wa, 0.0 hi, 0.0 si, 0.0
+st
+KiB Mem : 7893644 total, 5951552 free, 1085584 used,  856508
+buff/cache
+KiB Swap: 7897084 total, 7897084 free,       0 used. 6561548 avail Mem
 
-      PID USER     PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND 
-     1607 jarrod   20   0 2333568 974888 212944 S  12.5 12.4  11:10.67 firefox
-     3366 jarrod   20   0  159828   4312   3624 R   6.2  0.1   0:00.01 top
-        1 root     20   0  193892   8484   5636 S   0.0  0.1   0:01.78 systemd 
+PID USER     PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+
+COMMAND
+1607 jarrod   20   0 2333568 974888 212944 S  12.5 12.4  11:10.67
+firefox
+3366 jarrod   20   0  159828   4312   3624 R   6.2  0.1   0:00.01 top
+1 root     20   0  193892   8484   5636 S   0.0  0.1   0:01.78 systemd 
+```
 
-The `RES` column indicates the amount of memory that a process is using (in bytes, if not otherwise indicated), while the `%MEM` shows that memory use relative to the physical memory availabe on the computer.
+The `RES` column indicates the amount of memory that a process is using (in bytes, if not otherwise indicated), while the `%MEM` shows that memory use relative to the physical memory available on the computer.
 
 To quit `top`, type `q`.
 
