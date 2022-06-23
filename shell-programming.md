@@ -139,8 +139,7 @@ semicolon seen in the previous example.
     n=100 
     for(( it=1; it<=100; it++ ))
     do
-        echo "n=$n; it=$it; source('base.R')" > tmp-$n-$it.R   #
-    create customized R file
+        echo "n=$n; it=$it; source('base.R')" > tmp-$n-$it.R   # create customized R file
         R CMD BATCH --no-save tmp-$n-$it.R sim-n$n-it$it.Rout
     done
     # note that base.R should NOT set either 'n' or 'it'
@@ -154,16 +153,15 @@ Note by default the separator when you're looping through elements of a variable
 $ IFS=:
 $ types=tmin:tmax:pmin:pmax
 $ for type in $types
-$ do
-$    echo $type
-$ done
+> do
+>    echo $type
+> done
 tmin
 tmax
 pmin
 pmax
 ```
 
-Similarly to the if/then/else, if you have the `do` on the same line as the `for`, you'll need a semicolon before the `do`.
 
 # 5 How much shell scripting should I learn?
 
