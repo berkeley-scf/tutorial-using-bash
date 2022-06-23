@@ -347,8 +347,8 @@ together with command substitution, we can solve the problem using:
 $ grep pdf $(ls -t *.{R,r} | head -4)
 ```
 
-Suppose that the four R code file names produced by the `ls` command were:
-`test.R`, `run.R`, `analysis.R` , and `process.R`. Then the result of the command substitution is to run the following command:
+Suppose that the four R code file names produced by the `ls` command above were:
+`test.R`, `run.R`, `analysis.R` , and `process.R`. Then the result of the command substitution above is to run the following command:
 
 ```bash
 $ grep pdf test.R run.R analysis.R process.R
@@ -358,7 +358,7 @@ $ grep pdf test.R run.R analysis.R process.R
 > **Note**
 >
 > An older notation for command substitution is to use backticks (e.g.,
-> `` `ls` `` versus `$(ls)`). It is generally preferable to use the new
+> `` `ls` `` rather than `$(ls)`). It is generally preferable to use the new
 > notation, since there are many annoyances with the backtick notation.
 > For example, backslashes (`\`) inside of backticks behave in a
 > non-intuitive way, nested quoting is more cumbersome inside backticks,
@@ -399,15 +399,14 @@ Make sure you understand why each command behaves as it does.
 # 5 Brace expansion
 
 We saw brace expansion when discussing file wildcards. For example, we can
-rename a long file easily like this:
+rename a file with a long name easily like this:
 
 ```bash
 $ mv my_long_filename.{txt,csv}
+$ ls my_long_filename*
+my_long_filename.csv
 $ mv my_long_filename.csv{,-old}
 $ ls my_long_filename*
-```
-
-```
 my_long_filename.csv-old
 ```
 
@@ -419,14 +418,14 @@ mv my_long_filename.csv my_long_filename.csv-old
 ```
 
 Brace expansion is quite useful and more flexible than I've indicated.
-Above we saw how to use brace expansion using a comma comma separated
+Above we saw how to use brace expansion using a comma-separated
 list of items inside the curly braces (e.g., `{txt,csv}`), but they can
 also be used with a sequence specification. A sequence is indicated with
 a start and end item separated by two periods (`..`). Try typing the
 following examples at the command line and try to figure out how they
 work:
 
-```
+```bash
 $ echo {1..15}
 $ echo c{c..e}
 $ echo {d..a}
@@ -445,11 +444,12 @@ A note about using single vs. double quotes in shell code. In
 general, variables inside double quotes will be evaluated, but variables
 not inside double quotes will not be:
 
-    $ echo "My home directory is $HOME"
-    /home/jarrod
-    $ echo 'My home directory is $HOME'
-    $HOME
-
+```bash
+$ echo "My home directory is $HOME"
+My home directory is /home/jarrod
+$ echo 'My home directory is $HOME'
+My home directory is $HOME
+```
 
 **Table. Quotes**
 
@@ -474,28 +474,37 @@ not inside double quotes will not be:
 
 This can be useful, for example, when you have a directory with a space
 in its name (of course, it is better to avoid spaces in file and
-directory names). Since bash uses spaces to parse the elements of the
-command line, you might try escaping the spaces with a backslash:
+directory names). For example, suppose you have a directory named "with space" within the `/home/jarrod` home directory.
+Since bash uses spaces to parse the elements of the
+command line, you might try escaping any spaces with a backslash:
 
-    $ ls $HOME/with\ space
-    file1.txt
+```bash
+$ ls $HOME/with\ space
+file1.txt
+```
 
 However that can be a pain and may not work in all circumstances. A cleaner
 approach is to use soft (or double) quotes:
 
-    $ ls "$HOME/with space"
-    file1.txt
+```bash
+$ ls "$HOME/with space"
+file1.txt
+```
 
 If you used hard quotes, you will get this error:
 
-    $ ls '$HOME/with space'
-    ls: cannot access $HOME/with space: No such file or directory
+```bash
+$ ls '$HOME/with space'
+ls: cannot access $HOME/with space: No such file or directory
+```
 
-What if you have double quotes in your file or directory name (again, it
+What if you have double quotes in your file or directory name, such as a directory `"with"quote`  (again, it
 is better to avoid using double quotes in file and directory names)? In
 this case, you will need to escape the quote:
 
-    $ ls "$HOME/\"with\"quote"
+```bash
+$ ls "$HOME/\"with\"quote"
+```
 
 So we'll generally use double quotes. We can always work with a literal
 double quote by escaping it as seen above.
