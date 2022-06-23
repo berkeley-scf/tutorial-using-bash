@@ -527,6 +527,14 @@ these commands can be terse. However, it also means that learning the
 syntax for one of these tools will be rewarded when you need to learn
 the syntax of another of these tools.
 
+An important benefit of these tools, particularly when working with large files, is that by operating line by line they
+don't incur the memory use that would be involved in reading an entire file into memory in a program like Python or R and then operating on the file's contents in memory.
+
+You may not need to learn much `sed` or `awk`, but it is good to know about
+them since you can search the internet for awk or sed one-liners. If you
+have some file munging task, it can be helpful to do a quick search
+before writing code to perform the task yourself.
+
 ## 7.1 `grep`
 
 The simplest of these tools is `grep`. As I mentioned, `ed` only
@@ -581,14 +589,14 @@ One could also use `--color` so that the matches are highlighed in color.
 
 Here are some useful things you can do with `sed`. Note that as with
 other UNIX tools, `sed` will not generally directly alter a file
-(unless you use the `-i` flag), instead it will print the modified
+(unless you use the `-i` flag); instead it will print the modified
 version of the file to stdout.
 
 Printing lines of text with `sed`:
 
 ```bash
 $ sed -n '1,9p' file.txt       # prints out lines 1-9 from file.txt
-$ sed -n '/^#/p' file.txt     # prints out lines starting with # from file.txt 
+$ sed -n '/^#/p' file.txt      # prints out lines starting with # from file.txt 
 ```
 
 The first command prints out lines 1-9, while the second
@@ -630,59 +638,52 @@ we will just look at a few common one-liners to get a sense of how it
 works. Basically, awk will go through a file line by line and perform
 some action for each line.
 
-For example, to select a given column from some text (e.g., getting the PIDs of some processes):
+For example, to select a given column from some text (here getting
+the PIDs of some processes, which are in the second (`$2`) column of
+the output of `ps -f`:
 
-    ps -F | awk '{ print $2 }'
+```bash
+ps -f | awk '{ print $2 }'
+```
 
 To double space a file, you would read each line, print it,
 and then print a blank line:
 
-    $ awk '{ print } { print "" }' file.txt 
+```bash
+$ awk '{ print } { print "" }' file.txt 
+```
 
 Print every line of a file that is longer than 80 characters:
 
-    $ awk 'length($0) > 80' file.txt
+```bash
+$ awk 'length($0) > 80' file.txt
+```
 
 Print the home directory of every user defined in the file
 `/etc/passwd`:
 
-    $ awk -F: '{ print $6 }' /etc/passwd
+```bash
+$ awk -F: '{ print $6 }' /etc/passwd
+```
 
-To see what this did, let's look at the first line of `/etc/passwd`:
+To see what that does, let's look at the first line of `/etc/passwd`:
 
-    $ head -n 1 /etc/passwd
-    root:x:0:0:root:/root:/bin/bash
+```bash
+$ head -n 1 /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+```
 
 As you can see the entries are separated by colons (`:`) and the sixth
 field contains the root user's home directory (`/root`). The option
-`-F:` specifies that the colon `:` is the field delimiter and `print $6`
+`-F:` specifies that the colon `:` is the field delimiter (instead of
+the default space delmiter) and `print $6`
 prints the 6th field of each line.
 
-You may not need to learn much `sed` or `awk`, but it is good to know about
-them since you can search the internet for awk or sed one-liners. If you
-have some file munging task, it can be helpful to do a quick search
-before writing code to perform the task yourself.
+Summing columns:
 
-## 7.4 `perl`
-
-Perl is another general-purpose programming language that is particular
-useful for one-liner commands to perform data extraction and
-manipulation tasks. Again even if you don't learn how to program in
-Perl, it can be useful to have a couple one-liners in your toolbox.
-
-Text substitution with `perl`:
-
-    $ perl -pi -e 's/old_pattern/new_pattern/g' file.txt
-    $ perl -pi -e 's/old_pattern/new_pattern/g' $(find . -name \*.html)
-
-The `i` option tells `perl` to do the global substitution in place. You
-can also substitute the `/` with another character. For example:
-
-    $ perl -pi -e 's:old_pattern:new_pattern:g' file.txt
-
-Summing columns with `perl`:
-
-    $ perl -lane 'print $F[0] + $F[1]' file.txt
+```bash
+$ awk '{print $1 + $2}' file.txt
+```
 
 This will sum columns 1 and 2 of `file.txt`.
 
