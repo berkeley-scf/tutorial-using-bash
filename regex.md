@@ -80,7 +80,7 @@ $ man 7 regex
 
 # 2 Character sets and character classes
 
-**Character sets**
+We can use character sets to match any of the characters in a set.
 
 <table>
 <thead>
@@ -132,7 +132,7 @@ $ grep -E [0-9] test.txt
 or with the `-o` flag to find and return only the actual digits
 
 ```bash
-$ grep -E [0-9] test.txt     
+$ grep -E -o [0-9] test.txt     
 ```
 
 There are a bunch of named character classes so that we don't have write
@@ -155,12 +155,16 @@ numeric characters or an underscore).
 Or here, any line with a digit, a period, or a comma.
 
 ```bash
-$ grep -E [[:digit:]\.\,] test.txt
+$ grep -E [[:digit:].,] test.txt
 ```
+
+Interestingly, we don't need to escape the period or comma inside the
+character set, despite both of them being meta-characters.
+
 
 # 3 Location-specific matches
 
-**Position anchors**
+We can use position anchors to make location-specific matches.
 
 <table>
 <thead>
@@ -287,7 +291,7 @@ Now let's consider a file named `file2.txt` with the following content:
     They bought 731 bananas
     Please call 1.919.554.3800
     I think he said it was 337.4355
-	```
+```
 	
 Let's use a regular expression pattern to print all lines
 containing phone numbers:
@@ -323,8 +327,6 @@ Please call 1.919.554.3800
 I think he said it was 337.4355
 ```
 
-Interestingly, we don't need to escape the period or dash inside the
-character set, despite both of them being meta-characters.
 
 **Exercise**
 
