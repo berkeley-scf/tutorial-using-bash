@@ -20,7 +20,9 @@ start up to carry out the activity.
 
 # 1 Monitoring
 
-## 1.1 `ps`
+## 1.1 Monitoring processes
+
+### `ps`
 
 Examining subprocesses of your shell with `ps`:
 
@@ -71,7 +73,7 @@ PID    NI %CPU %MEM USER     COMMAND
 To see the hierarchical process structure (i.e., which processes started which other processes), you can use the `pstree`
 command.
 
-## 1.2 `top`
+### `top`
 
 Examining processes with `top`:
 
@@ -109,7 +111,7 @@ You can also renice and kill jobs (see below for further details on
 both these operations) from within top: just type `r` or `k`,
 respectively, and proceed from there.
 
-## 1.3 Monitoring memory use
+## 1.2 Monitoring memory use
 
 One of the main things to watch out for is a job that is using close to
 100% of memory and much less than 100% of CPU. What is generally
