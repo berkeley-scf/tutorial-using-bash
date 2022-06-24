@@ -197,7 +197,7 @@ $ grep -E [0-9]$ test.txt
 
 Now suppose I wanted to be able to detect phone numbers, email
 addresses, etc. I often need to be able to deal with repetitions of
-character sets.
+characters or character sets.
 
 **Modifiers**
 
@@ -223,7 +223,9 @@ character sets.
 </tr>
 <tr class="even">
 <td align="left"><code>{n,m}</code></td>
-<td align="left">Match a range of occurrences of the single character or <em>regex</em> that precedes this construct.</td>
+<td align="left">Match a range of occurrences (at least n, no more
+than m) of preceding character
+of <em>regex</em>.</td>
 </tr>
 <tr class="even">
 <td align="left"><code>|</code></td>
@@ -232,22 +234,40 @@ character sets.
 </tbody>
 </table>
 
-I can indicate repetitions as indicated in these examples:
+Here are some examples of repetitions:
 
--   `[[:digit:]]*` – any number of digits (zero or more)
--   `[[:digit:]]+` – at least one digit
--   `[[:digit:]]?` – zero or one digits
--   `[[:digit:]]{1,3}` – at least one and no more than three digits
--   `[[:digit:]]{2,}` – two or more digits
+-   `[[:digit:]]*` : any number of digits (zero or more)
+-   `[[:digit:]]+` : at least one digit
+-   `[[:digit:]]?` : zero or one digits
+-   `[[:digit:]]{1,3}` : at least one and no more than three digits
+-   `[[:digit:]]{2,}` : two or more digits
 
-An example is that `\[.*\]` is the pattern of closed square brackets
+Another example is that `\[.*\]` is the pattern of closed square brackets
 with any number of characters (`.*`) inside:
 
-﻿﻿    $ grep -E -o "\[.*\]" test.txt
+```bash
+﻿$ grep -E "\[.*\]" test.txt
+```
 
-Note that the quotations ensured that the backslashes are passed into grep and not simply interpreted by the shell.
+Note that the quotations ensured that the backslashes are passed into
+grep and not simply interpreted by the shell, while the `\` is needed
+so that `[` and `]` are treated as simple characters since they are
+meta-characters in the regex syntax.
 
-We often want to be able to look for multi-character patterns. For
+As shown above, we can use `|` to mean "or". For example, to match one or
+more occurrences of "http" or "ftp":
+
+
+```bash
+$ grep -E -o "(http|ftp)" test.txt
+```
+
+Parentheses are also used with a pipe (`|`) when working with
+multi-character sequences, such as `(http|ftp)`. Also, here we need double
+quotes or the shell tries to interpret the `(` as part of the regular
+expression and not shell syntax.
+
+Next let's see the use of repitition to look for more complicated multi-character patterns. For
 example, if you wanted to match phone numbers whether they start with
 `1-` or not you could use the following:
 
@@ -261,50 +281,59 @@ digits when it is preceded by 0 or 1 occurrences of `1-`.
 
 Now let's consider a file named `file2.txt` with the following content:
 
+```
     Here's my number: 919-543-3300.
     hi John, good to meet you
     They bought 731 bananas
     Please call 1.919.554.3800
     I think he said it was 337.4355
-
+	```
+	
 Let's use a regular expression pattern to print all lines
 containing phone numbers:
 
-    $ grep  '(1-)?[[:digit:]]{3}-[[:digit:]]{4}' file2.txt
+```bash
+$ grep  '(1-)?[[:digit:]]{3}-[[:digit:]]{4}' file2.txt
+```
 
 You will notice that this doesn't match any lines. The reason is that
 the group syntax `(1-)` and the `{}` notation are not part of the
 extended syntax. To have `grep` use the extended syntax, you can either
-use the `-E` option:
+use the `-E` option (as we've been doing above):
 
-    $ grep -E '(1-)?[[:digit:]]{3}-[[:digit:]]{4}' file2.txt
-    Here's my number: 919-543-3300.
+```bash
+$ grep -E '(1-)?[[:digit:]]{3}-[[:digit:]]{4}' file2.txt
+Here's my number: 919-543-3300.
+```
 
 or use the `egrep` command:
 
-    $ egrep  '(1-)?[[:digit:]]{3}-[[:digit:]]{4}' file2.txt
-    Here's my number: 919-543-3300.
+```bash
+$ egrep  '(1-)?[[:digit:]]{3}-[[:digit:]]{4}' file2.txt
+Here's my number: 919-543-3300.
+```
 
 If we want to match regardless of whether the phone number is separated
 by a minus `-` or a period `.`, we could use the pattern `[-.]`:
 
-    $ egrep  '(1[-.])?[[:digit:]]{3}[-.][[:digit:]]{4}' file2.txt
-    Here's my number: 919-543-3300.
-    Please call 1.919.554.3800
-    I think he said it was 337.4355
+```bash
+$ egrep  '(1[-.])?[[:digit:]]{3}[-.][[:digit:]]{4}' file2.txt
+Here's my number: 919-543-3300.
+Please call 1.919.554.3800
+I think he said it was 337.4355
+```
+
+Interestingly, we don't need to escape the period or dash inside the
+character set, despite both of them being meta-characters.
 
 **Exercise**
 
 Explain what the following regular expression matches:
 
-    $ grep '^[^T]*is.*$' file1.txt
+```bash
+$ grep '^[^T]*is.*$' file1.txt
+```
 
-
-Parentheses are also used with a pipe (`|`) to indicate any one of a set
-of multi-character sequences, such as `(http|ftp)`. Here we need double
-quotes or the shell tries to interpret the `(`.
-
-    $ grep -E -o "(http|ftp)" test.txt
 
 # 5 Greedy matching
 
