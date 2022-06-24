@@ -297,7 +297,7 @@ Let's use a regular expression pattern to print all lines
 containing phone numbers:
 
 ```bash
-$ grep  '(1-)?[[:digit:]]{3}-[[:digit:]]{4}' file2.txt
+$ grep '(1-)?[[:digit:]]{3}-[[:digit:]]{4}' file2.txt
 ```
 
 You will notice that this doesn't match any lines. The reason is that
@@ -307,6 +307,8 @@ use the `-E` option (as we've been doing above):
 
 ```bash
 $ grep -E '(1-)?[[:digit:]]{3}-[[:digit:]]{4}' file2.txt
+```
+```
 Here's my number: 919-543-3300.
 ```
 
@@ -314,6 +316,8 @@ or use the `egrep` command:
 
 ```bash
 $ egrep  '(1-)?[[:digit:]]{3}-[[:digit:]]{4}' file2.txt
+```
+```
 Here's my number: 919-543-3300.
 ```
 
