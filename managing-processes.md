@@ -302,7 +302,7 @@ You can now list your screen sessions :
 $ screen -ls
 There is a screen on:
 	23974.pts-2.t430u       (Detached)
-	```
+```
 	
 To reconnect :
 
