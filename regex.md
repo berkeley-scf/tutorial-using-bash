@@ -46,7 +46,10 @@ Note that the syntax is very concise, so it's helpful to break down
 individual regular expressions into the component parts to understand
 them. Since regex are their own language, it's a good idea to build up a
 regex in pieces as a way of avoiding errors just as we would with any
-computer code. It is also helpful to search for common regex online
+computer code. You'll also want to test your regex on examples, for which
+this [online tool](https://regex101.com) is helpful.
+
+It is also helpful to search for common regex online
 before trying to craft your own. For instance, if you wanted to use a
 regex that matches valid email addresses, you would need to match
 anything that complies with the [RFC
@@ -68,6 +71,12 @@ before the character you want to escape. In R, we have to use two
 backslashes instead of a single backslash because R uses a single
 backslash to symbolize certain control characters, such as `\n` for
 newline.
+
+To learn more about regular expressions, you can type:
+
+```bash
+$ man 7 regex
+```
 
 # 2 Character sets and character classes
 
@@ -113,7 +122,18 @@ character set, such as `[13579]` or `[abcd]` or `[0-9]` (where the dash
 indicates a sequence) or `[0-9a-z]`. To indicate any character not in a
 set, we place a `^` just inside the first bracket: `[^abcd]`.
 
-    $ grep -E -o [0-9] test.txt     
+Here's an example of using regex with `grep` to find all lines in `test.txt` that
+contain at least one numeric digit.
+
+```bash
+$ grep -E [0-9] test.txt     
+```
+
+or with the `-o` flag to find and return only the actual digits
+
+```bash
+$ grep -E [0-9] test.txt     
+```
 
 There are a bunch of named character classes so that we don't have write
 out common sets of characters. The syntax is `[:CLASS:]` where `CLASS`
@@ -122,17 +142,21 @@ is one of the following values:
     "alnum", "alpha", "ascii", "blank", "cntrl", "digit", "graph",
     "lower", "print", "punct", "space", "upper", "word" or "xdigit".
 
-    $ grep -E -o [[:punct:]] test.txt
+So to find any line that contains a punctuation symbol:
 
-To learn more about regular expressions, you can type:
+```bash
+$ grep -E [[:punct:]] test.txt
+```
 
-    $ man 7 regex
+Note that to make a character set with a character class you need two square
+brackets, e.g., with the digit class: `[[:digit:]]`. Or we can make a combined
+character set such as `[[:alnum:]_]` (to find any alphabetic or
+numeric characters or an underscore).
+Or here, any line with a digit, a period, or a comma.
 
-To make a character set with a character class you need two square
-brackets, e.g. the digit class: `[[:digit:]]`. Or we can make a combined
-character set such as `[[:alnum:]_]` (to find any alphabetic or numeric characters or an underscore).
-
-    $ grep -E -o [[:digit:]\.\,] test.txt
+```bash
+$ grep -E [[:digit:]\.\,] test.txt
+```
 
 # 3 Location-specific matches
 
@@ -161,8 +185,13 @@ To find a pattern at the beginning of the string, we use `^` (note this
 was also used for negation, but in that case occurs only inside square
 brackets) and to find it at the end we use `$`.
 
-    $ grep -E -o ^[0-9] test.txt
-    $ grep -E -o [0-9]$ test.txt
+Here we'll search for lines that start with a digit and for lines that
+end with a digit.
+
+```bash
+$ grep -E ^[0-9] test.txt
+$ grep -E [0-9]$ test.txt
+```
 
 # 4 Repetitions, Grouping, and References
 
