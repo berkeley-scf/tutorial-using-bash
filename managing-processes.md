@@ -260,14 +260,14 @@ As mentioned before, we can't pipe the PID directly to `kill` because
 
 # 3 Screen
 
-Screen allows you to create virtual terminals, which are not connected
+Screen allows you to create *virtual terminals*, which are not connected
 to your actual terminal or shell. This allows you to run multiple
-programs from the commandline and leave them all in the foreground in
+programs from the command line and leave them all in the foreground in
 their own virtual terminal. Screen provides facilities for managing
 several virtual terminals including:
 
  - listing them,
- -switching between them, and
+ - switching between them, and
  - disconnecting from one machine and then reconnecting to an existing virtual terminal from another.
 
 While we will only discuss its basic operation, we will cover enough to
@@ -284,8 +284,10 @@ work at this prompt as you normally would. The difference is that you
 can disconnect from this window by typing `Ctrl-a d` and you will see
 something like this :
 
-    $ screen
-    [detached from 23974.pts-2.t430u]
+```bash
+$ screen
+[detached from 23974.pts-2.t430u]
+```
 
 > **tip**
 
@@ -296,59 +298,82 @@ something like this :
 
 You can now list your screen sessions :
 
-    $ screen -ls 
-    There is a screen on:
-            23974.pts-2.t430u       (Detached)
-
+```bash
+$ screen -ls
+There is a screen on:
+	23974.pts-2.t430u       (Detached)
+	```
+	
 To reconnect :
 
-    $ screen -r
+```bash
+$ screen -r
+```
 
 You can start multiple screen sessions. This is what it might look like
 if you have 3 screen sessions:
 
-    $ screen -ls 
-    There are screens on:
-            24274.pts-2.t430u       (Attached)
-            24216.pts-2.t430u       (Detached)
-            24158.pts-2.t430u       (Detached)
+```bash
+$ screen -ls
+There are screens on:
+	24274.pts-2.t430u       (Attached)
+	24216.pts-2.t430u       (Detached)
+	24158.pts-2.t430u       (Detached)
+```
+
+with the first session active on a machine.
 
 To specify that you want to reattach to session `24158.pts-2.t430u`,
 type:
 
-    $ screen -r 24158.pts-2.t430u
+```bash
+$ screen -r 24158.pts-2.t430u
+```
 
 If you have several screen sessions, you will want to name your screen
 session something more informative than `24158.pts-2.t430u`. To name a
 screen session `gene-analysis` you can use the `-S` option when calling
 screen:
 
-    $ screen -S gene-analysis
+```bash
+$ screen -S gene-analysis
+```
 
 While there are many more features and keybindings available for screen,
 you've already seen enough screen to be useful. For example, imagine you
 ssh to a remote machine from your laptop to run an analysis. The first
 thing you do at the bash prompt on the remote machine is:
 
-    $ screen -S dbox-study
+```bash
+$ screen -S dbox-study
+```
 
 Then you start your analysis script `dbox-analysis.py` running:
 
-    $ dbox-analysis.py
-    Starting statistical analysis ...
-    Processing subject 1 ...
-    Processing subject 2 ...
+```bash
+$ dbox-analysis.py
+Starting statistical analysis ...
+Processing subject 1 ...
+Processing subject 2 ...
+```
 
 If your study has 50 subjects and processing each subject takes 20
 minutes, you will not want to sit there watching your monitor. So you
 use `Ctrl-a d` to detach the session and you will then see:
 
-    $ screen -S dbox-study
-    [detached from 2799.dbox-study]
-    $
+```bash
+$ screen -S dbox-study
+[detached from 2799.dbox-study]
+$
+```
 
 Now you can log off your laptop and go home. Sometime after dinner, you
 decide to check on your job. So you ssh from your home computer to the
 remote machine again and type the following at the bash prompt:
 
-    $ screen -r dbox-study
+```bash
+$ screen -r dbox-study
+```
+
+You should then be able to see the progress of your analysis script,
+as if you had kept a terminal open the whole time.
