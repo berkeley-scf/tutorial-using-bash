@@ -5,13 +5,13 @@ layout: default
 
 Regular expressions (regex) are a domain-specific language for finding
 patterns and are one of the key functionalities in scripting languages
-such as Perl and Python, as well as the UNIX utilities `sed`, `awk`, and
-`grep` as we will see below. I'll just cover the basic use of regular
+such as Python, as well as the UNIX utilities `sed`, `awk`, and
+`grep`. We'll just cover the basic use of regular
 expressions in bash, but once you know that, it would be easy to use
 them elsewhere (Python, R, etc.). At the level we'll consider them, the
 syntax is quite similar.
 
-> **note**
+> **Warning**
 >
 > POSIX.2 regular expressions come in two flavors: extended regular
 > expressions and basic (or obsolete) regular expressions. The extended
@@ -28,8 +28,8 @@ The basic idea of regular expressions is that they allow us to find
 matches of strings or patterns in strings, as well as do substitution.
 Regular expressions are good for tasks such as:
 
--   extracting pieces of text - for example finding all the links in an
-    html document;
+-   extracting pieces of text - for example finding all the phone
+    numbers in a document;
 -   creating variables from information found in text;
 -   cleaning and transforming text into a uniform format;
 -   mining text by treating documents as data; and

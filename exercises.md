@@ -51,19 +51,19 @@ layout: default
 12. Create a shell function that will run a Python job in the background
     such that I can run the job by typing:
 
-```bash
-$ bpy file.py file.out
-```
+	```bash
+	$ bpy file.py file.out
+	```
 
-    You can create a test jobs with: `echo -e 'a=5\nprint(a)' > file.py`
+	You can create a test jobs with: `echo -e 'a=5\nprint(a)' > file.py`
 
 13. Modify the function so that you can simply type :
 
-```
-$ bpy file.py
-```
+	```
+	$ bpy file.py
+	```
 
-and it will use `file.pyout` as the output file.
+	and it will use `file.pyout` as the output file.
 
 14. Use `ps` to print out all the processes on the machine with
     information on memory and CPU use and sort the output of `ps` in
