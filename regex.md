@@ -376,9 +376,7 @@ However, one can often avoid greedy matching by being more clever.
 matching without using the `?` modifier? Hint: Is there some character
 set that we don't want to be inside the angle brackets?
 
-> **tip**
->
-> **Globs vs. Regex:**
+> **Tip: globs vs. regex**
 >
 > Be sure you understand the difference between [filename globbing](file-management#3-filename-matching-globbing)
 > and regular expressions. Filename globbing only works for filenames, while
