@@ -381,8 +381,7 @@ set that we don't want to be inside the angle brackets?
 > **Globs vs. Regex:**
 >
 > Be sure you understand the difference between [filename globbing](file-management#3-filename-matching-globbing)
-> and regular
-> expressions. Filename globbing only works for filenames, while
+> and regular expressions. Filename globbing only works for filenames, while
 > regular expressions are used to match patterns in text more
 > generally. While they both use the same set of symbols, they mean
 > different things (e.g., `*` matches 0 or more characters when
