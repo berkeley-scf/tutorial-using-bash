@@ -286,7 +286,7 @@ digits when it is preceded by 0 or 1 occurrences of `1-`.
 Now let's consider a file named `file2.txt` with the following content:
 
 ```
-    Here's my number: 919-543-3300.
+    Here is my number: 919-543-3300.
     hi John, good to meet you
     They bought 731 bananas
     Please call 1.919.554.3800
@@ -307,18 +307,14 @@ use the `-E` option (as we've been doing above):
 
 ```bash
 $ grep -E '(1-)?[[:digit:]]{3}-[[:digit:]]{4}' file2.txt
-```
-```
-Here's my number: 919-543-3300.
+Here is my number: 919-543-3300.
 ```
 
 or use the `egrep` command:
 
 ```bash
 $ egrep  '(1-)?[[:digit:]]{3}-[[:digit:]]{4}' file2.txt
-```
-```
-Here's my number: 919-543-3300.
+Here is my number: 919-543-3300.
 ```
 
 If we want to match regardless of whether the phone number is separated
@@ -326,7 +322,7 @@ by a minus `-` or a period `.`, we could use the pattern `[-.]`:
 
 ```bash
 $ egrep  '(1[-.])?[[:digit:]]{3}[-.][[:digit:]]{4}' file2.txt
-Here's my number: 919-543-3300.
+Here is my number: 919-543-3300.
 Please call 1.919.554.3800
 I think he said it was 337.4355
 ```
