@@ -67,7 +67,7 @@ drwxr-sr-x 19 paciorek scfstaff     30 Feb 28 15:07  ../
 
 We saw the use of `.` above with `find`.
 
-# 3 Filename globbing
+# 3 Filename matching (globbing)
 
 Shell file globbing will expand certain special characters (called
 wildcards) to match patterns of filenames, before passing those

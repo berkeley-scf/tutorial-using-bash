@@ -344,25 +344,31 @@ longest matching string is chosen.
 
 Suppose we have the following file:
 
-    $ cat file1.txt
-    Do an internship <b> in place </b> of <b> one </b> course.
+```bash
+$ cat file1.txt
+Do an internship <b> in place </b> of <b> one </b> course.
+```
 
 If we want to match the html tags (e.g., `<b>` and `</b>`, we might be
 tempted to use the pattern `<.*>`. Using the `-o` option to grep, we can
 have grep print out just the part of the text that the pattern matches:
 
-    $ grep -o "<.*>" file1.txt
-    <b> in place </b> of <b> one </b>
+```bash
+$ grep -o "<.*>" file1.txt
+<b> in place </b> of <b> one </b>
+```
 
 To get a non-greedy match, you can use the modifier `?` after the
 quantifier. However, this requires that we use the Perl syntax. In order
 for grep to use the Perl syntax, we need to use the `-P` option:
 
-    $ grep -P -o "<.*?>" file1.txt
-    <b>
-    </b>
-    <b>
-    </b>
+```bash
+$ grep -P -o "<.*?>" file1.txt
+<b>
+</b>
+<b>
+</b>
+```
 
 However, one can often avoid greedy matching by being more clever.
 
@@ -374,8 +380,8 @@ set that we don't want to be inside the angle brackets?
 >
 > **Globs vs. Regex:**
 >
->     Be sure you understand the difference between filename globbing
->     (see the Section called *Filename Globbing*) and regular
+>     Be sure you understand the difference between [filename globbing](file-management#3-filename-matching-globbing)
+>     and regular
 >     expressions. Filename globbing only works for filenames, while
 >     regular expressions are used to match patterns in text more
 >     generally. While they both use the same set of symbols, they mean
