@@ -36,7 +36,8 @@ and then *loops* (i.e., returns control to you to continue your work).
 > you should use the `sudo` command.
 >
 > `$ echo "The current user is $USER."`
-> `paciorek`
+>
+> `The current user is paciorek.`
 
 When you are working in a terminal window (i.e., a window with the
 command line interface), you're interacting with a shell. 
@@ -206,8 +207,6 @@ The `PATH` variable is a list of directories:
 
 ```bash
 $ echo $PATH
-```
-```
 /home/jarrod/usr/bin:/usr/local/bin:/bin:/usr/bin:
 ```
 
@@ -240,7 +239,7 @@ $ myfile=file.txt
 $ grep pdf $myfile
 ```
 
-the value of $myfile is substituted in before `grep` is called, so the command
+the value of `$myfile` is substituted in before `grep` is called, so the command
 that is executed is `grep pdf myfile.txt`.
 
 ## 5.2 Getting help with commands
@@ -504,7 +503,8 @@ $ scp file1.txt jarrod@arwen.berkeley.edu:.
 The above command will copy `file1.txt` from my current working
 directory on my local machine to `jarrod`'s home directory on
 `arwen.berkeley.edu`. The `.` following the `:` indicates that I want
-to copy the file to jarrod's home directory on the remote machine. I could
+to copy the file to jarrod's home directory on the remote machine,
+keeping the file name as it is. I could
 also replace `.` with any relative path from jarrod's home directory on the
 remote machine or I could use an absolute path.
 

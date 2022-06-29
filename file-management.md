@@ -8,13 +8,13 @@ layout: default
 
 In Unix, almost "everything is a file". This means that a very wide
 variety of input and output resources (e.g., documents, directories,
-keyboards, harddrives, network devices) are streams of bytes available
+keyboards, hard drives, network devices) are streams of bytes available
 through the filesystem interface. This means that the basic file
 management tools are extremely powerful in Unix. Not only can you use
 these tools to work with files, but you can also use them to monitor and
 control many aspects of your computer.
 
-A file typically consist of these attributes:
+A file typically has these attributes:
 
   - Name
   - Type
@@ -49,7 +49,9 @@ $ man find
 $ find --help
 ```
 
-In addition to use of `cd -` to go back to the previous working directory, you can use the `pushd`, `popd`, and `dirs` commands if you would like to keep a stack of previous working directories rather than just the last one.
+As discussed in our
+[Basics of UNIX tutorial](https://berkeley-scf.github.io/tutorial-unix-basics#3-files-and-directories),
+one uses `cd` to change directories. In addition to use of "cd -" to go back to the previous working directory, you can use the `pushd`, `popd`, and `dirs` commands if you would like to keep a stack of previous working directories rather than just the last one.
 
 In each directory there are two special directories, `.` and `..`, which refer to the current directory and the parent of the current directory, respectively. One only sees these with `ls` if we use the `-a` flag to reveal hidden files.
 
@@ -65,7 +67,7 @@ drwxr-sr-x 19 paciorek scfstaff     30 Feb 28 15:07  ../
 
 We saw the use of `.` above with `find`.
 
-# 3 Filename globbing
+# 3 Filename matching (globbing)
 
 Shell file globbing will expand certain special characters (called
 wildcards) to match patterns of filenames, before passing those
@@ -144,16 +146,20 @@ do what you think it will:
 
 ```bash
 $ echo cp filename{,.old}
-```
-
-```
 cp filename filename.old
 ```
 
 If you want to suppress the special meaning of a wildcard in a shell
-command, precede it with a backslash (`\`). Note that this is a general
+command, precede it with a backslash (`\`). (Note that this is a general
 rule of thumb in many similar situations when a character has a special
-meaning but you just want to treat it as a character.
+meaning but you just want to treat it as a character.) For example to
+list files whose name starts with the `*` character:
+
+```bash
+$ touch \*test    # create a file called *test
+$ ls \**
+*test
+```
 
 To read more about standard globbing patterns, see the man page:
 
@@ -192,7 +198,8 @@ When using the `-l` flag to `ls`, you'll see extensive information about each fi
   - (column 6-8) the last time the file was modified
   - (column 9) name of the file
   
-Here's a graphical summary of the information for a file named "file.txt", whose owner is "root" and group is "users" (which also indicates that the commands `chmod`, `chown`, and `chgrp` can be used to change aspects of the file permissions and ownership).
+Here's a graphical summary of the information for a file named
+"file.txt", whose owner is "root" and group is "users". (The graphic also indicates that the commands `chmod`, `chown`, and `chgrp` can be used to change aspects of the file permissions and ownership.)
 
 ![Schematic of file attributes.](assets/img/ls_format.png)
 
@@ -200,7 +207,6 @@ Here's a graphical summary of the information for a file named "file.txt", whose
 Let's look in detail at the information in the first column returned by `ls -l`. 
 
 ```bash
-$ echo "first line" > tmp.txt  # create a text file we can play with that contains "first line"
 $ ls -l
 ```
 
@@ -214,15 +220,14 @@ drwxrwxr-x  2 scflocal scflocal  4096 Dec 28 13:15 ps
 drwxrwxr-x 13 scflocal scflocal  4096 Dec 28 13:15 sections
 -rw-rw-r--  1 scflocal scflocal 37923 Dec 28 13:15 syllabus.lyx
 -rw-rw-r--  1 scflocal scflocal 77105 Dec 28 13:15 syllabus.pdf
--rw-rw-r--  1 scflocal scflocal    11 Dec 28 13:39 tmp.txt
 drwxrwxr-x  2 scflocal scflocal  4096 Dec 28 13:37 units
 ```
 
-The first column actually contains 10 individual single-character columns. Items marked with a `d` as the first character are directories. Here `data` is a directory while `tmp.txt` is not.
+The first column actually contains 10 individual single-character columns. Items marked with a `d` as the first character are directories. Here `data` is a directory while `syllabus.pdf` is not.
 
 Following that first character are three triplets of file permission information. Each triplet contains read ('r'), write ('w') and execute ('x') information. The first `rwx` triplet (the second through fourth characters) indicates if the owner of the file can read, write, and execute a file (or directory). The second `rwx` triplet (the fifth through seventh characters) indicates if anyone in the group that the file belongs to can read, write and execute a file (or directory). The third triplet (the eighth through tenth characters) pertains to any other user. Dashes mean that a given user does not have that kind of access to the given file.
 
-For example, for the *syllabus.pdf* file, the owner of the file can read it and can modify the file by writing to it (the first triplet is 'rw-'), as can users in the group the file belongs to. But for other users, they can only read it (the third triplet is 'r--').
+For example, for the *syllabus.pdf* file, the owner of the file can read it and can modify the file by writing to it (the first triplet is `'rw-'`), as can users in the group the file belongs to. But for other users, they can only read it (the third triplet is `'r--'`).
 
 We can change the permissions by indicating the type of user and the kind of access we want to add or remove. The type of user is one of:
 
@@ -232,14 +237,14 @@ We can change the permissions by indicating the type of user and the kind of acc
 
 Thus we specify one of 'u', 'g', or 'o', followed by a '+' to add permission or a '-' to remove permission and finally by the kind of permission: 'r' for read access, 'w' for write access, and 'x' for execution access. 
 
-As a simple example, let's prevent anyone from reading the `tmp.txt` file. We then try to print the contents of the file to the screen with the command `cat`, but we are denied.
+As a simple example, let's prevent anyone from reading the `tmp.txt`
+file (which we'll create first). We then try to print the contents of the file to the screen with the command `cat`, but we are denied.
 
 First recall the current permissions:
 
 ```bash
+$ echo "first line" > tmp.txt  # create a test text file that contains "first line"
 $ ls -l tmp.txt
-```
-```
 -rw-rw-r--  1 scflocal scflocal    11 Dec 28 13:39 tmp.txt
 ```
 Now we remove the read permissions:
@@ -271,16 +276,17 @@ $ ls -l tmp.txt
 ```
 
 
-Or if we wanted to remove read and write permission:
+Or if we wanted to remove read and write permission, we can do this:
 
 ```bash
 $ chmod ugo-rw tmp.txt # prevent all three
-$ # The next command would usually add a line to the file, 
-$ # but we don't have permission to write to it
-$ echo "added line" >> tmp.txt  
 ```
 
-```
+Now if we try to add a line to the file, using the `>>`
+[redirection operator](using-commands#32-overview-of-redirection), we are denied:
+
+```bash
+$ echo "added line" >> tmp.txt  
 -bash: tmp.txt: Permission denied
 ```
 
@@ -317,6 +323,5 @@ convert a file written in markdown (`report.md`) to a PDF
 
     $ pandoc -o report.pdf report.md
 
-For a quick introduction to LaTeX, please see the "Introduction to
-LaTeX" tutorial and screencast here:
-<http://statistics.berkeley.edu/computing/training/tutorials>
+For a quick introduction to LaTeX, please see our [Introduction to
+LaTeX tutorial and screencast](https://github.com/berkeley-scf/tutorial-latex-intro). 

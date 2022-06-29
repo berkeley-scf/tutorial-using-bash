@@ -5,8 +5,8 @@ layout: default
 
 
 1.  Make a variable, called `mypython` that contains the path to Python
-    on your machine.
-2.  Construct a variable that has `<username>@<machinename>` using
+    on your machine. You shouldn't need to manually type the path.
+2.  Construct a variable that has the value `<username>@<machinename>` using
     existing environment variables and the `hostname` utility.
 3.  Figure out how to use the `mkdir` command to create the following
     directory structure in one short command:
@@ -51,16 +51,19 @@ layout: default
 12. Create a shell function that will run a Python job in the background
     such that I can run the job by typing:
 
+	```bash
+	$ bpy file.py file.out
+	```
 
-        $ bpy file.py file.out
-
-    You can create a test jobs with: `echo -e 'a=5\nprint(a)' > file.py`
+	You can create a test jobs with: `echo -e 'a=5\nprint(a)' > file.py`
 
 13. Modify the function so that you can simply type :
 
-        $ bpy file.py
+	```
+	$ bpy file.py
+	```
 
-    and it will use `file.pyout` as the output file
+	and it will use `file.pyout` as the output file.
 
 14. Use `ps` to print out all the processes on the machine with
     information on memory and CPU use and sort the output of `ps` in
