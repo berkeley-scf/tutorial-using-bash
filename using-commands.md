@@ -330,9 +330,9 @@ easy to visually mistake backticks for a single quote.
 Try the following commands:
 
     $ ls -l tr
-    $ which tr
-    $ ls -l which tr
-    $ ls -l $(which tr)
+    $ type -p tr
+    $ ls -l type -p tr
+    $ ls -l $(type -p tr)
 
 Make sure you understand why each command behaves as it does.
 
@@ -694,8 +694,6 @@ For example, here is an excerpt from my `.bashrc`:
     alias ls='ls --color=auto'
     alias more=less
     alias vi=vim
-    alias which='(alias; declare -f) | /usr/bin/which --tty-only \
-             --read-alias --read-functions --show-tilde --show-dot'
 
 **Exercise**
 

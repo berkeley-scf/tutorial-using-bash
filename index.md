@@ -95,8 +95,10 @@ In the last example, `/bin/bash` should be whatever the path to the bash
 shell is, which you can figure out using:
 
 ```bash
-which bash
+$ type bash
+bash is /usr/bin/bash
 ```
+
 
 
 # 4 Variables
@@ -221,14 +223,12 @@ the above command. First bash checks whether `grep` a shell function or
 a builtin. Once it determines that `grep` is neither a shell function
 nor a builtin, it will look for an executable file named `grep` first in
 `/home/jarrod/usr/bin`, then in `/usr/local/bin`, and so on until it
-finds a match or runs out of places to look. You can use `which` to find
+finds a match or runs out of places to look. You can use `type` to find
 out where bash would find it:
 
 ```bash
-$ which grep
-```
-```
-/bin/grep
+$ type grep
+grep is hashed (/usr/bin/grep)
 ```
 
 Also note that the shell substitutes in the values of variables and 
