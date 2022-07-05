@@ -3,6 +3,8 @@ title: Regular expressions
 layout: default
 ---
 
+# Regular expressions 
+
 Regular expressions (regex) are a domain-specific language for finding
 patterns and are one of the key functionalities in scripting languages
 such as Python, as well as the UNIX utilities `sed`, `awk`, and
@@ -47,7 +49,7 @@ individual regular expressions into the component parts to understand
 them. Since regex are their own language, it's a good idea to build up a
 regex in pieces as a way of avoiding errors just as we would with any
 computer code. You'll also want to test your regex on examples, for which
-this [online tool](https://regex101.com) is helpful.
+this [online testing tool](https://regex101.com) is helpful.
 
 It is also helpful to search for common regex online
 before trying to craft your own. For instance, if you wanted to use a

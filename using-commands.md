@@ -3,6 +3,8 @@ title: Using UNIX commands
 layout: default
 ---
 
+# Using UNIX commands 
+
 ## 1 Basic utilities / commands
 
 [Earlier](index#5-introduction-to-commands) we introduced the basics of entering commands in the shell.

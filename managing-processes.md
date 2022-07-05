@@ -3,6 +3,7 @@ title: Managing processes
 layout: default
 ---
 
+# Managing processes
 
 A process is a program that is being executed. Processes have the
 following attributes:

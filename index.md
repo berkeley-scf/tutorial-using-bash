@@ -4,6 +4,8 @@ layout: default
 author: Christopher Paciorek
 ---
 
+# Using the bash shell
+
 ## 1 This tutorial
 
 > **Prerequisite**

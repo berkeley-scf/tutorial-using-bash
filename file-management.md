@@ -3,6 +3,7 @@ title: File management
 layout: default
 ---
 
+# File management
 
 ## 1 Overview 
 
@@ -201,7 +202,7 @@ When using the `-l` flag to `ls`, you'll see extensive information about each fi
 Here's a graphical summary of the information for a file named
 "file.txt", whose owner is "root" and group is "users". (The graphic also indicates that the commands `chmod`, `chown`, and `chgrp` can be used to change aspects of the file permissions and ownership.)
 
-![Schematic of file attributes.](assets/img/ls_format.png)
+![Schematic of file attributes](assets/img/ls_format.png)
 
 
 Let's look in detail at the information in the first column returned by `ls -l`. 

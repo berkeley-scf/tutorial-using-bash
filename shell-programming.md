@@ -3,6 +3,8 @@ title: Shell programming
 layout: default
 ---
 
+# Shell programming 
+
 ## 1 Shell scripts 
 
 Shell scripts are files containing shell commands (commonly with the
