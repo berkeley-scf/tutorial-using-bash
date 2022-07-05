@@ -3,7 +3,7 @@ title: Using UNIX commands
 layout: default
 ---
 
-# 1 Basic utilities / commands
+## 1 Basic utilities / commands
 
 [Earlier](index#5-introduction-to-commands) we introduced the basics of entering commands in the shell.
 
@@ -143,9 +143,9 @@ syntax to view the abbreviated  man pages for some commands you're not
 familiar with and consider how you
 might use these commands.
 
-# 3 Streams, pipes, and redirects
+## 3 Streams, pipes, and redirects
 
-## 3.1 Streams (stdin/stdout/stderr)
+### 3.1 Streams (stdin/stdout/stderr)
 
 Unix programs that involve input and/or output often operate by reading
 input from a *stream* known as standard input (*stdin*), and writing their
@@ -155,7 +155,7 @@ and other information that's not part of the program's results. In the
 usual interactive session, standard output and standard error default to
 your screen, and standard input defaults to your keyboard.
 
-## 3.2 Overview of redirection 
+### 3.2 Overview of redirection 
 
 You can change the place from which programs read and write through
 redirection. The shell provides this service, not the individual
@@ -232,7 +232,7 @@ previous section.
 
 
 
-## 3.3 Standard redirection (pipes)
+### 3.3 Standard redirection (pipes)
 
 Operations where output from one command is used as input to another
 command (via the `|` operator) are known as pipes; they are made
@@ -290,7 +290,7 @@ $ cut -b29,37,45,53,61,69,77,85,93,101,109,117,125,133,141,149, \ 
 minutes on my desktop; it would have taken much more time to read the
 data into a program like R or Python.)
 
-## 3.4 The `tee` command
+### 3.4 The `tee` command
 
 The `tee` command lets you create two streams from one. For example,
 consider the case where you want the results of this command:
@@ -314,9 +314,9 @@ use `tee` command:
 $ cut -d',' -f2 cpds.csv | sort | uniq | tee countries.txt
 ```
 
-# 4 Command substitution and the `xargs` command
+## 4 Command substitution and the `xargs` command
 
-## 4.1 Command substitution
+### 4.1 Command substitution
 
 A closely related, but subtly different, capability to piping is
 command substitution. You may sometimes need to substitute the results of a command for use
@@ -369,7 +369,7 @@ Note that piping the output of the `ls` command into `grep` would not
 achieve the desired goal, since `grep` reads its filenames as arguments from the
 command line, not standard input.
 
-## 4.2 The `xargs`  command
+### 4.2 The `xargs`  command
 
 While it doesn't work to directly use pipes to redirect output from one program
 as arguments to another program, you  can redirect output as the arguments to another program using
@@ -396,7 +396,7 @@ $ ls -l $(type -p tr)
 Make sure you understand why each command behaves as it does.
 
 
-# 5 Brace expansion
+## 5 Brace expansion
 
 We saw brace expansion when discussing file wildcards. For example, we can
 rename a file with a long name easily like this:
@@ -438,7 +438,7 @@ This can be used for filename wildcards but also anywhere else it would be usefu
 ```bash
 $ kill 1397{62..81}
 ```
-# 6 Quoting
+## 6 Quoting
 
 A note about using single vs. double quotes in shell code. In
 general, variables inside double quotes will be evaluated, but variables
@@ -510,7 +510,7 @@ So we'll generally use double quotes. We can always work with a literal
 double quote by escaping it as seen above.
 
 
-# 7 Powerful tools for text manipulation: `grep`, `sed`, and `awk`
+## 7 Powerful tools for text manipulation: `grep`, `sed`, and `awk`
 
 Before the text editor, there was the line editor. Rather than
 presenting you with the entire text as a text editor does, a line editor
@@ -535,7 +535,7 @@ them since you can search the internet for awk or sed one-liners. If you
 have some file munging task, it can be helpful to do a quick search
 before writing code to perform the task yourself.
 
-## 7.1 `grep`
+### 7.1 `grep`
 
 The simplest of these tools is `grep`. As I mentioned, `ed` only
 displays lines of text when requested. One common task was to print all
@@ -585,7 +585,7 @@ is
 One could also use `--color` so that the matches are highlighed in color.
 
 
-## 7.2 `sed`
+### 7.2 `sed`
 
 Here are some useful things you can do with `sed`. Note that as with
 other UNIX tools, `sed` will not generally directly alter a file
@@ -629,7 +629,7 @@ flag in the third line replaces
 the pattern **in place** in the file, thereby altering file.txt. Use
 the `-i` flag carefully as there is no way to easily restore the original version of the file.
 
-## 7.3 `awk`
+### 7.3 `awk`
  
 Awk is a general purpose programming language typically used in data
 extraction tasks and particularly well-suited to one-liners (although it
@@ -688,7 +688,7 @@ $ awk '{print $1 + $2}' file.txt
 This will sum columns 1 and 2 of `file.txt`.
 
 
-# 8 Aliases (command shortcuts) and .bashrc
+## 8 Aliases (command shortcuts) and .bashrc
 
 Aliases allow you to use an abbreviation for a command, to create new
 functionality or to insure that certain options are always used when you

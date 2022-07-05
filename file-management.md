@@ -4,7 +4,7 @@ layout: default
 ---
 
 
-# 1 Overview 
+## 1 Overview 
 
 In Unix, almost "everything is a file". This means that a very wide
 variety of input and output resources (e.g., documents, directories,
@@ -29,7 +29,7 @@ These attributes are discussed further as part of [our consideration of file per
 >
 > If you're not familiar with moving between directories, listing files, or the structure of the filesystem, please see our [Basics of UNIX tutorial](https://berkeley-scf.github.io/tutorial-unix-basics#3-files-and-directories).
 
-# 2 Finding files and navigating the filesystem
+## 2 Finding files and navigating the filesystem
 
 You can find files by name, modification time, and type:
 
@@ -67,7 +67,7 @@ drwxr-sr-x 19 paciorek scfstaff     30 Feb 28 15:07  ../
 
 We saw the use of `.` above with `find`.
 
-# 3 Filename matching (globbing)
+## 3 Filename matching (globbing)
 
 Shell file globbing will expand certain special characters (called
 wildcards) to match patterns of filenames, before passing those
@@ -167,7 +167,7 @@ To read more about standard globbing patterns, see the man page:
 $ man 7 glob
 ```
 
-# 4 File permissions
+## 4 File permissions
 
 UNIX allows you to control who has access to a given file (or directory) and how the user can interact with the file (or directory). We can see what permissions are set using the `-l` flag to `ls`.
 
@@ -308,13 +308,13 @@ There's lots more details that are important when making files accessible to oth
   - [how to make files in a particular directory available to other users on the system](https://docs-research-it.berkeley.edu/services/high-performance-computing/user-guide/data/transferring-data/making-files-accessible/#making-files-accessible-to-all-other-savio-users) and 
   - [how to set up a directory for use by a UNIX group](https://docs-research-it.berkeley.edu/services/high-performance-computing/user-guide/data/transferring-data/making-files-accessible/#making-files-accessible-to-your-group-members), using the so-called "sticky bit" so that files created in the directory in the future belong to the group so that group members will readily have access to them by default.
 
-# 5 Use simple text files when possible
+## 5 Use simple text files when possible
 
 UNIX commands are designed as powerful tools to manipulate text files. This means that it's helpful to store information in information in text files when possible (of course there are very good reasons to store large datasets in binary files as well, in particular speed of access to portions of the data and efficient storage formats). 
 
 Furthermore, the basic UNIX commands that operate on files operate on a line by line basis (e.g., `grep`, `sed`, `cut`, etc.). So using formats where each line contains a distinct set of information (such as CSVs) is advantageous even compared to other text formats where related information is stored on multiple lines (such as XML and JSON).
 
-# 6 Document formats and conversion
+## 6 Document formats and conversion
 
 There are many plain text file formats (e.g., Markdown,
 reStructuredText, LaTeX). Pandoc is a widely used document converter. To

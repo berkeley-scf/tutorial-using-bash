@@ -22,7 +22,7 @@ syntax is quite similar.
 > of each syntax. In the examples that follow we'll generally use the
 > extended syntax by using the `-E` flag to `grep`.
 
-# 1 Overview and core syntax
+## 1 Overview and core syntax
 
 The basic idea of regular expressions is that they allow us to find
 matches of strings or patterns in strings, as well as do substitution.
@@ -78,7 +78,7 @@ To learn more about regular expressions, you can type:
 $ man 7 regex
 ```
 
-# 2 Character sets and character classes
+## 2 Character sets and character classes
 
 We can use character sets to match any of the characters in a set.
 
@@ -162,7 +162,7 @@ Interestingly, we don't need to escape the period or comma inside the
 character set, despite both of them being meta-characters.
 
 
-# 3 Location-specific matches
+## 3 Location-specific matches
 
 We can use position anchors to make location-specific matches.
 
@@ -197,7 +197,7 @@ $ grep -E ^[0-9] test.txt
 $ grep -E [0-9]$ test.txt
 ```
 
-# 4 Repetitions, Grouping, and References
+## 4 Repetitions, Grouping, and References
 
 Now suppose I wanted to be able to detect phone numbers, email
 addresses, etc. I often need to be able to deal with repetitions of
@@ -337,7 +337,7 @@ $ grep '^[^T]*is.*$' file1.txt
 ```
 
 
-# 5 Greedy matching
+## 5 Greedy matching
 
 Regular expression pattern matching is *greedy*---by default, the
 longest matching string is chosen.

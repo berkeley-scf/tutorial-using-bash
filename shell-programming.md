@@ -3,7 +3,7 @@ title: Shell programming
 layout: default
 ---
 
-# 1 Shell scripts 
+## 1 Shell scripts 
 
 Shell scripts are files containing shell commands (commonly with the
 extension `.sh`) To run a shell script called `file.sh`, you would type
@@ -34,7 +34,7 @@ The best thing to do is to set `file.sh` to be executable (i.e., to have the 'x'
 $ ./file.sh
 ```
 
-# 2 Functions
+## 2 Functions
 
 You can define your own utilities by creating a shell function. This
 allows you to automate things that are more complicated than you can do
@@ -64,7 +64,7 @@ $ putscf unit1.pdf teaching/243/.
 
 Often you'd want to put such functions in your `.bashrc` file.
 
-# 3 If/then/else
+## 3 If/then/else
 
 We can use if-then-else type syntax to control the flow of a shell
 script. For an example, here is a shell function `niceR()` that can be
@@ -93,7 +93,7 @@ used for nicing R jobs:
 	
 If the `then` is on a separate line from the `if`, you won't need the semicolon. 
 
-# 4 For loops
+## 4 For loops
 
 *for* loops in shell scripting are primarily designed for iterating
 through a set of files or directories. Here's an example:
@@ -166,7 +166,7 @@ pmax
 ```
 
 
-# 5 How much shell scripting should I learn?
+## 5 How much shell scripting should I learn?
 
 We've covered most of what you are likely to need to know about the
 shell. I tend to only use bash scripts for simple tasks that require

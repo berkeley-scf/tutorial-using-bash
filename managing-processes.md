@@ -18,11 +18,11 @@ following attributes:
 Anytime you do something on the computer, one or more processes will
 start up to carry out the activity.
 
-# 1 Monitoring
+## 1 Monitoring
 
-## 1.1 Monitoring processes
+### 1.1 Monitoring processes
 
-### `ps`
+#### `ps`
 
 Examining subprocesses of your shell with `ps`:
 
@@ -73,7 +73,7 @@ PID    NI %CPU %MEM USER     COMMAND
 To see the hierarchical process structure (i.e., which processes started which other processes), you can use the `pstree`
 command.
 
-### `top`
+#### `top`
 
 Examining processes with `top`:
 
@@ -111,7 +111,7 @@ You can also renice and kill jobs (see below for further details on
 both these operations) from within top: just type `r` or `k`,
 respectively, and proceed from there.
 
-## 1.2 Monitoring memory use
+### 1.2 Monitoring memory use
 
 One of the main things to watch out for is a job that is using close to
 100% of memory and much less than 100% of CPU. What is generally
@@ -140,9 +140,9 @@ to be used](https://berkeley-scf.github.io/tutorial-databases/db-management#52-m
 so you'll want to focus on the `available` column.
 
 
-# 2 Job Control
+## 2 Job Control
 
-## 2.1 Foreground and background jobs
+### 2.1 Foreground and background jobs
 
 When you run a command in a shell by simply typing its name, you are
 said to be running in the foreground. When a job is running in the
@@ -179,7 +179,7 @@ the program will interrupt execution, but it will still have access to all
 files and other resources. Next, issue the `bg` command, which will
 start the stopped job running in the background.
 
-## 2.2 Listing and killing jobs
+### 2.2 Listing and killing jobs
 
 Since only foreground jobs will accept signals through the keyboard, if
 you want to terminate a background job you must first determine the
@@ -260,7 +260,7 @@ As mentioned before, we can't pipe the PID directly to `kill` because
 `kill` takes the PID(s) as argument(s) rather than reading them from stdin.
 
 
-# 3 Screen
+## 3 Screen
 
 Screen allows you to create *virtual terminals*, which are not connected
 to your actual terminal or shell. This allows you to run multiple
