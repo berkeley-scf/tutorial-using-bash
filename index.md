@@ -4,7 +4,7 @@ layout: default
 author: Christopher Paciorek
 ---
 
-# 1 This tutorial
+## 1 This tutorial
 
 > **Prerequisite**
 >
@@ -18,7 +18,7 @@ Software Carpentry has a very nice introductory lesson on the [basics of the she
 
 This tutorial by Christopher Paciorek and Jarrod Millman is licensed under a Creative Commons Attribution 3.0 Unported License.
 
-# 2 The interactive shell
+## 2 The interactive shell
 
 The shell is the UNIX program that provides an interactive computer programming environment. You use the shell when in a terminal window to interact with a UNIX-style operating system (e.g., Linux or MacOS). The shell sits between you and the operating system and provides useful commands and functionality. Basically, the shell is a program that serves to run other commands for you and show you the results. 
 
@@ -66,7 +66,7 @@ well as automated control simple, effective, and customizable.
 
 
 
-# 3 Accessing the shell
+## 3 Accessing the shell
 
 This tutorial assumes you already have access to a basic bash shell on a computer
 with network access (e.g., the Terminal on a Mac, the Ubuntu subsystem on Windows, or a terminal window on a Linux machine), as discussed in our [Basics of UNIX tutorial](https://berkeley-scf.github.io/tutorial-unix-basics#1.3-accessing-a-unix-command-line-interface). 
@@ -102,9 +102,9 @@ bash is /usr/bin/bash
 
 
 
-# 4 Variables
+## 4 Variables
 
-## 4.1 Using variables
+### 4.1 Using variables
 
 Just like programming languages, you can use variables in the shell.
 Variables are names that have values assigned to them. 
@@ -147,7 +147,7 @@ $ echo $basesrc
 Make sure you understand the difference in behavior in the last two
 lines.
 
-## 4.2 Environment variables
+### 4.2 Environment variables
 
 There are also special shell variables called environment variables that
 help to control the shell's behavior. These are generally named in all
@@ -180,9 +180,9 @@ $ export PS1='[\u@\h \W]\$ '
 [user1@local1 ~]$ 
 ```
 
-# 5 Introduction to commands
+## 5 Introduction to commands
 
-## 5.1 Elements of a command
+### 5.1 Elements of a command
 
 While each command has its own syntax, there are some rules usually
 followed. Generally, a command line consists of 4 things: a command,
@@ -242,7 +242,7 @@ $ grep pdf $myfile
 the value of `$myfile` is substituted in before `grep` is called, so the command
 that is executed is `grep pdf myfile.txt`.
 
-## 5.2 Getting help with commands
+### 5.2 Getting help with commands
 
 Most bash commands have electronic manual pages, which are accessible
 directly from the commandline. You will be more efficient and
@@ -273,9 +273,9 @@ Use `man ls` to see what the command options do. Is there any difference
 in what the three versions of the command invocation above return as the
 result? What happens if you add a filename to the end of the command?
 
-# 6 Operating efficiently at the command line 
+## 6 Operating efficiently at the command line 
 
-## 6.1 Tab completion
+### 6.1 Tab completion
 
 When working in the shell, it is often unnecessary to type out an entire
 command or file name, because of a feature known as tab completion. When
@@ -297,7 +297,7 @@ anything other than the first token of a command.
 > filenames. While the default Python shell does not perform tab
 > completion, the IPython shell does.
 
-## 6.2 Keyboard shortcuts
+### 6.2 Keyboard shortcuts
 
 
 Note that you can use emacs-like control sequences (`Ctrl-a`, `Ctrl-e`,
@@ -364,7 +364,7 @@ Note that you can use emacs-like control sequences (`Ctrl-a`, `Ctrl-e`,
 </tbody>
 </table>
 
-## 6.3 Command History and Editing
+### 6.3 Command History and Editing
 
 By using the up and down arrows, you can scroll through commands that
 you have entered previously. So if you want to rerun the same command,
@@ -461,7 +461,7 @@ of characters to search for in the search history. You can hit return to
 submit, `Ctrl-c` to get out, or `ESC` to put the result on the regular
 command line for editing.
 
-# 7 Accessing remote machines
+## 7 Accessing remote machines
 
 You likely already have `ssh` installed. SSH provides an
 encrypted mechanism to connect to a remote Unix-based (i.e., Linux or Mac) terminal. You can [learn more
