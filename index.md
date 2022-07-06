@@ -415,34 +415,34 @@ the last command that started with 'gi'.
 <table>
 <thead>
 <tr class="header">
-<th align="left">Designator</th>
-<th align="left">Description</th>
+<th >Designator</th>
+<th >Description</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left"><code>!!</code></td>
-<td align="left">Last command</td>
+<td ><code>!!</code></td>
+<td >Last command</td>
 </tr>
 <tr class="even">
-<td align="left"><code>!n</code></td>
-<td align="left">Command numbered <em>n</em> in the history</td>
+<td ><code>!n</code></td>
+<td >Command numbered <em>n</em> in the history</td>
 </tr>
 <tr class="odd">
-<td align="left"><code>!-n</code></td>
-<td align="left">Command <em>n</em> previous</td>
+<td ><code>!-n</code></td>
+<td >Command <em>n</em> previous</td>
 </tr>
 <tr class="even">
-<td align="left"><code>!string</code></td>
-<td align="left">Last command starting with <em>string</em></td>
+<td ><code>!string</code></td>
+<td >Last command starting with <em>string</em></td>
 </tr>
 <tr class="odd">
-<td align="left"><code>!?string</code></td>
-<td align="left">Last command containing <em>string</em></td>
+<td ><code>!?string</code></td>
+<td >Last command containing <em>string</em></td>
 </tr>
 <tr class="even">
-<td align="left"><code>^string1^string2</code></td>
-<td align="left">Execute the previous command with <em>string2</em> substituted for <em>string1</em></td>
+<td ><code>^string1^string2</code></td>
+<td >Execute the previous command with <em>string2</em> substituted for <em>string1</em></td>
 </tr>
 </tbody>
 </table>
