@@ -310,58 +310,58 @@ Note that you can use emacs-like control sequences (`Ctrl-a`, `Ctrl-e`,
 <table>
 <thead>
 <tr class="header">
-<th align="left">Key Strokes</th>
-<th align="left">Descriptions</th>
+<th >Key Strokes</th>
+<th >Descriptions</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left"><code>Ctrl-a</code></td>
-<td align="left">Beginning of line</td>
+<td ><code>Ctrl-a</code></td>
+<td >Beginning of line</td>
 </tr>
 <tr class="even">
-<td align="left"><code>Ctrl-e</code></td>
-<td align="left">End of line</td>
+<td ><code>Ctrl-e</code></td>
+<td >End of line</td>
 </tr>
 <tr class="odd">
-<td align="left"><code>Ctrl-k</code></td>
-<td align="left">Delete line from cursor forward</td>
+<td ><code>Ctrl-k</code></td>
+<td >Delete line from cursor forward</td>
 </tr>
 <tr class="even">
-<td align="left"><code>Ctrl-w</code></td>
-<td align="left">Delete word before cursor</td>
+<td ><code>Ctrl-w</code></td>
+<td >Delete word before cursor</td>
 </tr>
 <tr class="odd">
-<td align="left"><code>Ctrl-y</code></td>
-<td align="left">pastes in whatever was deleted previously with <code>Ctrl-k</code> or <code>Ctrl-w</code></td>
+<td ><code>Ctrl-y</code></td>
+<td >pastes in whatever was deleted previously with <code>Ctrl-k</code> or <code>Ctrl-w</code></td>
 </tr>
 <tr class="even">
-<td align="left"><code>ESC-F</code></td>
-<td align="left">Forward one word</td>
+<td ><code>ESC-F</code></td>
+<td >Forward one word</td>
 </tr>
 <tr class="odd">
-<td align="left"><code>ESC-B</code></td>
-<td align="left">Backwards one word</td>
+<td ><code>ESC-B</code></td>
+<td >Backwards one word</td>
 </tr>
 <tr class="even">
-<td align="left"><code>Ctrl-d</code></td>
-<td align="left">EOF; exit</td>
+<td ><code>Ctrl-d</code></td>
+<td >EOF; exit</td>
 </tr>
 <tr class="odd">
-<td align="left"><code>Ctrl-c</code></td>
-<td align="left">Interrupt current command</td>
+<td ><code>Ctrl-c</code></td>
+<td >Interrupt current command</td>
 </tr>
 <tr class="even">
-<td align="left"><code>Ctrl-z</code></td>
-<td align="left">Suspend current command</td>
+<td ><code>Ctrl-z</code></td>
+<td >Suspend current command</td>
 </tr>
 <tr class="odd">
-<td align="left"><code>Ctrl-l</code></td>
-<td align="left">Clear screen</td>
+<td ><code>Ctrl-l</code></td>
+<td >Clear screen</td>
 </tr>
 <tr class="even">
-<td align="left"><code>Ctrl-r</code></td>
-<td align="left">Enables an <a href="http://www.techrepublic.com/article/keyboard-shortcuts-in-bash-and-zsh/">interactive search history</a></td>
+<td ><code>Ctrl-r</code></td>
+<td >Enables an <a href="http://www.techrepublic.com/article/keyboard-shortcuts-in-bash-and-zsh/">interactive search history</a></td>
 </tr>
 </tbody>
 </table>
