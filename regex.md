@@ -87,34 +87,34 @@ We can use character sets to match any of the characters in a set.
 <table>
 <thead>
 <tr class="header">
-<th align="left">Operators</th>
-<th align="left">Description</th>
+<th>Operators</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left"><code>[abc]</code></td>
-<td align="left">Match any single character from from the listed characters</td>
+<td><code>[abc]</code></td>
+<td>Match any single character from from the listed characters</td>
 </tr>
 <tr class="even">
-<td align="left"><code>[a-z]</code></td>
-<td align="left">Match any single character from the range of characters</td>
+<td><code>[a-z]</code></td>
+<td>Match any single character from the range of characters</td>
 </tr>
 <tr class="odd">
-<td align="left"><code>[^abc]</code></td>
-<td align="left">Match any single character not among listed characters</td>
+<td><code>[^abc]</code></td>
+<td>Match any single character not among listed characters</td>
 </tr>
 <tr class="even">
-<td align="left"><code>[^a-z]</code></td>
-<td align="left">Match any single character not among listed range of characters</td>
+<td><code>[^a-z]</code></td>
+<td>Match any single character not among listed range of characters</td>
 </tr>
 <tr class="odd">
-<td align="left"><code>.</code></td>
-<td align="left">Match any single character except a <em>newline</em></td>
+<td><code>.</code></td>
+<td>Match any single character except a <em>newline</em></td>
 </tr>
 <tr class="even">
-<td align="left"><code>\</code></td>
-<td align="left">Turn off (escape) the special meaning of a metacharacter</td>
+<td><code>\</code></td>
+<td>Turn off (escape) the special meaning of a metacharacter</td>
 </tr>
 </tbody>
 </table>
@@ -171,18 +171,18 @@ We can use position anchors to make location-specific matches.
 <table>
 <thead>
 <tr class="header">
-<th align="left">Operators</th>
-<th align="left">Description</th>
+<th>Operators</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left"><code>^</code></td>
-<td align="left">Match the beginning of a line.</td>
+<td><code>^</code></td>
+<td>Match the beginning of a line.</td>
 </tr>
 <tr class="even">
-<td align="left"><code>$</code></td>
-<td align="left">Match the end of a line.</td>
+<td><code>$</code></td>
+<td>Match the end of a line.</td>
 </tr>
 </tbody>
 </table>
@@ -210,32 +210,32 @@ characters or character sets.
 <table>
 <thead>
 <tr class="header">
-<th align="left">Operators</th>
-<th align="left">Description</th>
+<th>Operators</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left"><code>*</code></td>
-<td align="left">Match zero or more instances of the preceding character or <em>regex</em>.</td>
+<td><code>*</code></td>
+<td>Match zero or more instances of the preceding character or <em>regex</em>.</td>
 </tr>
 <tr class="even">
-<td align="left"><code>?</code></td>
-<td align="left">Match zero or one instance of the preceding character or <em>regex</em>.</td>
+<td><code>?</code></td>
+<td>Match zero or one instance of the preceding character or <em>regex</em>.</td>
 </tr>
 <tr class="odd">
-<td align="left"><code>+</code></td>
-<td align="left">Match one or more instances of the preceding character or <em>regex</em>.</td>
+<td><code>+</code></td>
+<td>Match one or more instances of the preceding character or <em>regex</em>.</td>
 </tr>
 <tr class="even">
-<td align="left"><code>{n,m}</code></td>
-<td align="left">Match a range of occurrences (at least n, no more
+<td><code>{n,m}</code></td>
+<td>Match a range of occurrences (at least n, no more
 than m) of preceding character
 of <em>regex</em>.</td>
 </tr>
 <tr class="even">
-<td align="left"><code>|</code></td>
-<td align="left">Match the character or expression to the left or right of the vertical bar.</td>
+<td><code>|</code></td>
+<td>Match the character or expression to the left or right of the vertical bar.</td>
 </tr>
 </tbody>
 </table>

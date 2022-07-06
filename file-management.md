@@ -82,38 +82,38 @@ the special characters that the shell uses for expansion.
 <table>
 <thead>
 <tr class="header">
-<th align="left">Wildcard</th>
-<th align="left">Function</th>
+<th >Wildcard</th>
+<th >Function</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left"><code>*</code></td>
-<td align="left">Match zero or more characters.</td>
+<td><code>*</code></td>
+<td>Match zero or more characters.</td>
 </tr>
 <tr class="even">
-<td align="left"><code>?</code></td>
-<td align="left">Match exactly one character.</td>
+<td><code>?</code></td>
+<td>Match exactly one character.</td>
 </tr>
 <tr class="odd">
-<td align="left"><code>[characters]</code></td>
-<td align="left">Match any single character from among <em>characters</em> listed between brackets.</td>
+<td><code>[characters]</code></td>
+<td>Match any single character from among <em>characters</em> listed between brackets.</td>
 </tr>
 <tr class="odd">
-<td align="left"><code>[!characters]</code></td>
-<td align="left">Match any single character other than <em>characters</em> listed between brackets.</td>
+<td><code>[!characters]</code></td>
+<td>Match any single character other than <em>characters</em> listed between brackets.</td>
 </tr>
 <tr class="odd">
-<td align="left"><code>[a-z]</code></td>
-<td align="left">Match any single character from among the range of characters listed between brackets.</td>
+<td><code>[a-z]</code></td>
+<td>Match any single character from among the range of characters listed between brackets.</td>
 </tr>
 <tr class="odd">
-<td align="left"><code>[!a-z]</code></td>
-<td align="left">Match any single character from among the characters not in the range listed between brackets</td>
+<td><code>[!a-z]</code></td>
+<td>Match any single character from among the characters not in the range listed between brackets</td>
 </tr>
 <tr class="odd">
-<td align="left"><code>{frag1,frag2,...}</code></td>
-<td align="left">Brace expansion: create strings frag1, frag2, etc.</td>
+<td><code>{frag1,frag2,...}</code></td>
+<td>Brace expansion: create strings frag1, frag2, etc.</td>
 </tr>
 </tbody>
 </table>

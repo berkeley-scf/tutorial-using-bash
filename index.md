@@ -316,52 +316,52 @@ Note that you can use emacs-like control sequences (`Ctrl-a`, `Ctrl-e`,
 </thead>
 <tbody>
 <tr class="odd">
-<td ><code>Ctrl-a</code></td>
-<td >Beginning of line</td>
+<td><code>Ctrl-a</code></td>
+<td>Beginning of line</td>
 </tr>
 <tr class="even">
-<td ><code>Ctrl-e</code></td>
-<td >End of line</td>
+<td><code>Ctrl-e</code></td>
+<td>End of line</td>
 </tr>
 <tr class="odd">
-<td ><code>Ctrl-k</code></td>
-<td >Delete line from cursor forward</td>
+<td><code>Ctrl-k</code></td>
+<td>Delete line from cursor forward</td>
 </tr>
 <tr class="even">
-<td ><code>Ctrl-w</code></td>
-<td >Delete word before cursor</td>
+<td><code>Ctrl-w</code></td>
+<td>Delete word before cursor</td>
 </tr>
 <tr class="odd">
-<td ><code>Ctrl-y</code></td>
-<td >pastes in whatever was deleted previously with <code>Ctrl-k</code> or <code>Ctrl-w</code></td>
+<td><code>Ctrl-y</code></td>
+<td>pastes in whatever was deleted previously with <code>Ctrl-k</code> or <code>Ctrl-w</code></td>
 </tr>
 <tr class="even">
-<td ><code>ESC-F</code></td>
-<td >Forward one word</td>
+<td><code>ESC-F</code></td>
+<td>Forward one word</td>
 </tr>
 <tr class="odd">
-<td ><code>ESC-B</code></td>
-<td >Backwards one word</td>
+<td><code>ESC-B</code></td>
+<td>Backwards one word</td>
 </tr>
 <tr class="even">
-<td ><code>Ctrl-d</code></td>
-<td >EOF; exit</td>
+<td><code>Ctrl-d</code></td>
+<td>EOF; exit</td>
 </tr>
 <tr class="odd">
-<td ><code>Ctrl-c</code></td>
-<td >Interrupt current command</td>
+<td><code>Ctrl-c</code></td>
+<td>Interrupt current command</td>
 </tr>
 <tr class="even">
-<td ><code>Ctrl-z</code></td>
-<td >Suspend current command</td>
+<td><code>Ctrl-z</code></td>
+<td>Suspend current command</td>
 </tr>
 <tr class="odd">
-<td ><code>Ctrl-l</code></td>
-<td >Clear screen</td>
+<td><code>Ctrl-l</code></td>
+<td>Clear screen</td>
 </tr>
 <tr class="even">
-<td ><code>Ctrl-r</code></td>
-<td >Enables an <a href="http://www.techrepublic.com/article/keyboard-shortcuts-in-bash-and-zsh/">interactive search history</a></td>
+<td><code>Ctrl-r</code></td>
+<td>Enables an <a href="http://www.techrepublic.com/article/keyboard-shortcuts-in-bash-and-zsh/">interactive search history</a></td>
 </tr>
 </tbody>
 </table>
@@ -421,28 +421,28 @@ the last command that started with 'gi'.
 </thead>
 <tbody>
 <tr class="odd">
-<td ><code>!!</code></td>
-<td >Last command</td>
+<td><code>!!</code></td>
+<td>Last command</td>
 </tr>
 <tr class="even">
-<td ><code>!n</code></td>
-<td >Command numbered <em>n</em> in the history</td>
+<td><code>!n</code></td>
+<td>Command numbered <em>n</em> in the history</td>
 </tr>
 <tr class="odd">
-<td ><code>!-n</code></td>
-<td >Command <em>n</em> previous</td>
+<td><code>!-n</code></td>
+<td>Command <em>n</em> previous</td>
 </tr>
 <tr class="even">
-<td ><code>!string</code></td>
-<td >Last command starting with <em>string</em></td>
+<td><code>!string</code></td>
+<td>Last command starting with <em>string</em></td>
 </tr>
 <tr class="odd">
-<td ><code>!?string</code></td>
-<td >Last command containing <em>string</em></td>
+<td><code>!?string</code></td>
+<td>Last command containing <em>string</em></td>
 </tr>
 <tr class="even">
-<td ><code>^string1^string2</code></td>
-<td >Execute the previous command with <em>string2</em> substituted for <em>string1</em></td>
+<td><code>^string1^string2</code></td>
+<td>Execute the previous command with <em>string2</em> substituted for <em>string1</em></td>
 </tr>
 </tbody>
 </table>

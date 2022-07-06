@@ -169,62 +169,62 @@ shows some examples of redirection.
 <table>
 <thead>
 <tr class="header">
-<th align="left">Redirection Syntax</th>
-<th align="left">Function</th>
+<th>Redirection Syntax</th>
+<th>Function</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left"><code>$ cmd &gt; file</code></td>
-<td align="left">Send <em>stdout</em> to <em>file</em></td>
+<td><code>$ cmd &gt; file</code></td>
+<td>Send <em>stdout</em> to <em>file</em></td>
 </tr>
 <tr class="even">
-<td align="left"><code>$ cmd 1&gt; file</code></td>
-<td align="left">Same as above</td>
+<td><code>$ cmd 1&gt; file</code></td>
+<td>Same as above</td>
 </tr>
 <tr class="odd">
-<td align="left"><code>$ cmd 2&gt; file</code></td>
-<td align="left">Send <em>stderr</em> to <em>file</em></td>
+<td><code>$ cmd 2&gt; file</code></td>
+<td>Send <em>stderr</em> to <em>file</em></td>
 </tr>
 <tr class="even">
-<td align="left"><code>$ cmd &gt; file 2&gt;&amp;1</code></td>
-<td align="left">Send both <em>stdout</em> and <em>stderr</em> to <em>file</em></td>
+<td><code>$ cmd &gt; file 2&gt;&amp;1</code></td>
+<td>Send both <em>stdout</em> and <em>stderr</em> to <em>file</em></td>
 </tr>
 <tr class="odd">
-<td align="left"><code>$ cmd &lt; file</code></td>
-<td align="left">Receive <em>stdin</em> from <em>file</em></td>
+<td><code>$ cmd &lt; file</code></td>
+<td>Receive <em>stdin</em> from <em>file</em></td>
 </tr>
 <tr class="even">
-<td align="left"><code>$ cmd &gt;&gt; file</code></td>
-<td align="left">Append <em>stdout</em> to <em>file</em></td>
+<td><code>$ cmd &gt;&gt; file</code></td>
+<td>Append <em>stdout</em> to <em>file</em></td>
 </tr>
 <tr class="odd">
-<td align="left"><code>$ cmd 1&gt;&gt; file</code></td>
-<td align="left">Same as above</td>
+<td><code>$ cmd 1&gt;&gt; file</code></td>
+<td>Same as above</td>
 </tr>
 <tr class="even">
-<td align="left"><code>$ cmd 2&gt;&gt; file</code></td>
-<td align="left">Append <em>stderr</em> to <em>file</em></td>
+<td><code>$ cmd 2&gt;&gt; file</code></td>
+<td>Append <em>stderr</em> to <em>file</em></td>
 </tr>
 <tr class="odd">
-<td align="left"><code>$ cmd &gt;&gt; file 2&gt;&amp;1</code></td>
-<td align="left">Append both <em>stdout</em> and <em>stderr</em> to <em>file</em></td>
+<td><code>$ cmd &gt;&gt; file 2&gt;&amp;1</code></td>
+<td>Append both <em>stdout</em> and <em>stderr</em> to <em>file</em></td>
 </tr>
 <tr class="even">
-<td align="left"><code>$ cmd1 | cmd2</code></td>
-<td align="left">Pipe <em>stdout</em> from <em>cmd1</em> to <em>cmd2</em></td>
+<td><code>$ cmd1 | cmd2</code></td>
+<td>Pipe <em>stdout</em> from <em>cmd1</em> to <em>cmd2</em></td>
 </tr>
 <tr class="odd">
-<td align="left"><code>$ cmd1 2&gt;&amp;1 | cmd2</code></td>
-<td align="left">Pipe <em>stdout</em> and <em>stderr</em> from <em>cmd1</em> to <em>cmd2</em></td>
+<td><code>$ cmd1 2&gt;&amp;1 | cmd2</code></td>
+<td>Pipe <em>stdout</em> and <em>stderr</em> from <em>cmd1</em> to <em>cmd2</em></td>
 </tr>
 <tr class="even">
-<td align="left"><code>$ cmd1 | tee file1 | cmd2</code></td>
-<td align="left">Pipe <em>stdout</em> from <em>cmd1</em> to <em>cmd2</em> while simultaneously writing it to <em>file1</em></td>
+<td><code>$ cmd1 | tee file1 | cmd2</code></td>
+<td>Pipe <em>stdout</em> from <em>cmd1</em> to <em>cmd2</em> while simultaneously writing it to <em>file1</em></td>
 </tr>
 <tr class="even">
-<td align="left"></td>
-<td align="left">using <em>tee</em></td>
+<td></td>
+<td>using <em>tee</em></td>
 </tr>
 </tbody>
 </table>
@@ -458,18 +458,18 @@ My home directory is $HOME
 <table>
 <thead>
 <tr class="header">
-<th align="left">Types of Quoting</th>
-<th align="left">Description</th>
+<th>Types of Quoting</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left"><code>' '</code></td>
-<td align="left">hard quote - no substitution allowed</td>
+<td><code>' '</code></td>
+<td>hard quote - no substitution allowed</td>
 </tr>
 <tr class="even">
-<td align="left"><code>&quot; &quot;</code></td>
-<td align="left">soft quote - allow substitution</td>
+<td><code>&quot; &quot;</code></td>
+<td>soft quote - allow substitution</td>
 </tr>
 </tbody>
 </table>
