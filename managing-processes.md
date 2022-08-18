@@ -108,8 +108,8 @@ been running.
 
 To quit `top`, type `q`.
 
-You can also renice and kill jobs (see below for further details on
-both these operations) from within top: just type `r` or `k`,
+You can also kill jobs (see below for further details on
+killing jobs) from within top: just type `r` or `k`,
 respectively, and proceed from there.
 
 ### 1.2 Monitoring memory use
