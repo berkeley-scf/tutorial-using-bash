@@ -1,9 +1,18 @@
 ---
 title: File management
-layout: default
+date: 2025-04-09
+format:
+  html:
+    theme: cosmo
+    css: assets/styles.css
+    toc: true
+    code-copy: true
+    code-block-bg: true
+    code-block-border-left: "#31BAE9" 
+engine: knitr
+ipynb-shell-interactivity: all
+code-overflow: wrap
 ---
-
-# File management
 
 ## 1 Overview 
 
@@ -26,9 +35,10 @@ A file typically has these attributes:
   
 These attributes are discussed further as part of [our consideration of file permissions](#4-file-permissions).
 
-> **Prerequisite**
->
-> If you're not familiar with moving between directories, listing files, or the structure of the filesystem, please see our [Basics of UNIX tutorial](https://berkeley-scf.github.io/tutorial-unix-basics#3-files-and-directories).
+::: {.callout-warning title="Prerequisite"}
+
+ If you're not familiar with moving between directories, listing files, or the structure of the filesystem, please see our [Basics of UNIX tutorial](https://berkeley-scf.github.io/tutorial-unix-basics#3-files-and-directories).
+:::
 
 ## 2 Finding files and navigating the filesystem
 
@@ -52,15 +62,12 @@ $ find --help
 
 As discussed in our
 [Basics of UNIX tutorial](https://berkeley-scf.github.io/tutorial-unix-basics#3-files-and-directories),
-one uses `cd` to change directories. In addition to use of "cd -" to go back to the previous working directory, you can use the `pushd`, `popd`, and `dirs` commands if you would like to keep a stack of previous working directories rather than just the last one.
+one uses `cd` to change directories. In addition to use of `cd -` to go back to the previous working directory, you can use the `pushd`, `popd`, and `dirs` commands if you would like to keep a stack of previous working directories rather than just the last one.
 
 In each directory there are two special directories, `.` and `..`, which refer to the current directory and the parent of the current directory, respectively. One only sees these with `ls` if we use the `-a` flag to reveal hidden files.
 
 ```bash
 $ ls -al
-```
-
-```
 total 1489
 drwxr-sr-x  7 paciorek scfstaff     31 Apr 21 16:39  ./
 drwxr-sr-x 19 paciorek scfstaff     30 Feb 28 15:07  ../
@@ -126,7 +133,7 @@ $ ls *[0-9]
 
 Make a copy of `filename` as `filename.old`:
 
-```{bash}
+```bash
 $ cp filename{,.old}
 ```
 
@@ -202,16 +209,13 @@ When using the `-l` flag to `ls`, you'll see extensive information about each fi
 Here's a graphical summary of the information for a file named
 "file.txt", whose owner is "root" and group is "users". (The graphic also indicates that the commands `chmod`, `chown`, and `chgrp` can be used to change aspects of the file permissions and ownership.)
 
-![Schematic of file attributes](assets/img/ls_format.png)
+![Schematic of file attributes](ls_format.png)
 
 
 Let's look in detail at the information in the first column returned by `ls -l`. 
 
 ```bash
 $ ls -l
-```
-
-```
 total 156
 drwxrwxr-x  2 scflocal scflocal  4096 Dec 28 13:15 data
 drwxrwxr-x  2 scflocal scflocal  4096 Dec 28 13:15 howtos
@@ -255,14 +259,10 @@ $ chmod u-r tmp.txt # prevent owner from reading
 $ chmod g-r tmp.txt # prevent users in the file's group from reading
 $ chmod o-r tmp.txt # prevent others from reading
 $ ls -l tmp.txt
-```
-```
 --w--w---- 1 scflocal scflocal 11 Dec 28 13:39 tmp.txt
 ```
 ```bash
 $ cat tmp.txt
-```
-```
 cat: tmp.txt: Permission denied
 ```           
 
@@ -271,8 +271,6 @@ That can actually be accomplished all at once, like this:
 ```bash
 $ chmod ugo-r tmp.txt # prevent all three
 $ ls -l tmp.txt
-```
-```
 --w--w---- 1 scflocal scflocal 11 Dec 28 13:39 tmp.txt
 ```
 
@@ -297,17 +295,15 @@ Now let's restore read and write permission to the owner:
 $ chmod u+rw tmp.txt
 $ echo "added line" >> tmp.txt
 $ cat tmp.txt
-```
-
-```
 first line
 added line
 ```
 
 There's lots more details that are important when making files accessible to other users, including:
 
-  - [how to make files in a particular directory available to other users on the system](https://docs-research-it.berkeley.edu/services/high-performance-computing/user-guide/data/transferring-data/making-files-accessible/#making-files-accessible-to-all-other-savio-users) and 
-  - [how to set up a directory for use by a UNIX group](https://docs-research-it.berkeley.edu/services/high-performance-computing/user-guide/data/transferring-data/making-files-accessible/#making-files-accessible-to-your-group-members), using the so-called "sticky bit" so that files created in the directory in the future belong to the group so that group members will readily have access to them by default.
+  - [how to make files in a particular directory available to other users on the system](https://docs-research-it.berkeley.edu/services/high-performance-computing/user-guide/data/transferring-data/making-files-accessible/#making-files-accessible-to-all-other-savio-users),
+  - [how to set up a directory for use by a UNIX group](https://docs-research-it.berkeley.edu/services/high-performance-computing/user-guide/data/transferring-data/making-files-accessible/#making-files-accessible-to-your-group-members), using the so-called "sticky bit" so that files created in the directory in the future belong to the group so that group members will readily have access to them by default, and
+  - [how to use *access control lists*](https://www.redhat.com/en/blog/linux-access-control-lists) to have more control over access.
 
 ## 5 Use simple text files when possible
 

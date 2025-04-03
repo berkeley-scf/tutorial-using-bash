@@ -1,9 +1,18 @@
 ---
 title: Regular expressions
-layout: default
+date: 2025-04-09
+format:
+  html:
+    theme: cosmo
+    css: assets/styles.css
+    toc: true
+    code-copy: true
+    code-block-bg: true
+    code-block-border-left: "#31BAE9" 
+engine: knitr
+ipynb-shell-interactivity: all
+code-overflow: wrap
 ---
-
-# Regular expressions 
 
 Regular expressions (regex) are a domain-specific language for finding
 patterns and are one of the key functionalities in scripting languages
@@ -13,16 +22,17 @@ expressions in bash, but once you know that, it would be easy to use
 them elsewhere (Python, R, etc.). At the level we'll consider them, the
 syntax is quite similar.
 
-> **Warning**
->
-> POSIX.2 regular expressions come in two flavors: extended regular
-> expressions and basic (or obsolete) regular expressions. The extended
-> syntax has metacharacters `()` and `{}`, while the basic syntax
-> requires the metacharacters to be designated `\(\)` and `\{\}`.
-> In addition to the POSIX standard, Perl regular expressions are also
-> widely used. While we won't go into detail, we will see some examples
-> of each syntax. In the examples that follow we'll generally use the
-> extended syntax by using the `-E` flag to `grep`.
+::: {.callout-important title="Different types of regular expressions"}
+
+ POSIX.2 regular expressions come in two flavors: extended regular
+ expressions and basic (or obsolete) regular expressions. The extended
+ syntax has metacharacters `()` and `{}`, while the basic syntax
+ requires the metacharacters to be designated `\(\)` and `\{\}`.
+ In addition to the POSIX standard, Perl regular expressions are also
+ widely used. While we won't go into detail, we will see some examples
+ of each syntax. In the examples that follow we'll generally use the
+ extended syntax by using the `-E` flag to `grep`.
+:::
 
 ## 1 Overview and core syntax
 
@@ -329,15 +339,13 @@ Please call 1.919.554.3800
 I think he said it was 337.4355
 ```
 
-
-**Exercise**
-
+::: {.callout-tip title="Exercise"}
 Explain what the following regular expression matches:
 
 ```bash
 $ grep '^[^T]*is.*$' file1.txt
 ```
-
+:::
 
 ## 5 Greedy matching
 
@@ -374,17 +382,19 @@ $ grep -P -o "<.*?>" file1.txt
 
 However, one can often avoid greedy matching by being more clever.
 
-**Challenge**: How could we change our regexp to avoid the greedy
+::: {.callout-tip title="Challenge"}
+How could we change our regexp to avoid the greedy
 matching without using the `?` modifier? Hint: Is there some character
 set that we don't want to be inside the angle brackets?
+:::
 
-> **Tip: globs vs. regex**
->
-> Be sure you understand the difference between [filename globbing](file-management#3-filename-matching-globbing)
-> and regular expressions. Filename globbing only works for filenames, while
-> regular expressions are used to match patterns in text more
-> generally. While they both use the same set of symbols, they mean
-> different things (e.g., `*` matches 0 or more characters when
-> globbing but matches 0 or more repetitions of the character that
-> precedes it when used in a regular expression).
->
+::: {.callout-tip title="globs vs. regex"}
+
+ Be sure you understand the difference between [filename globbing](file-management#3-filename-matching-globbing)
+ and regular expressions. Filename globbing only works for filenames, while
+ regular expressions are used to match patterns in text more
+ generally. While they both use the same set of symbols, they mean
+ different things (e.g., `*` matches 0 or more characters when
+ globbing but matches 0 or more repetitions of the character that
+ precedes it when used in a regular expression).
+:::

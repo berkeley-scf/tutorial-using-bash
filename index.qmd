@@ -1,24 +1,31 @@
 ---
-title: Using the bash shell
-layout: default
-author: Christopher Paciorek
+title: Using the bash (and zsh) shell
+date: 2025-04-09
+format:
+  html:
+    theme: cosmo
+    css: assets/styles.css
+    toc: true
+    code-copy: true
+    code-block-bg: true
+    code-block-border-left: "#31BAE9" 
+engine: knitr
+ipynb-shell-interactivity: all
+code-overflow: wrap
 ---
-
-# Using the bash shell
 
 ## 1 This tutorial
 
-> **Prerequisite**
->
-> Before reading this, if you're not already comfortable with basic commands for working with files (e.g. `cd`, `ls`, `cp` and the structure of the filesystem on a UNIX-like machine), you will want to be familiar with the introductory material in our [Basics of UNIX tutorial](https://berkeley-scf.github.io/tutorial-unix-basics).
+::: {.callout-warning title="Prerequisite"}
+ Before reading this, if you're not already comfortable with basic commands for working with files (e.g. `cd`, `ls`, `cp` and the structure of the filesystem on a UNIX-like machine), you will want to be familiar with the introductory material in our [Basics of UNIX tutorial](https://computing.stat.berkeley.edu/tutorial-unix-basics).
+:::
 
-Please see the top menu bar for the various sections of this tutorial, of which this document is the introduction.
 
-Materials for this tutorial, including the Markdown file that was used to create this document are [available on GitHub](https://github.com/berkeley-scf/tutorial-using-bash).
+### 1.1 Other resources
 
 Software Carpentry has a very nice introductory lesson on the [basics of the shell](https://swcarpentry.github.io/shell-novice/). It also has an accompanying [YouTube video](https://www.youtube.com/watch?v=8c1BL5b47kg) that covers some, but not all, of the topics of this tutorial.
 
-This tutorial by Christopher Paciorek and Jarrod Millman is licensed under a Creative Commons Attribution 3.0 Unported License.
+The book Research Software Engineering with Python has [several good in-depth chapters on the shell](https://third-bit.com/py-rse/bash-basics.html).
 
 ## 2 The interactive shell
 
@@ -29,17 +36,18 @@ Python also provide REPL environments. A REPL reads a single
 *expression* or input, parses and *evaluates* it, *prints* the results,
 and then *loops* (i.e., returns control to you to continue your work).
 
-> **Note**
->
-> I will use a `$` prompt for bash. By convention, a regular
-> user's prompt in bash is `$`, while the root (or administrative)
-> user's prompt is `#`. However, it is common practice to never log on
-> as the root user, even if you have root access. If you need to run a command with root privileges,
-> you should use the `sudo` command.
->
-> `$ echo "The current user is $USER."`
->
-> `The current user is paciorek.`
+::: {.callout-note title="The shell prompt"}
+
+ I will use a `$` prompt for bash. By convention, a regular
+ user's prompt in bash is `$`, while the root (or administrative)
+ user's prompt is `#`. However, it is common practice to never log on
+ as the root user, even if you have root access. If you need to run a command with root privileges,
+ you should use the `sudo` command.
+
+ `$ echo "The current user is $USER."`
+
+ `The current user is paciorek.`
+:::
 
 When you are working in a terminal window (i.e., a window with the
 command line interface), you're interacting with a shell. 
@@ -51,21 +59,22 @@ more importantly you can automate it. As you will see, *bash* has a
 very extensive set of capabilities intended to make both interactive as
 well as automated control simple, effective, and customizable.
 
-> **Note**
->
-> It can be difficult to distinguish what is shell-specific and what is
-> just part of UNIX. Some of the material in this tutorial is not bash-specific but is
-> general to UNIX.
->
-> Reference: Newham and Rosenblatt, Learning the bash Shell, 2nd ed.
->
-> **Warning**
->
-> Unfortunately, the behavior of shell commands on a Mac can be
-> [somewhat different](https://ponderthebits.com/2017/01/know-your-tools-linux-gnu-vs-mac-bsd-command-line-utilities-grep-strings-sed-and-find)
-> than on Linux (e.g., on a Mac, one can't do `tail -n +5`) because MacOS is based on 
-> BSD, which is not a Linux distribution. The behavior of the commands is distinct from the shell you are using.
+::: {.callout-warning}
 
+ It can be difficult to distinguish what is shell-specific and what is
+ just part of UNIX. Some of the material in this tutorial is not bash-specific but is
+ general to UNIX.
+
+ Reference: Newham and Rosenblatt, Learning the bash Shell, 2nd ed.
+:::
+
+::: {.callout-warning title="The shell on a Mac"}
+
+ Unfortunately, the behavior of shell commands on a Mac can be
+ [somewhat different](https://ponderthebits.com/2017/01/know-your-tools-linux-gnu-vs-mac-bsd-command-line-utilities-grep-strings-sed-and-find)
+ than on Linux (e.g., on a Mac, one can't do `tail -n +5`) because MacOS is based on 
+ BSD, which is not a Linux distribution. The behavior of the commands is distinct from the shell you are using.
+:::
 
 
 ## 3 Accessing the shell
@@ -118,9 +127,6 @@ For example, I can find the username of the current user in the `USER` variable:
 
 ```bash
 $ echo $USER
-```
-
-```
 paciorek
 ```
 
@@ -261,7 +267,7 @@ Alternatively, for many commands you can use the `--help` flag:
 $ ls --help
 ```
 
-**Exercise**
+::: {.callout-tip title="Exercise"}
 
 Consider the following examples using the `ls` command:
 
@@ -274,6 +280,7 @@ $ ls -al
 Use `man ls` to see what the command options do. Is there any difference
 in what the three versions of the command invocation above return as the
 result? What happens if you add a filename to the end of the command?
+:::
 
 ## 6 Operating efficiently at the command line 
 
@@ -293,11 +300,11 @@ and redisplay the partial command line for further editing. Similar
 behavior with regard to filenames occurs when tab completion is used on
 anything other than the first token of a command.
 
-> **Note**
+::: {.callout-tip title="Tab completion in Python and R"}
 
-> Note that R does tab completion for objects (including functions) and
-> filenames. While the default Python shell does not perform tab
-> completion, the IPython shell does.
+R and Python also provide tab completions for objects (including functions) and
+(in some cases) filenames. 
+:::
 
 ### 6.2 Keyboard shortcuts
 

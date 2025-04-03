@@ -1,9 +1,18 @@
 ---
 title: Managing processes
-layout: default
+date: 2025-04-09
+format:
+  html:
+    theme: cosmo
+    css: assets/styles.css
+    toc: true
+    code-copy: true
+    code-block-bg: true
+    code-block-border-left: "#31BAE9" 
+engine: knitr
+ipynb-shell-interactivity: all
+code-overflow: wrap
 ---
-
-# Managing processes
 
 A process is a program that is being executed. Processes have the
 following attributes:
@@ -23,7 +32,7 @@ start up to carry out the activity.
 
 ### 1.1 Monitoring processes
 
-#### `ps`
+#### Using `ps`
 
 Examining subprocesses of your shell with `ps`:
 
@@ -74,7 +83,7 @@ PID    NI %CPU %MEM USER     COMMAND
 To see the hierarchical process structure (i.e., which processes started which other processes), you can use the `pstree`
 command.
 
-#### `top`
+#### Using `top`
 
 Examining processes with `top`:
 
@@ -126,10 +135,7 @@ memory that is being used simultaneously by multiple processes. To see the total
 amount of memory actually available on a machine:
 
 ```bash
-free -h
-```
-
-```
+$ free -h
               total        used        free      shared  buff/cache   available
 Mem:           251G        998M        221G        2.6G         29G        247G
 Swap:          7.6G        210M        7.4G
@@ -170,7 +176,7 @@ terminate when you log off.
 $ python code.py > code.pyout 2>&1 &
 ```
 
-What does the inscrutable `2>&1` do? It says to send *stderr* to the same
+What does the inscrutable `2>&1` do? Recall from [earlier](using-commands.html#overview-of-redirection) that it says to send *stderr* to the same
 place as *stdout*, which in this case has been redirected to `code.pyout`.
 
 If you forget to put a job in the background when you first execute it,
@@ -274,7 +280,9 @@ several virtual terminals including:
  - disconnecting from one machine and then reconnecting to an existing virtual terminal from another.
 
 While we will only discuss its basic operation, we will cover enough to
-be of regular use. `tmux` is an alternative to `screen`.
+be of regular use.
+
+`tmux` is an alternative to `screen`.
 
 Calling screen:
 
@@ -292,12 +300,14 @@ $ screen
 [detached from 23974.pts-2.t430u]
 ```
 
-> **tip**
+::: {.callout-tip title="Screen commands"}
 
-> All the screen key commands begin with the control key combination
-> `Ctrl-a` followed by another key. For instance, when you are in a
-> screen session and type `Ctrl-a ?`, screen will display a help screen
-> with a list of its keybindings.
+All the screen key commands begin with the control key combination
+`Ctrl-a` followed by another key. For instance, when you are in a
+screen session and type `Ctrl-a ?`, screen will display a help screen
+with a list of its keybindings.
+
+:::
 
 You can now list your screen sessions :
 

@@ -1,9 +1,18 @@
 ---
 title: Using UNIX commands
-layout: default
+date: 2025-04-09
+format:
+  html:
+    theme: cosmo
+    css: assets/styles.css
+    toc: true
+    code-copy: true
+    code-block-bg: true
+    code-block-border-left: "#31BAE9" 
+engine: knitr
+ipynb-shell-interactivity: all
+code-overflow: wrap
 ---
-
-# Using UNIX commands 
 
 ## 1 Basic utilities / commands
 
@@ -138,12 +147,13 @@ scripts to do more complicated things.
 
 We'll see further examples of how to use these utilities later.
 
-**Exercise**
+::: {.callout-tip title="Exercise"}
 
 You've already seen some of the above commands. Use the `--help`
 syntax to view the abbreviated  man pages for some commands you're not
 familiar with and consider how you
 might use these commands.
+:::
 
 ## 3 Streams, pipes, and redirects
 
@@ -357,15 +367,16 @@ $ grep pdf test.R run.R analysis.R process.R
 ```
 
 
-> **Note**
->
-> An older notation for command substitution is to use backticks (e.g.,
-> `` `ls` `` rather than `$(ls)`). It is generally preferable to use the new
-> notation, since there are many annoyances with the backtick notation.
-> For example, backslashes (`\`) inside of backticks behave in a
-> non-intuitive way, nested quoting is more cumbersome inside backticks,
->nested substitution is more difficult inside of backticks, and it is
-> easy to visually mistake backticks for a single quote.
+::: {.callout-tip title="Command substitution alternate syntax"}
+
+ An older notation for command substitution is to use backticks (e.g.,
+ `` `ls` `` rather than `$(ls)`). It is generally preferable to use the new
+ notation, since there are many annoyances with the backtick notation.
+ For example, backslashes (`\`) inside of backticks behave in a
+ non-intuitive way, nested quoting is more cumbersome inside backticks,
+nested substitution is more difficult inside of backticks, and it is
+ easy to visually mistake backticks for a single quote.
+:::
 
 Note that piping the output of the `ls` command into `grep` would not
 achieve the desired goal, since `grep` reads its filenames as arguments from the
@@ -383,8 +394,7 @@ $ ls -t *.{R,r} | head -4 | xargs grep pdf
 
 where the result is equivalent to the use of command substitution we saw in the previous section.
 
-
-**Exercise**
+::: {.callout-tip title="Exercise"}
 
 Try the following commands:
 
@@ -396,7 +406,7 @@ $ ls -l $(type -p tr)
 ```
 
 Make sure you understand why each command behaves as it does.
-
+:::
 
 ## 5 Brace expansion
 
@@ -464,7 +474,7 @@ My home directory is $HOME
 </thead>
 <tbody>
 <tr class="odd">
-<td><code>' '</code></td>
+<td><code>&#39; &#39;</code></td>
 <td>hard quote - no substitution allowed</td>
 </tr>
 <tr class="even">
@@ -511,6 +521,10 @@ $ ls "$HOME/\"with\"quote"
 So we'll generally use double quotes. We can always work with a literal
 double quote by escaping it as seen above.
 
+::: {.callout-warning title="Curly quotes"}
+Avoid using curly quotes (e.g., “ or ‘) when coding (in the shell or otherwise),
+except as part of an actual string. 
+:::
 
 ## 7 Powerful tools for text manipulation: `grep`, `sed`, and `awk`
 
@@ -769,10 +783,11 @@ For example, here is an excerpt from my `.bashrc`:
 ```
 
 
-**Exercise**
+::: {.callout-tip title="Exercise"}
 
 Look over the content of the example `.bashrc` and make sure you
 understand what each line does. For instance, use `man grep` to see what
 the option `--color=auto` does. Use `man which` to figure out what the
 various options passed to it do.
 
+:::

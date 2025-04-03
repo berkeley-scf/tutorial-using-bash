@@ -1,6 +1,17 @@
 ---
 title: Exercises
-layout: default
+date: 2025-04-09
+format:
+  html:
+    theme: cosmo
+    css: assets/styles.css
+    toc: true
+    code-copy: true
+    code-block-bg: true
+    code-block-border-left: "#31BAE9" 
+engine: knitr
+ipynb-shell-interactivity: all
+code-overflow: wrap
 ---
 
 
@@ -59,7 +70,7 @@ layout: default
 
 13. Modify the function so that you can simply type :
 
-	```
+	```bash
 	$ bpy file.py
 	```
 

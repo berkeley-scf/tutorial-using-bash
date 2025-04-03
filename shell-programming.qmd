@@ -1,9 +1,18 @@
 ---
 title: Shell programming
-layout: default
+date: 2025-04-09
+format:
+  html:
+    theme: cosmo
+    css: assets/styles.css
+    toc: true
+    code-copy: true
+    code-block-bg: true
+    code-block-border-left: "#31BAE9" 
+engine: knitr
+ipynb-shell-interactivity: all
+code-overflow: wrap
 ---
-
-# Shell programming 
 
 ## 1 Shell scripts 
 
@@ -22,8 +31,8 @@ $ . ./file.sh
 ```
 
 Note that if you just typed `file.sh`, the operating system will
-generally have trouble finding the script (if `file.sh` is not in a
-directory included in the `PATH` environment variable) and recognizing that it is
+generally have two problems: first, it would have trouble finding the script (if `file.sh` is not in a
+directory included in the `PATH` environment variable), and second it would have trouble recognizing that it is
 executable (if the `-x` flag is not set for `file.sh`). 
 
 To be sure that the operating system knows what shell to use
@@ -97,7 +106,7 @@ If the `then` is on a separate line from the `if`, you won't need the semicolon.
 
 ## 4 For loops
 
-*for* loops in shell scripting are primarily designed for iterating
+For loops in shell scripting are primarily designed for iterating
 through a set of files or directories. Here's an example:
 
 ```bash
@@ -110,7 +119,7 @@ $ for FILE in $(ls *.txt); do
 Note that the `>` prompt above occurs when the shell is expecting
 further input.
 
-Another use of *for* loops is automating file downloads:
+Another use of `for` loops is automating file downloads:
 
 ```bash
     # example of bash for loop and wget for downloading a collection of files on the web
