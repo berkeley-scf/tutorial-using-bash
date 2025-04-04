@@ -1,0 +1,38 @@
+project:
+  type: website
+
+website:
+  site-url: https://computing.stat.berkeley.edu/tutorial-using-bash
+  sidebar:
+    style: docked
+    title: "SCF Bash Shell Tutorial"
+    logo: assets/img/logo.svg
+    logo-href: https://statistics.berkeley.edu
+    logo-alt: "UC Berkeley Statistics logo"
+    tools:
+      - icon: github
+        href: https://github.com/berkeley-scf/tutorial-using-bash
+        aria-label: GitHub
+    contents:
+      - href: index.qmd
+        text: Overview
+      - href: file-management.qmd
+        text: File Management
+      - href: using-commands.qmd
+        text: Using Commands
+      - href: shell-programming.qmd
+        text: Shell Programming
+      - href: managing-processes.qmd
+        text: Managing Processes
+      - href: regex.qmd
+        text: Regular Expressions
+      - href: exercises.qmd
+        text: Exercises
+      - href: license.qmd
+        text: License
+
+format:
+  html:
+    theme: cosmo
+    css: assets/styles.css
+    toc: true
