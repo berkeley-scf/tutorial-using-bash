@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://computing.stat.berkeley.edu/tutorial-using-bash/managing-processes.html</loc>
+    <lastmod>2025-04-04T21:58:01.891Z</lastmod>
+  </url>
+  <url>
+    <loc>https://computing.stat.berkeley.edu/tutorial-using-bash/shell-programming.html</loc>
+    <lastmod>2025-04-04T21:58:01.911Z</lastmod>
+  </url>
+  <url>
+    <loc>https://computing.stat.berkeley.edu/tutorial-using-bash/using-commands.html</loc>
+    <lastmod>2025-04-04T21:58:01.927Z</lastmod>
+  </url>
+  <url>
+    <loc>https://computing.stat.berkeley.edu/tutorial-using-bash/file-management.html</loc>
+    <lastmod>2025-04-04T21:58:01.819Z</lastmod>
+  </url>
+  <url>
+    <loc>https://computing.stat.berkeley.edu/tutorial-using-bash/index.html</loc>
+    <lastmod>2025-04-04T21:58:01.851Z</lastmod>
+  </url>
+  <url>
+    <loc>https://computing.stat.berkeley.edu/tutorial-using-bash/exercises.html</loc>
+    <lastmod>2025-04-04T21:58:01.811Z</lastmod>
+  </url>
+  <url>
+    <loc>https://computing.stat.berkeley.edu/tutorial-using-bash/license.html</loc>
+    <lastmod>2025-04-04T21:58:01.867Z</lastmod>
+  </url>
+  <url>
+    <loc>https://computing.stat.berkeley.edu/tutorial-using-bash/regex.html</loc>
+    <lastmod>2025-04-04T21:58:01.903Z</lastmod>
+  </url>
+</urlset>
