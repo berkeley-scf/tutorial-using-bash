@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.31">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -10,6 +10,9 @@
 
 <title>Regular expressions</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -72,10 +75,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-ff803dae0bae9edb91fb3cd2582d8e33.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-daf5a11ba17b38b3c1f3d4203ab79c89.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -132,7 +135,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="https://statistics.berkeley.edu" class="sidebar-logo-link">
-      <img src="./assets/img/logo.svg" alt="UC Berkeley Statistics logo" class="sidebar-logo py-0 d-lg-inline d-none">
+      <img src="./assets/img/logo.svg" alt="UC Berkeley Statistics logo" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="./assets/img/logo.svg" alt="UC Berkeley Statistics logo" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">SCF Bash Shell Tutorial</a> 
@@ -249,7 +253,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Different types of regular expressions
+<span class="screen-reader-only">Important</span>Different types of regular expressions
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -278,7 +282,7 @@ Different types of regular expressions
 <pre><code>* . ^ $ + ? ( ) [ ] { } | \</code></pre>
 <p>To use these characters literally as characters, we have to ‘escape’ them. In bash, you escape these characters by placing a single backslash before the character you want to escape. In R, we have to use two backslashes instead of a single backslash because R uses a single backslash to symbolize certain control characters, such as <code>\n</code> for newline.</p>
 <p>To learn more about regular expressions, you can type:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> man 7 regex</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> man 7 regex</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="character-sets-and-character-classes" class="level2">
 <h2 class="anchored" data-anchor-id="character-sets-and-character-classes">2 Character sets and character classes</h2>
@@ -347,16 +351,16 @@ Turn off (escape) the special meaning of a metacharacter
 </table>
 <p>If we want to search for any one of a set of characters, we use a character set, such as <code>[13579]</code> or <code>[abcd]</code> or <code>[0-9]</code> (where the dash indicates a sequence) or <code>[0-9a-z]</code>. To indicate any character not in a set, we place a <code>^</code> just inside the first bracket: <code>[^abcd]</code>.</p>
 <p>Here’s an example of using regex with <code>grep</code> to find all lines in <code>test.txt</code> that contain at least one numeric digit.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-E</span> <span class="pp">[</span><span class="ss">0</span><span class="pp">-</span><span class="ss">9</span><span class="pp">]</span> test.txt     </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-E</span> <span class="pp">[</span><span class="ss">0</span><span class="pp">-</span><span class="ss">9</span><span class="pp">]</span> test.txt     </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>or with the <code>-o</code> flag to find and return only the actual digits</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-E</span> <span class="at">-o</span> <span class="pp">[</span><span class="ss">0</span><span class="pp">-</span><span class="ss">9</span><span class="pp">]</span> test.txt     </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-E</span> <span class="at">-o</span> <span class="pp">[</span><span class="ss">0</span><span class="pp">-</span><span class="ss">9</span><span class="pp">]</span> test.txt     </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>There are a bunch of named character classes so that we don’t have write out common sets of characters. The syntax is <code>[:CLASS:]</code> where <code>CLASS</code> is one of the following values:</p>
 <pre><code>"alnum", "alpha", "ascii", "blank", "cntrl", "digit", "graph",
 "lower", "print", "punct", "space", "upper", "word" or "xdigit".</code></pre>
 <p>So to find any line that contains a punctuation symbol:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-E</span> <span class="pp">[[:</span><span class="ss">punct</span><span class="pp">:]]</span> test.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-E</span> <span class="pp">[[:</span><span class="ss">punct</span><span class="pp">:]]</span> test.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Note that to make a character set with a character class you need two square brackets, e.g., with the digit class: <code>[[:digit:]]</code>. Or we can make a combined character set such as <code>[[:alnum:]_]</code> (to find any alphabetic or numeric characters or an underscore). Or here, any line with a digit, a period, or a comma.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-E</span> <span class="pp">[[:</span><span class="ss">digit</span><span class="pp">:]</span><span class="ss">.,</span><span class="pp">]</span> test.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-E</span> <span class="pp">[[:</span><span class="ss">digit</span><span class="pp">:]</span><span class="ss">.,</span><span class="pp">]</span> test.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Interestingly, we don’t need to escape the period or comma inside the character set, despite both of them being meta-characters.</p>
 </section>
 <section id="location-specific-matches" class="level2">
@@ -394,8 +398,8 @@ Match the end of a line.
 </table>
 <p>To find a pattern at the beginning of the string, we use <code>^</code> (note this was also used for negation, but in that case occurs only inside square brackets) and to find it at the end we use <code>$</code>.</p>
 <p>Here we’ll search for lines that start with a digit and for lines that end with a digit.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-E</span> ^<span class="pp">[</span><span class="ss">0</span><span class="pp">-</span><span class="ss">9</span><span class="pp">]</span> test.txt</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-E</span> <span class="pp">[</span><span class="ss">0</span><span class="pp">-</span><span class="ss">9</span><span class="pp">]</span>$ test.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-E</span> ^<span class="pp">[</span><span class="ss">0</span><span class="pp">-</span><span class="ss">9</span><span class="pp">]</span> test.txt</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-E</span> <span class="pp">[</span><span class="ss">0</span><span class="pp">-</span><span class="ss">9</span><span class="pp">]</span>$ test.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="repetitions-grouping-and-references" class="level2">
 <h2 class="anchored" data-anchor-id="repetitions-grouping-and-references">4 Repetitions, Grouping, and References</h2>
@@ -464,10 +468,10 @@ Match the character or expression to the left or right of the vertical bar.
 <li><code>[[:digit:]]{2,}</code> : two or more digits</li>
 </ul>
 <p>Another example is that <code>\[.*\]</code> is the pattern of closed square brackets with any number of characters (<code>.*</code>) inside:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">﻿$</span> grep <span class="at">-E</span> <span class="st">"\[.*\]"</span> test.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">﻿$</span> grep <span class="at">-E</span> <span class="st">"\[.*\]"</span> test.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Note that the quotations ensured that the backslashes are passed into grep and not simply interpreted by the shell, while the <code>\</code> is needed so that <code>[</code> and <code>]</code> are treated as simple characters since they are meta-characters in the regex syntax.</p>
 <p>As shown above, we can use <code>|</code> to mean “or”. For example, to match one or more occurrences of “http” or “ftp”:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-E</span> <span class="at">-o</span> <span class="st">"(http|ftp)"</span> test.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-E</span> <span class="at">-o</span> <span class="st">"(http|ftp)"</span> test.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Parentheses are also used with a pipe (<code>|</code>) when working with multi-character sequences, such as <code>(http|ftp)</code>. Also, here we need double quotes or the shell tries to interpret the <code>(</code> as part of the regular expression and not shell syntax.</p>
 <p>Next let’s see the use of repitition to look for more complicated multi-character patterns. For example, if you wanted to match phone numbers whether they start with <code>1-</code> or not you could use the following:</p>
 <pre><code>(1-)?[[:digit:]]{3}-[[:digit:]]{3}-[[:digit:]]{4}</code></pre>
@@ -479,30 +483,30 @@ Match the character or expression to the left or right of the vertical bar.
     Please call 1.919.554.3800
     I think he said it was 337.4355</code></pre>
 <p>Let’s use a regular expression pattern to print all lines containing phone numbers:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep <span class="st">'(1-)?[[:digit:]]{3}-[[:digit:]]{4}'</span> file2.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep <span class="st">'(1-)?[[:digit:]]{3}-[[:digit:]]{4}'</span> file2.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>You will notice that this doesn’t match any lines. The reason is that the group syntax <code>(1-)</code> and the <code>{}</code> notation are not part of the extended syntax. To have <code>grep</code> use the extended syntax, you can either use the <code>-E</code> option (as we’ve been doing above):</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-E</span> <span class="st">'(1-)?[[:digit:]]{3}-[[:digit:]]{4}'</span> file2.txt</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Here</span> is my number: 919-543-3300.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-E</span> <span class="st">'(1-)?[[:digit:]]{3}-[[:digit:]]{4}'</span> file2.txt</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Here</span> is my number: 919-543-3300.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>or use the <code>egrep</code> command:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> egrep  <span class="st">'(1-)?[[:digit:]]{3}-[[:digit:]]{4}'</span> file2.txt</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Here</span> is my number: 919-543-3300.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> egrep  <span class="st">'(1-)?[[:digit:]]{3}-[[:digit:]]{4}'</span> file2.txt</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Here</span> is my number: 919-543-3300.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>If we want to match regardless of whether the phone number is separated by a minus <code>-</code> or a period <code>.</code>, we could use the pattern <code>[-.]</code>:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> egrep  <span class="st">'(1[-.])?[[:digit:]]{3}[-.][[:digit:]]{4}'</span> file2.txt</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> egrep  <span class="st">'(1[-.])?[[:digit:]]{3}[-.][[:digit:]]{4}'</span> file2.txt</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Here</span> is my number: 919-543-3300.</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Please</span> call 1.919.554.3800</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="ex">I</span> think he said it was 337.4355</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="ex">I</span> think he said it was 337.4355</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Exercise">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Exercise
+<span class="screen-reader-only">Tip</span>Exercise
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <p>Explain what the following regular expression matches:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep <span class="st">'^[^T]*is.*$'</span> file1.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep <span class="st">'^[^T]*is.*$'</span> file1.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </section>
@@ -510,17 +514,17 @@ Exercise
 <h2 class="anchored" data-anchor-id="greedy-matching">5 Greedy matching</h2>
 <p>Regular expression pattern matching is <em>greedy</em>—by default, the longest matching string is chosen.</p>
 <p>Suppose we have the following file:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat file1.txt</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Do</span> an internship <span class="op">&lt;</span>b<span class="op">&gt;</span> in place <span class="op">&lt;</span>/b<span class="op">&gt;</span> of <span class="op">&lt;</span>b<span class="op">&gt;</span> one <span class="op">&lt;</span>/b<span class="op">&gt;</span> course.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat file1.txt</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Do</span> an internship <span class="op">&lt;</span>b<span class="op">&gt;</span> in place <span class="op">&lt;</span>/b<span class="op">&gt;</span> of <span class="op">&lt;</span>b<span class="op">&gt;</span> one <span class="op">&lt;</span>/b<span class="op">&gt;</span> course.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>If we want to match the html tags (e.g., <code>&lt;b&gt;</code> and <code>&lt;/b&gt;</code>, we might be tempted to use the pattern <code>&lt;.*&gt;</code>. Using the <code>-o</code> option to grep, we can have grep print out just the part of the text that the pattern matches:</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-o</span> <span class="st">"&lt;.*&gt;"</span> file1.txt</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>b<span class="op">&gt;</span> in <span class="ex">place</span> <span class="op">&lt;</span>/b<span class="op">&gt;</span> of <span class="op">&lt;</span>b<span class="op">&gt;</span> one <span class="op">&lt;</span>/b<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-o</span> <span class="st">"&lt;.*&gt;"</span> file1.txt</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>b<span class="op">&gt;</span> in <span class="ex">place</span> <span class="op">&lt;</span>/b<span class="op">&gt;</span> of <span class="op">&lt;</span>b<span class="op">&gt;</span> one <span class="op">&lt;</span>/b<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>To get a non-greedy match, you can use the modifier <code>?</code> after the quantifier. However, this requires that we use the Perl syntax. In order for grep to use the Perl syntax, we need to use the <code>-P</code> option:</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-P</span> <span class="at">-o</span> <span class="st">"&lt;.*?&gt;"</span> file1.txt</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-P</span> <span class="at">-o</span> <span class="st">"&lt;.*?&gt;"</span> file1.txt</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>b<span class="op">&gt;</span></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>/b<span class="op">&gt;</span></span>
 <span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>b<span class="op">&gt;</span></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>/b<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>/b<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>However, one can often avoid greedy matching by being more clever.</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Challenge">
 <div class="callout-header d-flex align-content-center">
@@ -528,7 +532,7 @@ Exercise
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Challenge
+<span class="screen-reader-only">Tip</span>Challenge
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -541,7 +545,7 @@ Challenge
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-globs vs.&nbsp;regex
+<span class="screen-reader-only">Tip</span>globs vs.&nbsp;regex
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -604,13 +608,14 @@ globs vs.&nbsp;regex
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

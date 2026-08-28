@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.31">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -10,6 +10,9 @@
 
 <title>Using UNIX commands</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -72,10 +75,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-ff803dae0bae9edb91fb3cd2582d8e33.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-daf5a11ba17b38b3c1f3d4203ab79c89.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -132,7 +135,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="https://statistics.berkeley.edu" class="sidebar-logo-link">
-      <img src="./assets/img/logo.svg" alt="UC Berkeley Statistics logo" class="sidebar-logo py-0 d-lg-inline d-none">
+      <img src="./assets/img/logo.svg" alt="UC Berkeley Statistics logo" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="./assets/img/logo.svg" alt="UC Berkeley Statistics logo" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">SCF Bash Shell Tutorial</a> 
@@ -292,30 +296,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Thus the general syntax for a Unix program/command/utility is:</p>
 <pre><code>$ command -options argument1 argument2 ...</code></pre>
 <p>For example, :</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-i</span> graphics file.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-i</span> graphics file.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>looks for the literal string <code>graphics</code> (argument 1) in <code>file.txt</code> (argument2) with the option <code>-i</code>, which says to ignore the case of the letters. A simpler invocation is:While :</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> less file.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> less file.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>which simply pages through a text file (you can navigate up and down with the space bar and the up/down arrows) so you can get a feel for what’s in it. To exit <code>less</code> type <code>q</code>.</p>
 <p>Unix programs often take flags (options) that are identified with a minus followed by a letter and then (possibly) followed by the specific option (adding a space before the specific option is fine). Options may also involve two dashes, e.g., <code>R --no-save</code>. A standard two dash option for many commands is <code>--help</code>. For example, try:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> tail <span class="at">--help</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> tail <span class="at">--help</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Here are a couple of examples of flags when using the <code>tail</code> command (<code>-n 10</code> and <code>-f</code>):</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> wget https://raw.githubusercontent.com/berkeley-scf/tutorial-using-bash/master/cpds.csv</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> wget https://raw.githubusercontent.com/berkeley-scf/tutorial-using-bash/master/cpds.csv</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> tail <span class="at">-n</span> 10 cpds.csv   <span class="co"># last 10 lines of cpds.csv</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> tail <span class="at">-f</span> cpds.csv      <span class="co"># shows end of file, continually refreshing</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> tail <span class="at">-f</span> cpds.csv      <span class="co"># shows end of file, continually refreshing</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The first line downloads the data from GitHub. The two main tools for downloading network-accessible data from the commandline are <code>wget</code> and <code>curl</code>. I tend to use <code>wget</code> as my commandline downloading tool as it is more convenient, but on a Mac, only <code>curl</code> is generally available.</p>
 <p>A few more tidbits about <code>grep</code> (we will see more examples of <code>grep</code> in the <a href="regex">section on regular expressions</a>, but it is so useful that it is worth seeing many times):</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep ^2001 cpds.csv   <span class="co"># returns lines that start with '2001'</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep ^2001 cpds.csv   <span class="co"># returns lines that start with '2001'</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep 0$ cpds.csv      <span class="co"># returns lines that end with '0'</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep 19.0 cpds.csv    <span class="co"># returns lines with '19' separated from '0' by a single character</span></span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep 19.<span class="pp">*</span>0 cpds.csv   <span class="co"># now separated by any number of characters</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-o</span> 19.0 cpds.csv <span class="co"># returns only the content matching the pattern, not entire lines</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-o</span> 19.0 cpds.csv <span class="co"># returns only the content matching the pattern, not entire lines</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Note that the first argument to grep is the pattern you are looking for. The syntax is different from that <a href="file-management#3-filename-globbing">used for wildcards</a> in file names. Also, you can use regular expressions in the pattern, but we defer details until <a href="regex">later</a>.</p>
 <p>It is sometimes helpful to put the pattern inside double quotes, e.g., if you want spaces in your pattern:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep <span class="st">"George .* Bush"</span> cpds.csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep <span class="st">"George .* Bush"</span> cpds.csv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>More generally in Unix, enclosing a string in quotes is often useful to indicate that it is a single argument/value.</p>
 <p>If you want to explicitly look for one of the special characters used in creating patterns (such as double quote (<code>"</code>), period (<code>.</code>), etc.), you can “escape” them by preceding with a back-slash. For example to look for <code>"Canada"</code>, including the quotes:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep <span class="st">"</span><span class="dt">\"</span><span class="st">Canada</span><span class="dt">\"</span><span class="st">"</span> cpds.csv     <span class="co"># look for "Canada" (including quotes)</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep <span class="st">"19\.0"</span> cpds.csv              <span class="co"># look for 19.0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep <span class="st">"</span><span class="dt">\"</span><span class="st">Canada</span><span class="dt">\"</span><span class="st">"</span> cpds.csv     <span class="co"># look for "Canada" (including quotes)</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep <span class="st">"19\.0"</span> cpds.csv              <span class="co"># look for 19.0</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>If you have a big data file and need to subset it by line (e.g., with <code>grep</code>) or by field (e.g., with <code>cut</code>), then you can do it really fast from the Unix command line, rather than reading it with R, SAS, Python, etc.</p>
 <p>Much of the power of these utilities comes in piping between them (see the next section) and <a href="file-management#3-filename-globbing">using wildcards</a> to operate on groups of files. The utilities can also be used in shell scripts to do more complicated things.</p>
 <p>We’ll see further examples of how to use these utilities later.</p>
@@ -325,7 +329,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Exercise
+<span class="screen-reader-only">Tip</span>Exercise
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -466,14 +470,14 @@ using <em>tee</em>
 <h3 class="anchored" data-anchor-id="standard-redirection-pipes">3.3 Standard redirection (pipes)</h3>
 <p>Operations where output from one command is used as input to another command (via the <code>|</code> operator) are known as pipes; they are made especially useful by the convention that many UNIX commands will accept their input through the standard input stream when no file name is provided to them.</p>
 <p>A simple pipe to <code>wc</code> to count the number of words in a string:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"hey there"</span> <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-w</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"hey there"</span> <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-w</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Translating lowercase to UPPERCASE with <code>tr</code>:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">'user1'</span>  <span class="kw">|</span> <span class="fu">tr</span> <span class="st">'a-z'</span> <span class="st">'A-Z'</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">USER1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">'user1'</span>  <span class="kw">|</span> <span class="fu">tr</span> <span class="st">'a-z'</span> <span class="st">'A-Z'</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">USER1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Here’s an example of finding out how many unique entries there are in the 2nd column of a data file whose fields are separated by commas:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cut <span class="at">-d</span><span class="st">','</span> <span class="at">-f2</span> cpds.csv <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> <span class="kw">|</span> <span class="fu">wc</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cut <span class="at">-d</span><span class="st">','</span> <span class="at">-f2</span> cpds.csv <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> <span class="op">&gt;</span> countries.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cut <span class="at">-d</span><span class="st">','</span> <span class="at">-f2</span> cpds.csv <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> <span class="kw">|</span> <span class="fu">wc</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cut <span class="at">-d</span><span class="st">','</span> <span class="at">-f2</span> cpds.csv <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> <span class="op">&gt;</span> countries.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Here are the piecies of what is going on in the commands above:</p>
 <ul>
 <li>We use the <code>cut</code> utility to extract the second field (<code>-f2</code>) or column of the file <code>cpds.csv</code> where the fields (or columns) are split or delimited by a comma (<code>-d','</code>).</li>
@@ -482,20 +486,20 @@ using <em>tee</em>
 <li>Finally, the first of the <code>cut</code> commands prints a word count summary using <code>wc</code>; while the second saving the sorted information with duplicates removed in the file <code>countries.txt</code>.</li>
 </ul>
 <p>As another example of checking for anomalies in a set of files, with the , to see if there are any “S” values in certain fields (based on fixed width using <code>-b</code>) of a set of files (<code>USC*dly</code>), one can do this:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cut <span class="at">-b29,37,45,53,61,69,77,85,93,101,109,117,125,133,141,149,</span> <span class="dt">\&nbsp;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cut <span class="at">-b29,37,45,53,61,69,77,85,93,101,109,117,125,133,141,149,</span> <span class="dt">\&nbsp;</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>            <span class="ex">157,165,173,181,189,197,205,213,221,229,237,245,253,</span> <span class="dt">\</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>            261,269 USC<span class="pp">*</span>.dly <span class="kw">|</span> <span class="fu">grep</span> S <span class="kw">|</span> <span class="fu">less</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>            261,269 USC<span class="pp">*</span>.dly <span class="kw">|</span> <span class="fu">grep</span> S <span class="kw">|</span> <span class="fu">less</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>(Note I did that on 22,000 files (5 Gb or so) in about 5 minutes on my desktop; it would have taken much more time to read the data into a program like R or Python.)</p>
 </section>
 <section id="the-tee-command" class="level3">
 <h3 class="anchored" data-anchor-id="the-tee-command">3.4 The <code>tee</code> command</h3>
 <p>The <code>tee</code> command lets you create two streams from one. For example, consider the case where you want the results of this command:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cut <span class="at">-d</span><span class="st">','</span> <span class="at">-f2</span> cpds.csv <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cut <span class="at">-d</span><span class="st">','</span> <span class="at">-f2</span> cpds.csv <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>to both be output to the terminal screen you are working in as well as being saved to a file. You could issue the command twice:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cut <span class="at">-d</span><span class="st">','</span> <span class="at">-f2</span> cpds.csv <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cut <span class="at">-d</span><span class="st">','</span> <span class="at">-f2</span> cpds.csv <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> <span class="op">&gt;</span> countries.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cut <span class="at">-d</span><span class="st">','</span> <span class="at">-f2</span> cpds.csv <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cut <span class="at">-d</span><span class="st">','</span> <span class="at">-f2</span> cpds.csv <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> <span class="op">&gt;</span> countries.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Instead of repeating the command and wasting computing time, you could use <code>tee</code> command:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cut <span class="at">-d</span><span class="st">','</span> <span class="at">-f2</span> cpds.csv <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> <span class="kw">|</span> <span class="fu">tee</span> countries.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cut <span class="at">-d</span><span class="st">','</span> <span class="at">-f2</span> cpds.csv <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> <span class="kw">|</span> <span class="fu">tee</span> countries.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </section>
 <section id="command-substitution-and-the-xargs-command" class="level2">
@@ -505,18 +509,18 @@ using <em>tee</em>
 <p>A closely related, but subtly different, capability to piping is command substitution. You may sometimes need to substitute the results of a command for use by another command. For example, if you wanted to use the directory listing returned by <code>ls</code> as the argument to another command, you would type <code>$(ls)</code> in the location you want the result of <code>ls</code> to appear.</p>
 <p>When the shell encounters a command surrounded by <code>$()</code>, it runs the command and replaces the expression with the output from the command. This allows something similar to a pipe, but it is appropriate when a command reads its arguments directly from the command line instead of through standard input.</p>
 <p>For example, suppose we are interested in searching for the text <code>pdf</code> in the last 4 R code files (those with suffix <code>.r</code> or <code>.R</code>) that were modified in the current directory. We can find the names of the four most recently modified files ending in <code>.R</code> or <code>.r</code> using:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-t</span> <span class="pp">*</span>.<span class="dt">{R</span><span class="op">,</span><span class="dt">r}</span> <span class="kw">|</span> <span class="fu">head</span> <span class="at">-4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-t</span> <span class="pp">*</span>.<span class="dt">{R</span><span class="op">,</span><span class="dt">r}</span> <span class="kw">|</span> <span class="fu">head</span> <span class="at">-4</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>and we can search for the required pattern using <code>grep</code> . Putting these together with command substitution, we can solve the problem using:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep pdf <span class="va">$(</span><span class="fu">ls</span> <span class="at">-t</span> <span class="pp">*</span>.<span class="dt">{R</span><span class="op">,</span><span class="dt">r}</span> <span class="kw">|</span> <span class="fu">head</span> <span class="at">-4</span><span class="va">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep pdf <span class="va">$(</span><span class="fu">ls</span> <span class="at">-t</span> <span class="pp">*</span>.<span class="dt">{R</span><span class="op">,</span><span class="dt">r}</span> <span class="kw">|</span> <span class="fu">head</span> <span class="at">-4</span><span class="va">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Suppose that the four R code file names produced by the <code>ls</code> command above were: <code>test.R</code>, <code>run.R</code>, <code>analysis.R</code> , and <code>process.R</code>. Then the result of the command substitution above is to run the following command:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep pdf test.R run.R analysis.R process.R</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep pdf test.R run.R analysis.R process.R</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Command substitution alternate syntax">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Command substitution alternate syntax
+<span class="screen-reader-only">Tip</span>Command substitution alternate syntax
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -528,7 +532,7 @@ Command substitution alternate syntax
 <section id="the-xargs-command" class="level3">
 <h3 class="anchored" data-anchor-id="the-xargs-command">4.2 The <code>xargs</code> command</h3>
 <p>While it doesn’t work to directly use pipes to redirect output from one program as arguments to another program, you can redirect output as the arguments to another program using the <code>xargs</code> utility. Here’s an example:</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-t</span> <span class="pp">*</span>.<span class="dt">{R</span><span class="op">,</span><span class="dt">r}</span> <span class="kw">|</span> <span class="fu">head</span> <span class="at">-4</span> <span class="kw">|</span> <span class="fu">xargs</span> grep pdf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-t</span> <span class="pp">*</span>.<span class="dt">{R</span><span class="op">,</span><span class="dt">r}</span> <span class="kw">|</span> <span class="fu">head</span> <span class="at">-4</span> <span class="kw">|</span> <span class="fu">xargs</span> grep pdf</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>where the result is equivalent to the use of command substitution we saw in the previous section.</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Exercise">
 <div class="callout-header d-flex align-content-center">
@@ -536,15 +540,15 @@ Command substitution alternate syntax
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Exercise
+<span class="screen-reader-only">Tip</span>Exercise
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <p>Try the following commands:</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-l</span> tr</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-l</span> tr</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> type <span class="at">-p</span> tr</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-l</span> type <span class="at">-p</span> tr</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-l</span> <span class="va">$(</span><span class="bu">type</span> <span class="at">-p</span> tr<span class="va">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-l</span> <span class="va">$(</span><span class="bu">type</span> <span class="at">-p</span> tr<span class="va">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Make sure you understand why each command behaves as it does.</p>
 </div>
 </div>
@@ -553,31 +557,31 @@ Exercise
 <section id="brace-expansion" class="level2">
 <h2 class="anchored" data-anchor-id="brace-expansion">5 Brace expansion</h2>
 <p>We saw brace expansion when discussing file wildcards. For example, we can rename a file with a long name easily like this:</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mv my_long_filename.<span class="dt">{txt</span><span class="op">,</span><span class="dt">csv}</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mv my_long_filename.<span class="dt">{txt</span><span class="op">,</span><span class="dt">csv}</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls my_long_filename<span class="pp">*</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="ex">my_long_filename.csv</span></span>
 <span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mv my_long_filename.csv<span class="dt">{</span><span class="op">,</span><span class="dt">-old}</span></span>
 <span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls my_long_filename<span class="pp">*</span></span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="ex">my_long_filename.csv-old</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="ex">my_long_filename.csv-old</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>This works because the shell expands the braces before passing the result on to the command. So with the <code>mv</code> calls above, the shell expands the braces to produce</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> my_long_filename.txt my_long_filename.csv</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> my_long_filename.csv my_long_filename.csv-old</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> my_long_filename.txt my_long_filename.csv</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> my_long_filename.csv my_long_filename.csv-old</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Brace expansion is quite useful and more flexible than I’ve indicated. Above we saw how to use brace expansion using a comma-separated list of items inside the curly braces (e.g., <code>{txt,csv}</code>), but they can also be used with a sequence specification. A sequence is indicated with a start and end item separated by two periods (<code>..</code>). Try typing the following examples at the command line and try to figure out how they work:</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="dt">{</span><span class="dv">1</span><span class="dt">..</span><span class="dv">15</span><span class="dt">}</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="dt">{</span><span class="dv">1</span><span class="dt">..</span><span class="dv">15</span><span class="dt">}</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo c<span class="dt">{</span>c<span class="dt">..</span>e<span class="dt">}</span></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="dt">{</span>d<span class="dt">..</span>a<span class="dt">}</span></span>
 <span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="dt">{</span><span class="dv">1</span><span class="dt">..</span><span class="dv">5</span><span class="dt">..</span><span class="dv">2</span><span class="dt">}</span></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="dt">{</span>z<span class="dt">..</span>a<span class="dt">..</span><span class="dv">-2</span><span class="dt">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="dt">{</span>z<span class="dt">..</span>a<span class="dt">..</span><span class="dv">-2</span><span class="dt">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>This can be used for filename wildcards but also anywhere else it would be useful. For example to kill a bunch of sequentially-numbered processes:</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> kill 1397<span class="dt">{</span><span class="dv">62</span><span class="dt">..</span><span class="dv">81</span><span class="dt">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> kill 1397<span class="dt">{</span><span class="dv">62</span><span class="dt">..</span><span class="dv">81</span><span class="dt">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="quoting" class="level2">
 <h2 class="anchored" data-anchor-id="quoting">6 Quoting</h2>
 <p>A note about using single vs.&nbsp;double quotes in shell code. In general, variables inside double quotes will be evaluated, but variables not inside double quotes will not be:</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"My home directory is </span><span class="va">$HOME</span><span class="st">"</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"My home directory is </span><span class="va">$HOME</span><span class="st">"</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="ex">My</span> home directory is /home/jarrod</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">'My home directory is $HOME'</span></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="ex">My</span> home directory is <span class="va">$HOME</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="ex">My</span> home directory is <span class="va">$HOME</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>Table. Quotes</strong></p>
 <table class="table">
 <thead>
@@ -610,16 +614,16 @@ soft quote - allow substitution
 </tbody>
 </table>
 <p>This can be useful, for example, when you have a directory with a space in its name (of course, it is better to avoid spaces in file and directory names). For example, suppose you have a directory named “with space” within the <code>/home/jarrod</code> home directory. Since bash uses spaces to parse the elements of the command line, you might try escaping any spaces with a backslash:</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="va">$HOME</span>/with\ space</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="ex">file1.txt</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="va">$HOME</span>/with\ space</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="ex">file1.txt</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>However that can be a pain and may not work in all circumstances. A cleaner approach is to use soft (or double) quotes:</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="st">"</span><span class="va">$HOME</span><span class="st">/with space"</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="ex">file1.txt</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="st">"</span><span class="va">$HOME</span><span class="st">/with space"</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="ex">file1.txt</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>If you used hard quotes, you will get this error:</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="st">'$HOME/with space'</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="ex">ls:</span> cannot access <span class="va">$HOME</span>/with space: No such file or directory</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="st">'$HOME/with space'</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="ex">ls:</span> cannot access <span class="va">$HOME</span>/with space: No such file or directory</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>What if you have double quotes in your file or directory name, such as a directory <code>"with"quote</code> (again, it is better to avoid using double quotes in file and directory names)? In this case, you will need to escape the quote:</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="st">"</span><span class="va">$HOME</span><span class="st">/</span><span class="dt">\"</span><span class="st">with</span><span class="dt">\"</span><span class="st">quote"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="st">"</span><span class="va">$HOME</span><span class="st">/</span><span class="dt">\"</span><span class="st">with</span><span class="dt">\"</span><span class="st">quote"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>So we’ll generally use double quotes. We can always work with a literal double quote by escaping it as seen above.</p>
 <div class="callout callout-style-default callout-warning callout-titled" title="Curly quotes">
 <div class="callout-header d-flex align-content-center">
@@ -627,11 +631,11 @@ soft quote - allow substitution
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Curly quotes
+<span class="screen-reader-only">Warning</span>Curly quotes
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Avoid using curly quotes (e.g., “ or ’) when coding (in the shell or otherwise), except as part of an actual string.</p>
+<p>Avoid using curly quotes (e.g., “ or ‘) when coding (in the shell or otherwise), except as part of an actual string.</p>
 </div>
 </div>
 </section>
@@ -649,67 +653,67 @@ Curly quotes
 Followed by this line.
 And then ...</code></pre>
 <p>To print all the lines containing <code>is</code>:</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep is testfile.txt</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep is testfile.txt</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="ex">This</span> is the first line.</span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Followed</span> by this line.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Followed</span> by this line.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>To print all the lines <strong>not</strong> containing <code>is</code>:</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-v</span> is testfile.txt </span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="ex">And</span> then ...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-v</span> is testfile.txt </span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="ex">And</span> then ...</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>To print only the matches, one can use the <code>-o</code> flag, though this would generally only be interesting when used with a regular expression pattern since in this case, we know “is” is what will be returned:</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-o</span> is testfile.txt</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-o</span> is testfile.txt</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="ex">is</span></span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="ex">is</span></span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="ex">is</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="ex">is</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>One could also use <code>--color</code> so that the matches are highlighed in color.</p>
 </section>
 <section id="sed" class="level3">
 <h3 class="anchored" data-anchor-id="sed">7.2 <code>sed</code></h3>
 <p>Here are some useful things you can do with <code>sed</code>. Note that as with other UNIX tools, <code>sed</code> will not generally directly alter a file (unless you use the <code>-i</code> flag); instead it will print the modified version of the file to stdout.</p>
 <p>Printing lines of text with <code>sed</code>:</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> sed <span class="at">-n</span> <span class="st">'1,9p'</span> file.txt       <span class="co"># prints out lines 1-9 from file.txt</span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> sed <span class="at">-n</span> <span class="st">'/^#/p'</span> file.txt      <span class="co"># prints out lines starting with # from file.txt </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> sed <span class="at">-n</span> <span class="st">'1,9p'</span> file.txt       <span class="co"># prints out lines 1-9 from file.txt</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> sed <span class="at">-n</span> <span class="st">'/^#/p'</span> file.txt      <span class="co"># prints out lines starting with # from file.txt </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The first command prints out lines 1-9, while the second one prints out lines starting with <code>#</code>.</p>
 <p>Deleting lines of text with <code>sed</code>:</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> sed <span class="at">-e</span> <span class="st">'1,9d'</span> file.txt</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> sed <span class="at">-e</span> <span class="st">'/^;/d'</span> <span class="at">-e</span> <span class="st">'/^$/d'</span> file.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> sed <span class="at">-e</span> <span class="st">'1,9d'</span> file.txt</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> sed <span class="at">-e</span> <span class="st">'/^;/d'</span> <span class="at">-e</span> <span class="st">'/^$/d'</span> file.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The first line deletes lines 1-9 of <code>file.txt</code>, printing the remaining lines to stdout. What do you think the second line does?</p>
 <p>Note that the -e flag is only necessary if you want to have more than one expression, so it’s not actually needed in the first line.</p>
 <p>Text substitution with <code>sed</code>:</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> sed <span class="st">'s/old_pattern/new_pattern/'</span> file.txt <span class="op">&gt;</span> new_file.txt</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb36"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> sed <span class="st">'s/old_pattern/new_pattern/'</span> file.txt <span class="op">&gt;</span> new_file.txt</span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> sed <span class="st">'s/old_pattern/new_pattern/g'</span> file.txt <span class="op">&gt;</span> new_file.txt</span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> sed <span class="at">-i</span> <span class="st">'s/old_pattern/new_pattern/g'</span> file.txt </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> sed <span class="at">-i</span> <span class="st">'s/old_pattern/new_pattern/g'</span> file.txt </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The first line replaces only the first instance in a line, while the second line replaces all instances in a line (i.e., globally). The use of the -i flag in the third line replaces the pattern <strong>in place</strong> in the file, thereby altering file.txt. Use the <code>-i</code> flag carefully as there is no way to easily restore the original version of the file.</p>
 </section>
 <section id="awk" class="level3">
 <h3 class="anchored" data-anchor-id="awk">7.3 <code>awk</code></h3>
 <p>Awk is a general purpose programming language typically used in data extraction tasks and particularly well-suited to one-liners (although it is possible to write long programs in it, it is rare). For our purposes, we will just look at a few common one-liners to get a sense of how it works. Basically, awk will go through a file line by line and perform some action for each line.</p>
 <p>For example, to select a given column from some text (here getting the PIDs of some processes, which are in the second (<code>$2</code>) column of the output of <code>ps -f</code>:</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ps</span> <span class="at">-f</span> <span class="kw">|</span> <span class="fu">awk</span> <span class="st">'{ print $2 }'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb37"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ps</span> <span class="at">-f</span> <span class="kw">|</span> <span class="fu">awk</span> <span class="st">'{ print $2 }'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>To double space a file, you would read each line, print it, and then print a blank line:</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> awk <span class="st">'{ print } { print "" }'</span> file.txt </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb38"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> awk <span class="st">'{ print } { print "" }'</span> file.txt </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Print every line of a file that is longer than 80 characters:</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> awk <span class="st">'length($0) &gt; 80'</span> file.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb39"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> awk <span class="st">'length($0) &gt; 80'</span> file.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Print the home directory of every user defined in the file <code>/etc/passwd</code>:</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> awk <span class="at">-F:</span> <span class="st">'{ print $6 }'</span> /etc/passwd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb40"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> awk <span class="at">-F:</span> <span class="st">'{ print $6 }'</span> /etc/passwd</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>To see what that does, let’s look at the first line of <code>/etc/passwd</code>:</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> head <span class="at">-n</span> 1 /etc/passwd</span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="ex">root:x:0:0:root:/root:/bin/bash</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb41"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> head <span class="at">-n</span> 1 /etc/passwd</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="ex">root:x:0:0:root:/root:/bin/bash</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>As you can see the entries are separated by colons (<code>:</code>) and the sixth field contains the root user’s home directory (<code>/root</code>). The option <code>-F:</code> specifies that the colon <code>:</code> is the field delimiter (instead of the default space delmiter) and <code>print $6</code> prints the 6th field of each line.</p>
 <p>Summing columns:</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> awk <span class="st">'{print $1 + $2}'</span> file.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb42"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> awk <span class="st">'{print $1 + $2}'</span> file.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>This will sum columns 1 and 2 of <code>file.txt</code>.</p>
 </section>
 </section>
 <section id="aliases-command-shortcuts-and-.bashrc" class="level2">
 <h2 class="anchored" data-anchor-id="aliases-command-shortcuts-and-.bashrc">8 Aliases (command shortcuts) and .bashrc</h2>
 <p>Aliases allow you to use an abbreviation for a command, to create new functionality or to insure that certain options are always used when you call an existing command. For example, I’m lazy and would rather type <code>q</code> instead of <code>exit</code> to terminate a shell window. You could create the alias as follow:</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> alias q=exit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb43"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> alias q=exit</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>As another example, suppose you find the <code>-F</code> option of <code>ls</code> (which displays <code>/</code> after directories, <code>\</code> after executable files and <code>@</code> after links) to be very useful. The command :</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> alias ls=<span class="st">"ls -F"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb44"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> alias ls=<span class="st">"ls -F"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>will ensure that the <code>-F</code> option will be used whenever you use <code>ls</code>. If you need to use the unaliased version of something for which you’ve created an alias, precede the name with a backslash (<code>\</code>). For example, to use the normal version of <code>ls</code> after you’ve created the alias described above:</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> <span class="dt">\l</span>s</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb45"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> <span class="dt">\l</span>s</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The real power of aliases is only achieved when they are automatically set up whenever you log in to the computer or open a new shell window. To achieve that goal with aliases (or any other bash shell commands), simply insert the commands in the file <code>.bashrc</code> in your home directory. For example, here is an excerpt from my <code>.bashrc</code>:</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>    <span class="co"># .bashrc</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb46"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>    <span class="co"># .bashrc</span></span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Source global definitions</span></span>
 <span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">[</span> <span class="ot">-f</span> /etc/bashrc <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
@@ -747,14 +751,14 @@ And then ...</code></pre>
 <span id="cb46-36"><a href="#cb46-36" aria-hidden="true" tabindex="-1"></a>    <span class="bu">alias</span> ll=<span class="st">'ls -l --color=auto'</span></span>
 <span id="cb46-37"><a href="#cb46-37" aria-hidden="true" tabindex="-1"></a>    <span class="bu">alias</span> ls=<span class="st">'ls --color=auto'</span></span>
 <span id="cb46-38"><a href="#cb46-38" aria-hidden="true" tabindex="-1"></a>    <span class="bu">alias</span> more=less</span>
-<span id="cb46-39"><a href="#cb46-39" aria-hidden="true" tabindex="-1"></a>    <span class="bu">alias</span> vi=vim</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb46-39"><a href="#cb46-39" aria-hidden="true" tabindex="-1"></a>    <span class="bu">alias</span> vi=vim</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Exercise">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Exercise
+<span class="screen-reader-only">Tip</span>Exercise
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -817,13 +821,14 @@ Exercise
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
