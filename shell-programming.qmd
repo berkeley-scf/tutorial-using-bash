@@ -104,6 +104,21 @@ used for nicing R jobs:
 	
 If the `then` is on a separate line from the `if`, you won't need the semicolon. 
 
+Here are some examples of checking for equality. Note that in some cases, one doesn't need the quotes around the values being compared, but it is generally good practice so that whitespace and characters that the shell would try to expand (such as '*') are treated as part of the string.
+
+```bash
+var="some text"
+if [ "${var}" == "some text" ]; then
+   echo "found equal"
+fi
+
+if [ "${var}" != "some text" ]; then
+   echo "found not equal"
+fi
+```
+
+
+
 ## 4 For loops
 
 For loops in shell scripting are primarily designed for iterating

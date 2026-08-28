@@ -52,6 +52,11 @@ $ find . -type l        # find links
 
 The `.` argument here indicates to find the file(s) in the current working directory and any subdirectories.
 
+You can also print out information about what is found, using the `-printf` argument:
+
+```bash
+$ find . -name '*.txt' -printf '%p %s\n' # find files named *.txt and print their name and size in bytes
+```
 
 As usual for UNIX commands, you can get more information about the `find` command with:
 
