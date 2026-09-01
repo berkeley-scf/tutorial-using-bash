@@ -278,12 +278,13 @@ more occurrences of "http" or "ftp":
 $ grep -E -o "(http|ftp)" test.txt
 ```
 
-Parentheses are also used with a pipe (`|`) when working with
-multi-character sequences, such as `(http|ftp)`. Also, here we need double
+Parentheses are used with a pipe (`|`) when working with
+multi-character sequences, such as `(http|ftp)` in order to indicate grouping of characters.
+Also, here we need double
 quotes or the shell tries to interpret the `(` as part of the regular
 expression and not shell syntax.
 
-Next let's see the use of repitition to look for more complicated multi-character patterns. For
+Next let's see the use of repetition to look for more complicated multi-character patterns. For
 example, if you wanted to match phone numbers whether they start with
 `1-` or not you could use the following:
 
@@ -294,6 +295,8 @@ The first part of the pattern `(1-)?` matches 0 or 1 occurrences of
 the pattern `[[:digit:]]{4}` matches any 4 digits. So the whole pattern
 matches any three digits followed by `-`, then another three digits, and then followed by four
 digits when it is preceded by 0 or 1 occurrences of `1-`.
+
+Note that again parentheses were used for grouping (in "(1-)?").
 
 Now let's consider a file named `file2.txt` with the following content:
 
@@ -405,7 +408,7 @@ Many tools that make use of regular expressions also allow the use of "capture g
 
 This can be used in `sed` as well as in string processing in Python.
 
-Groups are also used when we need to reference back to a detected pattern when doing a replacement. This is why they are sometimes referred to as "capturing groups". For example, here we’ll find any numbers and add asterisks before and after them, with `\1` referring to the captured string.
+We saw the use of parentheses for grouping above. Indicating groups with parentheses is also used when we need to reference back to a detected pattern when doing a replacement. This is why they are sometimes referred to as "capturing groups". For example, here we’ll find any numbers and add asterisks before and after them, with `\1` referring to the captured string.
 
 ```bash
 $ text="Here's my number: 919-543-3300. They bought 731 bananas. Please call 919.554.3800."
