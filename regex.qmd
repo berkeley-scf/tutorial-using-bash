@@ -398,3 +398,54 @@ set that we don't want to be inside the angle brackets?
  globbing but matches 0 or more repetitions of the character that
  precedes it when used in a regular expression).
 :::
+
+## 6 Capturing groups
+
+Many tools that make use of regular expressions also allow the use of "capture groups" to store the "captured" string that matches a pattern and be able to manipulate it as a variable for subsequent output.
+
+This can be used in `sed` as well as in string processing in Python.
+
+Groups are also used when we need to reference back to a detected pattern when doing a replacement. This is why they are sometimes referred to as "capturing groups". For example, here we’ll find any numbers and add asterisks before and after them, with `\1` referring to the captured string.
+
+```bash
+$ text="Here's my number: 919-543-3300. They bought 731 bananas. Please call 919.554.3800."
+$ echo ${text} | sed -E "s/([0-9]+)/***\1***/g"
+Here's my number: ***919***-***543***-***3300***. They bought ***731*** bananas. Please call ***919***.***554***.***3800***.
+```
+
+
+
+Here we’ll remove commas not used as field separators.
+
+```bash
+$ text='"H4NY07011","ACKERMAN, GARY L.","H","$13,242",,,'
+$ echo ${text} | sed -E "s/([^\",]),/\1/g"
+"H4NY07011","ACKERMAN GARY L.","H","$13242",,,
+```
+
+How does that work? Consider that `[^\",]` matches a character that is not a quote and not a comma. The regex is such a character followed by a comma, with the matched character saved in `\1` because of the grouping operator.
+
+:::{.callout-tip title="Challenge"}
+Instead of removing the commas to remove the ambiguity, how would you convert the comma delimiters to pipe (`|`) delimiters (since the pipe is rarely used in text)?
+:::
+
+
+Extending the use of `\1`, we can refer to multiple captured groups:
+
+```bash
+$ text="Here's my number: 919-543-3300. They bought 731 bananas. Please call 919.554.3800."
+$ echo ${text} | sed -E "s/([0-9]{3})[-\.]([0-9]{3})[-\.]([0-9]{4})/area code \1, number \2-\3/g"
+Here's my number: area code 919, number 543-3300. They bought 731 bananas. Please call area code 919, number 554-3800.
+```
+
+Capturing groups are less common with `grep`, which finds patterns rather than replaces them, but you can used capturing groups to look for repeated matches.
+
+For example, suppose we wanted to find repeated integer numbers:
+
+```bash
+$ text="The number 123 is repeated: 123 again"
+$ echo ${text} | grep -o -E '([0-9]+).*\1'
+123 is repeated: 123
+$ text="The number 45 is not repeated"
+$ echo ${text} | grep -o -E '([0-9]+).*\1'
+```

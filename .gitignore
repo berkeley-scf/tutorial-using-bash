@@ -13,3 +13,5 @@ vignettes/*.html
 vignettes/*.pdf
 
 /.quarto/
+
+**/*.quarto_ipynb
