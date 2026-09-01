@@ -215,6 +215,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#location-specific-matches" id="toc-location-specific-matches" class="nav-link" data-scroll-target="#location-specific-matches">3 Location-specific matches</a></li>
   <li><a href="#repetitions-grouping-and-references" id="toc-repetitions-grouping-and-references" class="nav-link" data-scroll-target="#repetitions-grouping-and-references">4 Repetitions, Grouping, and References</a></li>
   <li><a href="#greedy-matching" id="toc-greedy-matching" class="nav-link" data-scroll-target="#greedy-matching">5 Greedy matching</a></li>
+  <li><a href="#capturing-groups" id="toc-capturing-groups" class="nav-link" data-scroll-target="#capturing-groups">6 Capturing groups</a></li>
   </ul>
 </nav>
     </div>
@@ -552,6 +553,44 @@ Match the character or expression to the left or right of the vertical bar.
 <p>Be sure you understand the difference between <a href="file-management#3-filename-matching-globbing">filename globbing</a> and regular expressions. Filename globbing only works for filenames, while regular expressions are used to match patterns in text more generally. While they both use the same set of symbols, they mean different things (e.g., <code>*</code> matches 0 or more characters when globbing but matches 0 or more repetitions of the character that precedes it when used in a regular expression).</p>
 </div>
 </div>
+</section>
+<section id="capturing-groups" class="level2">
+<h2 class="anchored" data-anchor-id="capturing-groups">6 Capturing groups</h2>
+<p>Many tools that make use of regular expressions also allow the use of “capture groups” to store the “captured” string that matches a pattern and be able to manipulate it as a variable for subsequent output.</p>
+<p>This can be used in <code>sed</code> as well as in string processing in Python.</p>
+<p>Groups are also used when we need to reference back to a detected pattern when doing a replacement. This is why they are sometimes referred to as “capturing groups”. For example, here we’ll find any numbers and add asterisks before and after them, with <code>\1</code> referring to the captured string.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> text=<span class="st">"Here's my number: 919-543-3300. They bought 731 bananas. Please call 919.554.3800."</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="va">${text}</span> <span class="kw">|</span> <span class="fu">sed</span> <span class="at">-E</span> <span class="st">"s/([0-9]+)/***\1***/g"</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Here</span><span class="st">'s my number: ***919***-***543***-***3300***. They bought ***731*** bananas. Please call ***919***.***554***.***3800***.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Here we’ll remove commas not used as field separators.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> text=<span class="st">'"H4NY07011","ACKERMAN, GARY L.","H","$13,242",,,'</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="va">${text}</span> <span class="kw">|</span> <span class="fu">sed</span> <span class="at">-E</span> <span class="st">"s/([^</span><span class="dt">\"</span><span class="st">,]),/\1/g"</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="st">"H4NY07011"</span><span class="ex">,</span><span class="st">"ACKERMAN GARY L."</span><span class="ex">,</span><span class="st">"H"</span><span class="ex">,</span><span class="st">"</span><span class="va">$1</span><span class="st">3242"</span><span class="ex">,,,</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>How does that work? Consider that <code>[^\",]</code> matches a character that is not a quote and not a comma. The regex is such a character followed by a comma, with the matched character saved in <code>\1</code> because of the grouping operator.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Challenge">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Challenge
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Instead of removing the commas to remove the ambiguity, how would you convert the comma delimiters to pipe (<code>|</code>) delimiters (since the pipe is rarely used in text)?</p>
+</div>
+</div>
+<p>Extending the use of <code>\1</code>, we can refer to multiple captured groups:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> text=<span class="st">"Here's my number: 919-543-3300. They bought 731 bananas. Please call 919.554.3800."</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="va">${text}</span> <span class="kw">|</span> <span class="fu">sed</span> <span class="at">-E</span> <span class="st">"s/([0-9]{3})[-\.]([0-9]{3})[-\.]([0-9]{4})/area code \1, number \2-\3/g"</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Here</span><span class="st">'s my number: area code 919, number 543-3300. They bought 731 bananas. Please call area code 919, number 554-3800.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Capturing groups are less common with <code>grep</code>, which finds patterns rather than replaces them, but you can used capturing groups to look for repeated matches.</p>
+<p>For example, suppose we wanted to find repeated integer numbers:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> text=<span class="st">"The number 123 is repeated: 123 again"</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="va">${text}</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-o</span> <span class="at">-E</span> <span class="st">'([0-9]+).*\1'</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="ex">123</span> is repeated: 123</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> text=<span class="st">"The number 45 is not repeated"</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="va">${text}</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-o</span> <span class="at">-E</span> <span class="st">'([0-9]+).*\1'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 
 </section>

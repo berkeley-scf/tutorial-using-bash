@@ -408,5 +408,15 @@
     "crumbs": [
       "Regular Expressions"
     ]
+  },
+  {
+    "objectID": "regex.html#capturing-groups",
+    "href": "regex.html#capturing-groups",
+    "title": "Regular expressions",
+    "section": "6 Capturing groups",
+    "text": "6 Capturing groups\nMany tools that make use of regular expressions also allow the use of “capture groups” to store the “captured” string that matches a pattern and be able to manipulate it as a variable for subsequent output.\nThis can be used in sed as well as in string processing in Python.\nGroups are also used when we need to reference back to a detected pattern when doing a replacement. This is why they are sometimes referred to as “capturing groups”. For example, here we’ll find any numbers and add asterisks before and after them, with \\1 referring to the captured string.\n$ text=\"Here's my number: 919-543-3300. They bought 731 bananas. Please call 919.554.3800.\"\n$ echo ${text} | sed -E \"s/([0-9]+)/***\\1***/g\"\nHere's my number: ***919***-***543***-***3300***. They bought ***731*** bananas. Please call ***919***.***554***.***3800***.\nHere we’ll remove commas not used as field separators.\n$ text='\"H4NY07011\",\"ACKERMAN, GARY L.\",\"H\",\"$13,242\",,,'\n$ echo ${text} | sed -E \"s/([^\\\",]),/\\1/g\"\n\"H4NY07011\",\"ACKERMAN GARY L.\",\"H\",\"$13242\",,,\nHow does that work? Consider that [^\\\",] matches a character that is not a quote and not a comma. The regex is such a character followed by a comma, with the matched character saved in \\1 because of the grouping operator.\n\n\n\n\n\n\nTipChallenge\n\n\n\nInstead of removing the commas to remove the ambiguity, how would you convert the comma delimiters to pipe (|) delimiters (since the pipe is rarely used in text)?\n\n\nExtending the use of \\1, we can refer to multiple captured groups:\n$ text=\"Here's my number: 919-543-3300. They bought 731 bananas. Please call 919.554.3800.\"\n$ echo ${text} | sed -E \"s/([0-9]{3})[-\\.]([0-9]{3})[-\\.]([0-9]{4})/area code \\1, number \\2-\\3/g\"\nHere's my number: area code 919, number 543-3300. They bought 731 bananas. Please call area code 919, number 554-3800.\nCapturing groups are less common with grep, which finds patterns rather than replaces them, but you can used capturing groups to look for repeated matches.\nFor example, suppose we wanted to find repeated integer numbers:\n$ text=\"The number 123 is repeated: 123 again\"\n$ echo ${text} | grep -o -E '([0-9]+).*\\1'\n123 is repeated: 123\n$ text=\"The number 45 is not repeated\"\n$ echo ${text} | grep -o -E '([0-9]+).*\\1'",
+    "crumbs": [
+      "Regular Expressions"
+    ]
   }
 ]
